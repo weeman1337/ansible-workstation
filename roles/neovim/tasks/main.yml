@@ -39,7 +39,7 @@
       - python-lsp-server[yapf]
 
 - name: check the installed lua language server version
-  command: "grep -Fxq '3.2.1' ~/opt/lua-language-server/changelog.md"
+  command: "grep -xq '## 3.2.2' ~/opt/lua-language-server/changelog.md"
   register: lua_language_server_version_result
   check_mode: no
   ignore_errors: yes
