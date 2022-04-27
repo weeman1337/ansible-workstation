@@ -1,0 +1,34 @@
+---
+- name: be sure packages are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - dconf-editor
+      - gnome-tweaks
+
+- name: be sure the gnome settings are configured
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value | string }}"
+  with_dict:
+    /org/gnome/desktop/input-sources/show-all-sources: "true"
+    /org/gnome/desktop/input-sources/sources: "[('xkb', 'de+neo_qwertz'), ('xkb', 'de')]"
+    /org/gnome/desktop/interface/gtk-theme: "'Yaru-blue'"
+    /org/gnome/desktop/interface/icon-theme: "'Yaru-blue'"
+    /org/gnome/mutter/dynamic-workspaces: "false"
+    /org/gnome/desktop/wm/preferences/num-workspaces: "5"
+    /org/gnome/desktop/peripherals/mouse/natural-scroll: "false"
+    /org/gnome/desktop/peripherals/touchpad/natural-scroll: "false"
+    /org/gnome/desktop/peripherals/touchpad/tap-to-click: "false"
+    /org/gnome/desktop/interface/clock-show-weekday: "true"
+    /org/gnome/desktop/calendar/show-weekdate: "true"
+    /org/gnome/desktop/wm/preferences/resize-with-right-button: "true"
+    /org/gnome/shell/disabled-extensions: "['ubuntu-dock@ubuntu.com']"
+
+- name: be sure the gnome shortcuts are configured
+  dconf:
+    key: "{{ item.key | string }}"
+    value: "{{ item.value | string }}"
+  with_dict: "{{ gnome_shortcuts }}"

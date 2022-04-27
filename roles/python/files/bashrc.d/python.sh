@@ -1,0 +1,1 @@
+export SETUPTOOLS_USE_DISTUTILS=stdlib

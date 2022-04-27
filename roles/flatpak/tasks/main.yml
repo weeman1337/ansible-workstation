@@ -1,0 +1,16 @@
+---
+- name: be sure flaptak is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+    - flatpak
+    - gnome-software
+    - gnome-software-plugin-flatpak
+
+- name: be sure flathub remote is configured
+  community.general.flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user

@@ -1,0 +1,5 @@
+---
+- name: be sure inkscape is installed
+  flatpak:
+    name: org.inkscape.Inkscape
+    method: user

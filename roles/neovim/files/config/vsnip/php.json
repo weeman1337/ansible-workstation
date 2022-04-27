@@ -1,0 +1,23 @@
+{
+    "PHPCS ignore line": {
+        "prefix": ["phpcs:ignore"],
+        "body": [
+            "phpcs:ignore"
+        ]
+    },
+    "PHPStan ignore next line": {
+        "prefix": ["@phpstan-ignore-next-line"],
+        "body": [
+            "@phpstan-ignore-next-line"
+        ]
+    },
+    "factory method": {
+        "prefix": ["fafu"],
+        "body": [
+            "public function __invoke(${1:ContainerInterface \\$container}): $2",
+            "{",
+            "    $0",
+            "}"
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+---
+- name: be sure the git files are linked
+  file:
+    src: "~/git/ansible-workstation/roles/git/files/{{ item }}"
+    dest: "~/{{ item }}"
+    state: link
+  with_items:
+    - .gitconfig
+    - .gitignore
+
+- name: be sure git repos are checked out
+  git:
+    repo: "{{ item.value }}"
+    dest: "~/git/{{ item.key }}"
+    update: no
+    accept_hostkey: yes
+  with_dict: "{{ git_repos }}"

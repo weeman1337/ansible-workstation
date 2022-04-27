@@ -1,0 +1,16 @@
+[user]
+	name = Michael Weimann
+	email = mail@michael-weimann.eu
+	signingkey = 34F0524D4DA694A1
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	commentChar = ";"
+[commit]
+	gpgsign = true
+[cola]
+	spellcheck = false
+[credential]
+	helper = cache --timeout=86400
+[init]
+	defaultBranch = main

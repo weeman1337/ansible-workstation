@@ -1,0 +1,14 @@
+---
+- name: be sure the function keys are working
+  become: yes
+  lineinfile:
+    path: /etc/modprobe.d/hid_apple.conf
+    regexp: '^options hid_apple fnmode='
+    line: options hid_apple fnmode=2
+    create: yes
+  register: fixfnkeys_result
+
+- name: update initramfs
+  become: yes
+  command: update-initramfs -u -k all
+  when: fixfnkeys_result.changed

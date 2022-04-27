@@ -1,0 +1,95 @@
+---
+- name: stat neovim
+  stat:
+    path: /opt/neovim.appimage
+    checksum_algorithm: sha256
+  register: neovim_result
+
+- name: be sure neovim is installed
+  become: yes
+  get_url:
+    url: "https://github.com/neovim/neovim/releases/download/v0.7.0/nvim.appimage"
+    dest: /opt/neovim.appimage
+    checksum: "sha256:ac1caae4f1c54e0ce126b9313d993cb0d1cc4a81ef3e09dd26772be37aaa61db"
+    mode: "777"
+  when: neovim_result.stat.exists == False or neovim_result.stat.checksum != "ac1caae4f1c54e0ce126b9313d993cb0d1cc4a81ef3e09dd26772be37aaa61db"
+
+- name: be sure neovim is the default for vi
+  alternatives:
+    name: vi
+    path: /opt/neovim.appimage
+
+- name: be sure the nvim config is linked
+  file:
+    src: ~/git/ansible-workstation/roles/neovim/files/config
+    dest: ~/.config/nvim
+    state: link
+
+- name: be sure the python language server is installed
+  community.general.pipx:
+    name: python-lsp-server
+
+- name: be sure the python language server extras are installed
+  community.general.pipx:
+    name: python-lsp-server
+    state: inject
+    inject_packages:
+      - python-lsp-server[flake8]
+      - python-lsp-server[rope]
+      - python-lsp-server[yapf]
+
+- name: check the installed lua language server version
+  command: "grep -Fxq '3.2.1' ~/opt/lua-language-server/changelog.md"
+  register: lua_language_server_version_result
+  check_mode: no
+  ignore_errors: yes
+  changed_when: no
+
+- name: be sure the lua language server archive is downloaded
+  get_url:
+    url: "https://github.com/sumneko/lua-language-server/releases/download/3.2.2/lua-language-server-3.2.2-linux-x64.tar.gz"
+    dest: "/tmp/lua-language-server-3.2.2-linux-x64.tar.gz"
+    checksum: "sha256:e5093e6c8341671e17c118e6541c2999661431e888679bc094f770893edc3502"
+  when: lua_language_server_version_result.rc != 0
+
+- name: clean the lua language server target path
+  file:
+    path: ~/opt/lua-language-server
+    state: absent
+  when: lua_language_server_version_result.rc != 0
+
+- name: be sure ~/opt/lua-language-server exists
+  file:
+    path: ~/opt/lua-language-server
+    state: directory
+  when: lua_language_server_version_result.rc != 0
+
+- name: extract the lua language server archive
+  unarchive:
+    src: "/tmp/lua-language-server-3.2.2-linux-x64.tar.gz"
+    dest: ~/opt/lua-language-server
+    remote_src: yes
+  when: lua_language_server_version_result.rc != 0
+
+- name: be sure the lua language server bin is linked
+  file:
+    src: ~/opt/lua-language-server/bin/lua-language-server
+    dest: ~/.local/bin/lua-language-server
+    state: link
+
+- name: be sure the json schemas are linked
+  file:
+    src: ~/git/ansible-workstation/roles/neovim/files/json_schemas
+    dest: ~/.local/share/json_schemas
+    state: link
+
+- name: be sure npm packages are installed
+  npm:
+    name: "{{ item.key }}"
+    version: "{{ item.value }}"
+    global: yes
+  with_dict:
+    dockerfile-language-server-nodejs: "0.0.24"
+    typescript: "4.6.3"
+    typescript-language-server: "0.9.7"
+    vscode-langservers-extracted: "4.1.0"

@@ -1,0 +1,14 @@
+{
+    "jsconfigweb": {
+        "prefix": ["jsconfigweb"],
+        "body": [
+            "{",
+            "  \"compilerOptions\": {",
+            "    \"baseUrl\": \"./src\",",
+            "    \"module\": \"es6\"",
+            "  },",
+            "  \"exclude\": [$0]",
+            "}"
+        ]
+    }
+}

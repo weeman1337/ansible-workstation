@@ -1,0 +1,20 @@
+---
+- name: be sure fd is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+    - fd-find
+
+- name: be sure fd is linked
+  file:
+    src: /usr/bin/fdfind
+    dest: ~/.local/bin/fd
+    state: link
+
+- name: be sure the fd config is linked
+  file:
+    src: ~/git/ansible-workstation/roles/fd/files/config
+    dest: ~/.config/fd
+    state: link

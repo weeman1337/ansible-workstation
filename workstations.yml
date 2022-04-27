@@ -1,0 +1,12 @@
+---
+all:
+  vars:
+    ansible_connection: local
+  children:
+    private:
+      vars:
+        secrets_prefix: "private"
+      children:
+        weeman_klapp:
+          hosts:
+            weeman-klapp:

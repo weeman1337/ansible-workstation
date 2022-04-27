@@ -1,0 +1,4 @@
+completion_worse.experimantal: true
+logging.enabled: false
+# logging.level: "debug"
+# logging.path: /home/mweimann/tmp/phpactor.log

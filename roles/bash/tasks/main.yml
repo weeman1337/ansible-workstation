@@ -1,0 +1,31 @@
+---
+- name: be sure shell utils are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+    - ripgrep
+
+- name: be sure ~/.bashrc.d exists
+  file:
+    dest: ~/.bashrc.d
+    state: directory
+
+- name: be sure bash configs are linked
+  file:
+    src: "~/git/ansible-workstation/roles/bash/files/{{ item }}"
+    dest: "~/{{ item }}"
+    state: link
+  with_items:
+    - .bashrc
+    - .bashrc.d/aliases.sh
+    - .bashrc.d/jmenu.sh
+    - .config/jmenu
+    - .git-prompt.sh
+    - .inputrc
+
+- name: be sure ~/.local/bin exists
+  file:
+    dest: ~/.local/bin
+    state: directory

@@ -1,0 +1,28 @@
+---
+- name: be sure the secret vars are included
+  include_vars: "../../../secrets/{{ secrets_prefix }}/vars.yml"
+
+- name: be sure the ttf-mscorefonts eula is accepted
+  become: yes
+  debconf:
+    name: ttf-mscorefonts-installer
+    question: msttcorefonts/accepted-mscorefonts-eula
+    vtype: boolean
+    value: "true"
+
+- name: be sure basic packages are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - aptitude
+      - fuse3
+      - gcc
+      - gparted
+      - htop
+      - make
+      - ntfs-3g
+      - pavucontrol
+      - python3-psutil
+      - ttf-mscorefonts-installer

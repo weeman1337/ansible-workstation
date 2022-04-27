@@ -1,0 +1,35 @@
+---
+- name: be sure php packages are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - php-cli
+      - php-intl
+      - php-json
+      - php-mbstring
+      - php-xdebug
+      - php-mysql
+      - php-sqlite3
+      - php-xml
+
+- name: be sure the phpactor config is linked
+  file:
+    src: ~/git/ansible-workstation/roles/php/files/phpactor
+    dest: ~/.config/phpactor
+    state: link
+
+- name: stat composer
+  stat:
+    path: ~/.local/bin/composer
+    checksum_algorithm: sha256
+  register: composer_result
+
+- name: be sure composer is installed
+  get_url:
+    url: "https://getcomposer.org/download/2.3.5/composer.phar"
+    dest: ~/.local/bin/composer
+    checksum: "sha256:3b3b5a899c06a46aec280727bdf50aad14334f6bc40436ea76b07b650870d8f4"
+    mode: "777"
+  when: composer_result.stat.exists == False or composer_result.stat.checksum != "3b3b5a899c06a46aec280727bdf50aad14334f6bc40436ea76b07b650870d8f4"

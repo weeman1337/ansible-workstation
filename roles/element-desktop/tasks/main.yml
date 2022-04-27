@@ -1,0 +1,18 @@
+---
+- name: be sure the element apt signing key is installed
+  become: yes
+  ansible.builtin.apt_key:
+    url: https://packages.element.io/debian/element-io-archive-keyring.gpg
+
+- name: be sure the element apt repo is configured
+  become: yes
+  apt_repository:
+    filename: element
+    repo: deb https://packages.element.io/debian/ default main
+
+- name: be sure element is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name: element-desktop

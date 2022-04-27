@@ -1,0 +1,45 @@
+---
+- hosts: all
+  roles:
+    - role: base
+      tags: [ base ]
+    - role: bash
+      tags: [ bash ]
+    - role: ssh
+      tags: [ ssh ]
+    - role: git
+      tags: [ git ]
+    - role: fzf
+      tags: [ fzf ]
+    - role: kitty
+      tags: [ kitty ]
+    - role: nodejs
+      tags: [ nodejs ]
+    - role: neovim
+      tags: [ neovim ]
+    - role: fd
+      tags: [ fd ]
+    - role: mpv
+      tags: [ mpv ]
+    - role: youtubedl
+      tags: [ youtubedl ]
+    - role: flatpak
+      tags: [ flatpak ]
+    - role: gnome
+      tags: [ gnome ]
+    - role: inkscape
+      tags: [ inkscape ]
+    - role: element-desktop
+      tags: [ element-desktop ]
+    - role: python
+      tags: [ python ]
+- hosts: private
+  roles:
+    - role: php
+      tags: [ php ]
+    - role: neovim_private
+      tags: [ neovim_private ]
+- hosts: weeman_klapp
+  roles:
+    - role: fixfnkeys
+      tags: [ fixfnkeys ]

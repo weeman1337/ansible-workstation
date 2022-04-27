@@ -1,0 +1,13 @@
+---
+- name: be sure the nvim local config is linked
+  file:
+    src: ~/git/ansible-workstation/roles/neovim_private/files/config
+    dest: ~/.config/nvim_local
+    state: link
+
+- name: be sure packages are installed
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+    - clangd

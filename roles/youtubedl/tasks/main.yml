@@ -1,0 +1,14 @@
+---
+- name: test youtube-dl cheksum
+  stat:
+    path: ~/.local/bin/youtube-dl
+    checksum_algorithm: sha256
+  register: youtubedl_stat
+
+- name: be sure youtube-dl is installed
+  get_url:
+    url: https://github.com/ytdl-org/youtube-dl/releases/download/2021.12.17/youtube-dl
+    dest: ~/.local/bin/youtube-dl
+    checksum: "sha256:7880e01abe282c7fd596f429c35189851180d6177302bb215be1cdec78d6d06d"
+    mode: "700"
+  when: youtubedl_stat.stat.exists == False or youtubedl_stat.stat.checksum != "7880e01abe282c7fd596f429c35189851180d6177302bb215be1cdec78d6d06d"

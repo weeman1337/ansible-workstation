@@ -1,0 +1,23 @@
+---
+- name: be sure python packages are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - python3-pip
+      - python3-venv
+      - python3-virtualenv
+
+- name: be sure pip packages are installed
+  pip:
+    name:
+    - pipenv
+    - pipx
+    extra_args: "--user"
+
+- name: be sure the python bashrc is linked
+  file:
+    src: ~/git/ansible-workstation/roles/python/files/bashrc.d/python.sh
+    dest: ~/.bashrc.d/python.sh
+    state: link

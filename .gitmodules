@@ -1,0 +1,3 @@
+[submodule "secrets"]
+	path = secrets
+	url = ssh://code.weimann.digital:2222/ansible-workstation-secrets
