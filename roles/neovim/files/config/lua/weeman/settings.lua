@@ -47,6 +47,7 @@ vim.filetype.add({
   pattern = {
     [".-%.xml%.%a-"] = "xml",
     [".-%.php%.%a-"] = "php",
+    [".-ansible.-/.-%.yml"] = "yaml.ansible",
   }
 })
 

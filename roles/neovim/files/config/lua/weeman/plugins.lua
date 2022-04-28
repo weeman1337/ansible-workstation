@@ -243,6 +243,8 @@ return require('packer').startup(function (use)
             table.insert(lua_runtime_path, "lua/?.lua")
             table.insert(lua_runtime_path, "lua/?/init.lua")
 
+            require'lspconfig'.ansiblels.setup{}
+
             require'lspconfig'.sumneko_lua.setup {
               capabilities = capabilities,
               settings = {
