@@ -8,6 +8,12 @@
     - .gitconfig
     - .gitignore
 
+- name: be sure the git dirs exists
+  file:
+    path: "~/git/{{ item }}"
+    state: directory
+  with_items: "{{ git_dirs }}"
+
 - name: be sure git repos are checked out
   git:
     repo: "{{ item.value }}"

@@ -1,4 +1,7 @@
 ---
+git_dirs:
+  - fsfe
 git_repos:
   engelsystem: https://github.com/engelsystem/engelsystem.git
   fossevents: git@github.com:foss-events/website.git
+  fsfe/synapse: git@git.fsfe.org:fsfe-system-hackers/synapse.git
