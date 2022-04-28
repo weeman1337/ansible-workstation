@@ -19,6 +19,7 @@
       - aptitude
       - fuse3
       - gcc
+      - gnupg2
       - gparted
       - htop
       - make
