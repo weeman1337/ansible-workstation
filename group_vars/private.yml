@@ -3,6 +3,7 @@ git_dirs:
   - chaos
   - fsfe
 git_repos:
+  ansible-server: ssh://code.weimann.digital:2222/ansible-weimann.digital
   chaos/puppet: git+ssh://mweimann@noc.ccc-ffm.de:/srv/chaospuppet.git
   chaos/engelsystem: https://github.com/engelsystem/engelsystem.git
   fossevents: git@github.com:foss-events/website.git
