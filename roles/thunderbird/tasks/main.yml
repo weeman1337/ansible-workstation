@@ -1,0 +1,10 @@
+---
+- name: be sure thunderbird is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - thunderbird
+      - thunderbird-locale-de
+      - thunderbird-locale-en-gb

@@ -39,6 +39,8 @@
       tags: [ php ]
     - role: neovim_private
       tags: [ neovim_private ]
+    - role: thunderbird
+      tags: [ thunderbird ]
 - hosts: weeman_klapp
   roles:
     - role: fixfnkeys
