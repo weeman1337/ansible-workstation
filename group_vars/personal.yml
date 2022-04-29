@@ -4,12 +4,3 @@ specific_roles:
   c_dev: True
   php_dev: True
   ssh_personal: True
-git_dirs:
-  - chaos
-  - fsfe
-git_repos:
-  ansible-server: ssh://code.weimann.digital:2222/ansible-weimann.digital
-  chaos/puppet: git+ssh://mweimann@noc.ccc-ffm.de:/srv/chaospuppet.git
-  chaos/engelsystem: https://github.com/engelsystem/engelsystem.git
-  fossevents: git@github.com:foss-events/website.git
-  fsfe/synapse: git@git.fsfe.org:fsfe-system-hackers/synapse.git
