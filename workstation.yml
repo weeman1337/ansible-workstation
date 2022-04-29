@@ -38,6 +38,9 @@
       tags: [ element-desktop ]
     - role: thunderbird
       tags: [ thunderbird ]
+    - role: virtualbox
+      tags: [ virtualbox ]
+      when: specific_roles.virtualbox
 
     - role: python
       tags: [ python ]

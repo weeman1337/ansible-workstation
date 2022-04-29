@@ -1,0 +1,16 @@
+- name: be sure the virtualbox terms are accepted
+  become: yes
+  debconf:
+    name: virtualbox-ext-pack
+    question: virtualbox-ext-pack/license
+    vtype: boolean
+    value: "true"
+
+- name: be sure the virtualbox packages are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - virtualbox
+      - virtualbox-ext-pack
