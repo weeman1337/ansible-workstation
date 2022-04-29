@@ -1,4 +1,5 @@
 ---
+workstation_user: weeman
 specific_roles:
   arduino_dev: True
   c_dev: True

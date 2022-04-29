@@ -41,6 +41,8 @@
     - role: virtualbox
       tags: [ virtualbox ]
       when: specific_roles.virtualbox
+    - role: docker
+      tags: [ docker ]
 
     - role: python
       tags: [ python ]

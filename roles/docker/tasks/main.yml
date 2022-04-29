@@ -1,0 +1,75 @@
+- name: ensure rsyslog mute docker healthcheck file is in place
+  become: yes
+  copy:
+    src: "01-mute-docker-healthcheck.conf"
+    dest: "/etc/rsyslog.d/01-mute-docker-healthcheck.conf"
+    owner: root
+    group: root
+    mode: u=rw,go=r
+  register: docker_rsyslog
+
+- name: ensure rsyslog has been restarted
+  become: yes
+  service:
+    name: rsyslog
+    state: restarted
+  when: docker_rsyslog.changed
+
+- name: be sure old docker packages are not installed
+  become: yes
+  apt:
+    name:
+      - docker
+      - docker-engine
+      - docker.io
+      - containerd
+      - runc
+    state: absent
+
+- name: be sure docker apt signing key is installed
+  become: yes
+  apt_key:
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: be sure docker apt repo is configured
+  become: yes
+  apt_repository:
+    repo: deb https://download.docker.com/linux/debian buster stable
+    state: present
+    filename: docker
+
+- name: be sure packages required by docker are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - python3-docker
+
+- name: daemon.json
+  become: yes
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: u=rw,go=r
+
+- name: be sure docker-compose is installed
+  get_url:
+    url: https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64
+    dest: ~/.local/bin/docker-compose
+    checksum: "sha256:6296d17268c77a7159f57f04ed26dd2989f909c58cca4d44d1865f28bd27dd67"
+    mode: "777"
+
+- name: "be sure {{ workstation_user }} is member of the docker group"
+  become: yes
+  use:
+    name: "{{ workstation_user }}"
+    groups: docker
+    append: yes
