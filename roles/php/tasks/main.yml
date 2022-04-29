@@ -9,16 +9,9 @@
       - php-intl
       - php-json
       - php-mbstring
-      - php-xdebug
       - php-mysql
       - php-sqlite3
       - php-xml
-
-- name: be sure the phpactor config is linked
-  file:
-    src: ~/git/ansible-workstation/roles/php/files/phpactor
-    dest: ~/.config/phpactor
-    state: link
 
 - name: stat composer
   stat:

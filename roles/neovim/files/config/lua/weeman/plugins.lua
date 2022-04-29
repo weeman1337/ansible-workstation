@@ -312,8 +312,8 @@ return require('packer').startup(function (use)
                 capabilities = capabilities
             }
 
-            if require("weeman.helpers").is_module_available("weeman.local.plugins") then
-              require("weeman.local.plugins").lsp(lspconfig, capabilities)
+            for _, module in pairs(require("weeman.modules")) do
+              if module.lspconfig ~= nil then module.lspconfig(lspconfig, capabilities) end
             end
         end
     }
@@ -453,8 +453,8 @@ return require('packer').startup(function (use)
 
     use { "rodjek/vim-puppet" }
 
-    if h.is_module_available("weeman.local.plugins") then
-        require("weeman.local.plugins").setup(use)
+    for _, module in pairs(require("weeman.modules")) do
+      if module.packer_setup ~= nil then module.packer_setup(use) end
     end
 
     if PACKER_BOOTSTRAP then

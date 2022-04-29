@@ -1,4 +1,9 @@
 ---
+specific_roles:
+  arduino_dev: True
+  c_dev: True
+  php_dev: True
+  ssh_personal: True
 git_dirs:
   - chaos
   - fsfe

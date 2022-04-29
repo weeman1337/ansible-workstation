@@ -3,9 +3,7 @@ all:
   vars:
     ansible_connection: local
   children:
-    private:
-      vars:
-        secrets_prefix: "private"
+    personal:
       children:
         weeman_klapp:
           hosts:

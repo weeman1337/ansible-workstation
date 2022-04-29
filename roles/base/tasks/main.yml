@@ -1,6 +1,9 @@
 ---
 - name: be sure the secret vars are included
-  include_vars: "../../../secrets/{{ secrets_prefix }}/vars.yml"
+  include_vars: "../../../secrets/{{ item }}/vars.yml"
+  with_items:
+    - element
+    - personal
 
 - name: be sure the ttf-mscorefonts eula is accepted
   become: yes

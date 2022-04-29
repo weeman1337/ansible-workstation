@@ -1,7 +1,17 @@
 vim.cmd [[packadd galaxyline.nvim]]
 local gl = require('galaxyline')
-local utils = require('conf.utils')
 local condition = require('galaxyline.condition')
+
+local function is_buffer_empty()
+    -- Check whether the current buffer is empty
+    return vim.fn.empty(vim.fn.expand('%:t')) == 1
+end
+
+local function has_width_gt(cols)
+    -- Check if the windows width is greater than a given number of columns
+    return vim.fn.winwidth(0) / 2 > cols
+end
+
 
 -- see https://github.com/glepnir/galaxyline.nvim/issues/220
 
@@ -71,10 +81,10 @@ local colors = {
 }
 
 -- Local helper functions
-local buffer_not_empty = function() return not utils.is_buffer_empty() end
+local buffer_not_empty = function() return not is_buffer_empty() end
 
 local checkwidth = function()
-    return utils.has_width_gt(35) and buffer_not_empty()
+    return has_width_gt(35) and buffer_not_empty()
 end
 
 local function has_value(tab, val)
@@ -172,7 +182,7 @@ gls.left[1] = {
             vim.api.nvim_command('hi GalaxyViModeInv guifg=' .. mode_color() .. ' guibg=' .. colors.section_bg)
             alias = aliases[vim.fn.mode():byte()]
             if alias ~= nil then
-                if utils.has_width_gt(35) then
+                if has_width_gt(35) then
                     mode = alias
                 else
                     mode = alias:sub(1, 1)
@@ -306,7 +316,7 @@ gls.right[7] = {
     GitRoot = {
         provider = function () return " " .. get_basename(vim.fn.getcwd()) .. " " end,
         condition = function()
-            return utils.has_width_gt(45) and condition.check_git_workspace
+            return has_width_gt(45) and condition.check_git_workspace
         end,
         separator = " " .. separators.left,
         separator_highlight = { colors.bg, colors.section_bg },

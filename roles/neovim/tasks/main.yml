@@ -19,11 +19,44 @@
     name: vi
     path: /opt/neovim.appimage
 
-- name: be sure the nvim config is linked
+- name: be sure the nvim config directories exist
   file:
-    src: ~/git/ansible-workstation/roles/neovim/files/config
-    dest: ~/.config/nvim
+    path: "~/.config/nvim/{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - lua/weeman/modules
+    - vsnip
+
+- name: be sure the nvim configs are linked
+  file:
+    src: "~/git/ansible-workstation/roles/neovim/files/config/{{ item }}"
+    dest: "~/.config/nvim/{{ item }}"
     state: link
+  with_items:
+    - init.lua
+    - lua/weeman/helpers.lua
+    - lua/weeman/init.lua
+    - lua/weeman/plugins.lua
+    - lua/weeman/preview.lua
+    - lua/weeman/scratches.lua
+    - lua/weeman/settings.lua
+    - lua/weeman/statusline.lua
+
+- name: be sure the modules file exists (start)
+  lineinfile:
+    path: ~/.config/nvim/lua/weeman/modules.lua
+    regexp: "^return \\{"
+    line: "return {"
+    insertbefore: BOF
+    create: yes
+
+- name: be sure the modules file exists (end)
+  lineinfile:
+    path: ~/.config/nvim/lua/weeman/modules.lua
+    regexp: "^\\}"
+    line: "}"
+    insertafter: EOF
 
 - name: be sure the python language server is installed
   community.general.pipx:

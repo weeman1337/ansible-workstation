@@ -5,8 +5,13 @@
       tags: [ base ]
     - role: bash
       tags: [ bash ]
+
     - role: ssh
       tags: [ ssh ]
+    - role: ssh_personal
+      tags: [ ssh, ssh_personal ]
+      when: specific_roles.ssh_personal
+
     - role: git
       tags: [ git ]
     - role: fzf
@@ -31,16 +36,23 @@
       tags: [ inkscape ]
     - role: element-desktop
       tags: [ element-desktop ]
-    - role: python
-      tags: [ python ]
-- hosts: private
-  roles:
-    - role: php
-      tags: [ php ]
-    - role: neovim_private
-      tags: [ neovim_private ]
     - role: thunderbird
       tags: [ thunderbird ]
+
+    - role: python
+      tags: [ python ]
+    - role: php
+      tags: [ php ]
+
+    - role: arduino_dev
+      tags: [ arduino_dev ]
+      when: specific_roles.arduino_dev
+    - role: c_dev
+      tags: [ c_dev ]
+      when: specific_roles.c_dev
+    - role: php_dev
+      tags: [ php, php_dev ]
+      when: specific_roles.php_dev
 - hosts: weeman_klapp
   roles:
     - role: fixfnkeys

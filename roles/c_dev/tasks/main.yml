@@ -1,0 +1,19 @@
+- name: be sure packages are installed
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+    - clangd
+
+- name: be sure the c module is linked
+  file:
+    src: ~/git/ansible-workstation/roles/c_dev/files/c.lua
+    dest: ~/.config/nvim/lua/weeman/modules/c.lua
+    state: link
+
+- name: be sure the c module is registered
+  lineinfile:
+    path: ~/.config/nvim/lua/weeman/modules.lua
+    regexp: '^  require\("weeman.modules.c"\),'
+    line: '  require("weeman.modules.c"),'
+    insertafter: "^return"

@@ -1,0 +1,20 @@
+---
+- name: be sure packages are installed
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+    - clangd
+
+- name: be sure the arduino module is linked
+  file:
+    src: ~/git/ansible-workstation/roles/arduino_dev/files/arduino.lua
+    dest: ~/.config/nvim/lua/weeman/modules/arduino.lua
+    state: link
+
+- name: be sure the arduino module is registered
+  lineinfile:
+    path: ~/.config/nvim/lua/weeman/modules.lua
+    regexp: '^  require\("weeman.modules.arduino"\),'
+    line: '  require("weeman.modules.arduino"),'
+    insertafter: "^return"

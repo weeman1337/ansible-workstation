@@ -1,12 +1,6 @@
 local h = require("weeman.helpers")
 local keymap = vim.keymap
 
-local has_local, l = pcall(require, "weeman.local")
-
-if (has_local) then
-  l.settings_before()
-end
-
 vim.o.clipboard = 'unnamedplus'
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
@@ -316,8 +310,3 @@ vim.g.PHP_noArrowMatching = 1
 
 -- disable weird keyboard shortcut
 vim.g.ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
-
-
-if (has_local) then
-  l.settings_after()
-end

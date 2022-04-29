@@ -1,26 +1,13 @@
 ---
 - name: be sure the .ssh dir exists
   file:
-    path: ~/.ssh
+    path: ~/.ssh/config.d
     mode: "700"
     state: directory
+    recurse: yes
 
 - name: be sure the ssh config is linked
   file:
-    src: "~/git/ansible-workstation/secrets/{{ secrets_prefix }}/files/ssh/config"
+    src: "~/git/ansible-workstation/roles/ssh/files/config"
     dest: ~/.ssh/config
     state: link
-
-- name: be sure the ssh private keys are in place
-  copy:
-    src: "../../../secrets/{{ secrets_prefix }}/files/ssh/{{ item }}"
-    dest: "~/.ssh/{{ item }}"
-    mode: "600"
-  with_items: "{{ ssh_keys }}"
-
-- name: be sure the ssh private keys are in place
-  copy:
-    src: "../../../secrets/{{ secrets_prefix }}/files/ssh/{{ item }}.pub"
-    dest: "~/.ssh/{{ item }}.pub"
-    mode: "644"
-  with_items: "{{ ssh_keys }}"
