@@ -25,6 +25,7 @@
       - gnupg2
       - gparted
       - htop
+      - jq
       - make
       - ntfs-3g
       - pavucontrol

@@ -69,7 +69,7 @@
 
 - name: "be sure {{ workstation_user }} is member of the docker group"
   become: yes
-  use:
+  user:
     name: "{{ workstation_user }}"
     groups: docker
     append: yes
