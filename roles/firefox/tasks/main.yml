@@ -1,0 +1,21 @@
+---
+- name: be sure the Mozilla PPA is configured
+  become: yes
+  apt_repository:
+    repo: "ppa:mozillateam/ppa"
+    filename: mozilla
+
+- name: be sure the preferences file is in place
+  become: yes
+  copy:
+    src: mozillateam
+    dest: /etc/apt/preferences.d/mozillateam
+
+- name: be sure firefox is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - firefox
+      - firefox-locale-de

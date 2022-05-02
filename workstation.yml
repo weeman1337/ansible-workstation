@@ -24,25 +24,28 @@
       tags: [ neovim ]
     - role: fd
       tags: [ fd ]
-    - role: mpv
-      tags: [ mpv ]
-    - role: youtubedl
-      tags: [ youtubedl ]
     - role: flatpak
       tags: [ flatpak ]
     - role: gnome
       tags: [ gnome ]
+    - role: docker
+      tags: [ docker ]
+
     - role: inkscape
       tags: [ inkscape ]
     - role: element-desktop
       tags: [ element-desktop ]
+    - role: firefox
+      tags: [ firefox ]
     - role: thunderbird
       tags: [ thunderbird ]
     - role: virtualbox
       tags: [ virtualbox ]
       when: specific_roles.virtualbox
-    - role: docker
-      tags: [ docker ]
+    - role: mpv
+      tags: [ mpv ]
+    - role: youtubedl
+      tags: [ youtubedl ]
 
     - role: python
       tags: [ python ]
