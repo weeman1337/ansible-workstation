@@ -372,7 +372,10 @@ return require('packer').startup(function (use)
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-lua/popup.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim' },
-        { 'nvim-telescope/telescope-live-grep-raw.nvim' },
+        {
+          "nvim-telescope/telescope-live-grep-raw.nvim",
+          branch = "feature-autoquoting"
+        },
       },
         config = function()
             local telescope = require("telescope")
