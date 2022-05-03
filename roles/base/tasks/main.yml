@@ -34,3 +34,12 @@
       - python3-psutil
       - simple-scan
       - ttf-mscorefonts-installer
+
+- name: be sure sysctl is configured
+  become: yes
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    fs.inotify.max_user_watches: 131072
+    fs.inotify.max_user_instances: 512
