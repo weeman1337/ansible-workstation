@@ -53,6 +53,8 @@
       tags: [ mpv ]
     - role: youtubedl
       tags: [ youtubedl ]
+    - role: furtherance
+      tags: [ furtherance ]
 
     - role: python
       tags: [ python ]

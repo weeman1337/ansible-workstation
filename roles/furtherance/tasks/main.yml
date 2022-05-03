@@ -1,0 +1,6 @@
+---
+- name: be sure Furtherance is installed
+  community.general.flatpak:
+    name: com.lakoliu.Furtherance
+    method: user
+
