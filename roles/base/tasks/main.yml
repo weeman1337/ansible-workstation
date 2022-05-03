@@ -32,4 +32,5 @@
       - ntfs-3g
       - pavucontrol
       - python3-psutil
+      - simple-scan
       - ttf-mscorefonts-installer
