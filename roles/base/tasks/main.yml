@@ -27,6 +27,8 @@
       - gnupg2
       - gparted
       - htop
+      - hunspell-de-de-frami
+      - hunspell-en-gb
       - jq
       - make
       - ntfs-3g
