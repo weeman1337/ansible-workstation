@@ -1,0 +1,20 @@
+---
+- name: be sure the ssh config is linked
+  file:
+    src: "~/git/ansible-workstation/secrets/{{ ssh_env }}/files/ssh/config"
+    dest: "~/.ssh/config.d/{{ ssh_env }}"
+    state: link
+
+- name: be sure the ssh private keys are in place
+  copy:
+    src: "../../../secrets/{{ ssh_env }}/files/ssh/{{ item }}"
+    dest: "~/.ssh/{{ item }}_{{ ssh_env }}"
+    mode: "600"
+  with_items: "{{ lookup('vars', 'ssh_keys_' + ssh_env) }}"
+
+- name: be sure the ssh public keys are in place
+  copy:
+    src: "../../../secrets/{{ ssh_env }}/files/ssh/{{ item }}.pub"
+    dest: "~/.ssh/{{ item }}_{{ ssh_env }}.pub"
+    mode: "644"
+  with_items: "{{ lookup('vars', 'ssh_keys_' + ssh_env) }}"

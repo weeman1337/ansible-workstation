@@ -8,9 +8,16 @@
 
     - role: ssh
       tags: [ ssh ]
-    - role: ssh_personal
-      tags: [ ssh, ssh_personal ]
-      when: specific_roles.ssh_personal
+    - role: ssh_config
+      vars:
+        ssh_env: personal
+      tags: [ ssh ]
+      when: specific_roles.ssh_personal is defined and specific_roles.ssh_personal
+    - role: ssh_config
+      vars:
+        ssh_env: element
+      tags: [ ssh ]
+      when: specific_roles.ssh_element is defined and specific_roles.ssh_element
 
     - role: git
       tags: [ git ]
