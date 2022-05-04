@@ -77,7 +77,7 @@ mussig_provider() {
 }
 
 ssh_provider() {
-    grep -iP "^Host ([^*]+)$" $HOME/.ssh/config.d/* | sed 's/Host /command;ssh /i'
+    grep -hiP "^Host ([^*]+)$" $HOME/.ssh/config.d/* | sed 's/Host /command;ssh /i'
     # force password
     echo "command;ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no "
 }
