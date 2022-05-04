@@ -1,0 +1,6 @@
+---
+- name: be sure chromium is installed
+  community.general.flatpak:
+    name: org.chromium.Chromium
+    method: user
+

@@ -55,6 +55,8 @@
       tags: [ youtubedl ]
     - role: furtherance
       tags: [ furtherance ]
+    - role: chromium
+      tags: [ chromium ]
 
     - role: python
       tags: [ python ]
