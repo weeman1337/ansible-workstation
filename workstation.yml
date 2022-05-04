@@ -57,6 +57,8 @@
       tags: [ furtherance ]
     - role: chromium
       tags: [ chromium ]
+    - role: peek
+      tags: [ peek ]
 
     - role: python
       tags: [ python ]

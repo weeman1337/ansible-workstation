@@ -1,0 +1,13 @@
+---
+- name: be sure the peek ppa is configured
+  become: yes
+  apt_repository:
+    filename: peek
+    repo: ppa:peek-developers/stable
+
+- name: be sure peek is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name: peek
