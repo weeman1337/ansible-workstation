@@ -265,7 +265,7 @@ keymap.set("n", "<leader>fsg", ":lua require('weeman.scratches').telescope_live_
 
 -- lsp
 
-keymap.set("n", "<leader>la", ":Telescope lsp_code_actions<CR>")
+keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 keymap.set("n", "<leader>ld", ":Telescope diagnostics<CR>")
 keymap.set("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>")
 keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")
