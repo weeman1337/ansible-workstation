@@ -59,6 +59,8 @@
       tags: [ chromium ]
     - role: peek
       tags: [ peek ]
+    - role: jitsi
+      tags: [ jitsi ]
 
     - role: python
       tags: [ python ]

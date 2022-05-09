@@ -1,0 +1,5 @@
+---
+- name: be sure jitsi is installed
+  community.general.flatpak:
+    name: org.jitsi.jitsi-meet
+    method: user
