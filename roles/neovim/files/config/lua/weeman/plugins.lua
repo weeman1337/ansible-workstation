@@ -359,6 +359,12 @@ return require('packer').startup(function (use)
               method = DIAGNOSTICS_ON_SAVE,
             }),
             wrap(null_ls.builtins.diagnostics.eslint, "./node_modules/.bin/eslint"),
+            null_ls.builtins.diagnostics.cspell.with({
+              filetypes = { "typescript" },
+              diagnostics_postprocess = function(diagnostic)
+                diagnostic.severity = vim.diagnostic.severity["INFO"]
+              end
+            }),
           }
         })
       end
