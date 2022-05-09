@@ -1,0 +1,5 @@
+---
+- name: be sure scribus is installed
+  flatpak:
+    name: net.scribus.Scribus
+    method: user

@@ -40,6 +40,9 @@
 
     - role: inkscape
       tags: [ inkscape ]
+    - role: scribus
+      tags: [ scribus ]
+      when: specific_roles.scribus is defined and specific_roles.scribus
     - role: element-desktop
       tags: [ element-desktop ]
     - role: firefox
