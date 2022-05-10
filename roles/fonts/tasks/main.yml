@@ -1,0 +1,41 @@
+---
+- name: be sure the fonts path exists
+  file:
+    path: ~/.local/share/fonts
+    state: directory
+
+- name: check whether Ubuntu Nerd font is installed
+  stat:
+    path: ~/.local/share/fonts/Ubuntu Mono Nerd Font Complete.ttf
+  register: ubuntu_nerd
+
+- name: be sure Ubuntu Nerd font is downloaded
+  become: yes
+  get_url:
+    url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip"
+    dest: /tmp/UbuntuMono.zip
+    checksum: "sha256:1034658826a4561a1ff460aa4261b5f47e8b201601619242e31bbde14ecc4871"
+  register: ubuntu_nerd_download
+  when: not ubuntu_nerd.stat.exists
+
+- name: be sure Ubuntu Nerd fonts are extracted
+  unarchive:
+    src: "/tmp/UbuntuMono.zip"
+    dest: ~/.local/share/fonts
+  when: ubuntu_nerd_download.changed
+
+- name: find windows fonts
+  find:
+    paths: ~/.local/share/fonts
+    patterns: "*Windows Compatible.ttf"
+  register: windows_fonts
+
+- name: be sure windows fonts are removed
+  file:
+    path: "{{ item['path'] }}"
+    state: absent
+  with_items: "{{ windows_fonts['files'] }}"
+
+- name: update font cache
+  command: fc-cache -fv
+  when: ubuntu_nerd_download.changed

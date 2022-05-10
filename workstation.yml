@@ -5,6 +5,8 @@
       tags: [ base ]
     - role: bash
       tags: [ bash ]
+    - role: fonts
+      tags: [ fonts ]
 
     - role: ssh
       tags: [ ssh ]
