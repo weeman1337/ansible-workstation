@@ -15,6 +15,7 @@
   get_url:
     url: https://github.com/kovidgoyal/kitty/releases/download/v0.25.0/kitty-0.25.0-x86_64.txz
     dest: /tmp/kitty-0.25.0-x86_64.txz
+    checksum: "sha256:6a64e8a74acc35fd953b5554308685c724f87410e58e918281f95116ec09ad8f"
   when: kitty_result.stat.exists == False or kitty_result.stat.checksum != "91ac20a381229a5ab1cf4b6847311534d3d12b22f9e78dda32704410da4e4815"
   register: kitty_download
 
