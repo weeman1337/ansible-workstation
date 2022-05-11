@@ -349,9 +349,11 @@ return require('packer').startup(function (use)
           return builtin.with(opts)
         end
 
+        local home = os.getenv("HOME")
+
         null_ls.setup({
           debounce = 1000,
-          --debug = true,
+          debug = true,
           sources = {
             wrap(null_ls.builtins.diagnostics.phpcs, "./vendor/bin/phpcs"),
             wrap(null_ls.builtins.diagnostics.phpstan, "./vendor/bin/phpstan", {
@@ -360,6 +362,14 @@ return require('packer').startup(function (use)
             }),
             wrap(null_ls.builtins.diagnostics.eslint, "./node_modules/.bin/eslint"),
             null_ls.builtins.diagnostics.cspell.with({
+              args = function(params) return {
+                "--config",
+                home .. "/.config/cspell/cspell.yml",
+                "--language-id",
+                params.ft,
+                "stdin",
+              }
+            end,
               filetypes = { "typescript" },
               diagnostics_postprocess = function(diagnostic)
                 diagnostic.severity = vim.diagnostic.severity["INFO"]

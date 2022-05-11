@@ -11,3 +11,9 @@
     update_cache: yes
     cache_valid_time: 86400
     name: peek
+
+- name: be sure the beek desktop file is in place
+  become: yes
+  copy:
+    src: com.uploadedlobster.peek.desktop
+    dest: /usr/share/applications/com.uploadedlobster.peek.desktop

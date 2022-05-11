@@ -1,0 +1,25 @@
+---
+- name: be sure the cspell config is linked
+  file:
+    src: "~/git/ansible-workstation/roles/cspell/files/config"
+    dest: "~/.config/cspell"
+    state: link
+
+- name: be sure the cspell neovim module is linked
+  file:
+    src: "~/git/ansible-workstation/roles/cspell/files/cspell.lua"
+    dest: "~/.config/nvim/lua/weeman/modules/cspell.lua"
+    state: link
+
+- name: be sure the neovim cspell module is registered
+  lineinfile:
+    path: ~/.config/nvim/lua/weeman/modules.lua
+    regexp: '^  require\("weeman.modules.cspell"\),'
+    line: '  require("weeman.modules.cspell"),'
+    insertafter: "^return"
+
+- name: be sure cspell is installed
+  npm:
+    name: cspell
+    version: "5.20.0"
+    global: yes

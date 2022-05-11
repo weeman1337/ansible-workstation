@@ -1,0 +1,11 @@
+---
+language: en-GB
+dictionaries:
+  - element
+dictionaryDefinitions:
+  - name: element
+    path: element.txt
+ignorePaths:
+  - dist/**
+  - node_modules/**
+  - vendor/**

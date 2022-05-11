@@ -257,6 +257,7 @@ keymap.set("n", "<leader>faf", ":Telescope find_files find_command=fd,--hidden,-
 keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_raw.live_grep_raw({})<CR>")
 keymap.set("n", "<leader>fh", ":Telescope oldfiles cwd_only=true<CR>")
 keymap.set("n", "<leader>fi", ":Telescope current_buffer_fuzzy_find<CR>")
+keymap.set("n", "<leader>fm", ":Telescope marks<CR>")
 keymap.set("n", "<leader>fp", ":Telescope command_history<CR>")
 keymap.set("n", "<leader>fr", ":lua require'telescope.builtin'.resume()<CR>")
 keymap.set("n", "<leader>fsf", ":lua require('weeman.scratches').telescope_find()<CR>")

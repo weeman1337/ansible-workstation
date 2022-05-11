@@ -72,6 +72,8 @@
     - role: php
       tags: [ php ]
 
+    - role: cspell
+      tags: [ cspell ]
     - role: arduino_dev
       tags: [ arduino_dev ]
       when: specific_roles.arduino_dev
