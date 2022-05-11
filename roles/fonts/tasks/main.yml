@@ -36,6 +36,18 @@
     state: absent
   with_items: "{{ windows_fonts['files'] }}"
 
+- name: find Mono fonts
+  find:
+    paths: ~/.local/share/fonts
+    patterns: "* Mono.ttf"
+  register: mono_fonts
+
+- name: be sure Mono fonts are removed
+  file:
+    path: "{{ item['path'] }}"
+    state: absent
+  with_items: "{{ mono_fonts['files'] }}"
+
 - name: update font cache
   command: fc-cache -fv
   when: ubuntu_nerd_download.changed
