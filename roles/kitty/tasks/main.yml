@@ -43,14 +43,24 @@
       - kitty-terminfo
 
 - name: be sure the kitty desktop files are linked
-  become: yes
   file:
     src: "/opt/kitty/share/applications/{{ item }}.desktop"
-    dest: "/usr/share/applications/{{ item }}.desktop"
+    dest: "~/.local/share/applications/{{ item }}.desktop"
     state: link
   with_items:
   - kitty
   - kitty-open
+
+- name: be sure the icons directories exists
+  file:
+    path: ~/.local/share/icons/hicolor/scalable/apps
+    state: directory
+
+- name: be sure the kitty icon is linked
+  file:
+    src: /opt/kitty/share/icons/hicolor/scalable/apps/kitty.svg
+    dest: ~/.local/share/icons/hicolor/scalable/apps/kitty.svg
+    state: link
 
 - name: be sure the kitty config is linked
   file:
