@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Peek (ffmpeg)
+Exec=peek -b ffmpeg
+Keywords[de]=screencast;screen recorder;Bildschirmaufnahme;GIF;WebM;APNG;
+Keywords=screencast;screen recorder;screen capture;GIF;WebM;APNG;
+Icon=com.uploadedlobster.peek
+Type=Application
+Categories=GTK;GNOME;Graphics;2DGraphics;AudioVideo;Video;Recorder;
+StartupNotify=true
+Terminal=false

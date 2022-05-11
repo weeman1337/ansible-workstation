@@ -1,11 +1,55 @@
 ---
-- name: be sure kitty is installed
+- name: be sure /opt/kitty exists
+  become: yes
+  file:
+    path: /opt/kitty
+    state: directory
+
+- name: stat kitty
+  stat:
+    path: /opt/kitty/bin/kitty
+    checksum_algorithm: sha256
+  register: kitty_result
+
+- name: download the kitty archive
+  get_url:
+    url: https://github.com/kovidgoyal/kitty/releases/download/v0.25.0/kitty-0.25.0-x86_64.txz
+    dest: /tmp/kitty-0.25.0-x86_64.txz
+  when: kitty_result.stat.exists == False or kitty_result.stat.checksum != "91ac20a381229a5ab1cf4b6847311534d3d12b22f9e78dda32704410da4e4815"
+  register: kitty_download
+
+- name: extract kitty archive
+  become: yes
+  unarchive:
+    src: /tmp/kitty-0.25.0-x86_64.txz
+    dest: /opt/kitty
+    remote_src: yes
+  when: kitty_download.changed
+
+- name: be sure kitty bin is linked
+  become: yes
+  file:
+    src: /opt/kitty/bin/kitty
+    dest: /usr/local/bin/kitty
+    state: link
+
+- name: be sure kitty-terminfo is installed
   become: yes
   apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
-    - kitty
+      - kitty-terminfo
+
+- name: be sure the kitty desktop files are linked
+  become: yes
+  file:
+    src: "/opt/kitty/share/applications/{{ item }}.desktop"
+    dest: "/usr/share/applications/{{ item }}.desktop"
+    state: link
+  with_items:
+  - kitty
+  - kitty-open
 
 - name: be sure the kitty config is linked
   file:
@@ -17,4 +61,4 @@
   become: yes
   alternatives:
     name: x-terminal-emulator
-    path: /usr/bin/kitty
+    path: /opt/kitty/bin/kitty
