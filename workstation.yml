@@ -66,6 +66,9 @@
       tags: [ peek ]
     - role: jitsi
       tags: [ jitsi ]
+    - role: break_timer
+      tags: [ break_timer ]
+      when: specific_roles.break_timer is defined and specific_roles.break_timer
 
     - role: python
       tags: [ python ]

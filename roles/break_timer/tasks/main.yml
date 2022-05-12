@@ -1,0 +1,5 @@
+---
+- name: be sure break timer is installed
+  flatpak:
+    name: org.gnome.BreakTime
+    method: user

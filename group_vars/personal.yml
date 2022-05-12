@@ -8,3 +8,4 @@ specific_roles:
   ssh_element: True
   ssh_personal: True
   virtualbox: True
+  break_timer: True
