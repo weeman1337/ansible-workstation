@@ -1,0 +1,14 @@
+---
+- name: be sure the LibreOffice PPA is configured
+  become: yes
+  apt_repository:
+    repo: "ppa:libreoffice/ppa"
+    filename: libreoffice
+
+- name: be sure LibreOffice is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - libreoffice

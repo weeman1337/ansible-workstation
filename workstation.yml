@@ -21,6 +21,8 @@
       tags: [ ssh ]
       when: specific_roles.ssh_element is defined and specific_roles.ssh_element
 
+    - role: libreoffice
+      tags: [ libreoffice ]
     - role: certbot
       tags: [ certbot ]
     - role: git
