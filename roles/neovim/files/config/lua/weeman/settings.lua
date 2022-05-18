@@ -250,8 +250,8 @@ keymap.set("n", "<F9>", "<Plug>VimspectorContinue")
 
 -- center
 
-keymap.set("n", "<C>-i", "<C>-izz")
-keymap.set("n", "<C>-o", "<C>-ozz")
+--keymap.set("n", "<C>-i", "<C>-izz")
+--keymap.set("n", "<C>-o", "<C>-ozz")
 
 -- find
 
