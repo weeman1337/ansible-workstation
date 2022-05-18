@@ -23,6 +23,8 @@
 
     - role: soundrecorder
       tags: [ soundrecorder ]
+    - role: flameshot
+      tags: [ flameshot ]
     - role: libreoffice
       tags: [ libreoffice ]
     - role: certbot
