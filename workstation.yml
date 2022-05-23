@@ -21,6 +21,8 @@
       tags: [ ssh ]
       when: specific_roles.ssh_element is defined and specific_roles.ssh_element
 
+    - role: screenruler
+      tags: [ screenruler ]
     - role: soundrecorder
       tags: [ soundrecorder ]
     - role: flameshot
