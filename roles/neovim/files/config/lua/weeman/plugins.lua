@@ -18,7 +18,13 @@ return require('packer').startup(function (use)
 
     use "simnalamburt/vim-mundo"
 
-    use "tpope/vim-fugitive"
+    use {
+      "tpope/vim-fugitive",
+      requires = {
+        { "tpope/vim-rhubarb" },
+      }
+    }
+
     use "tpope/vim-abolish"
 
     use "puremourning/vimspector"
@@ -388,10 +394,7 @@ return require('packer').startup(function (use)
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-lua/popup.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim' },
-        {
-          "nvim-telescope/telescope-live-grep-raw.nvim",
-          branch = "feature-autoquoting"
-        },
+        { "nvim-telescope/telescope-live-grep-raw.nvim" },
       },
         config = function()
             local telescope = require("telescope")
