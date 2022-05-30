@@ -26,7 +26,7 @@
     /org/gnome/desktop/interface/clock-show-weekday: "true"
     /org/gnome/desktop/calendar/show-weekdate: "true"
     /org/gnome/desktop/wm/preferences/resize-with-right-button: "true"
-    /org/gnome/shell/disabled-extensions: "['ubuntu-dock@ubuntu.com']"
+    /org/gnome/shell/disabled-extensions: "['ubuntu-dock@ubuntu.com', 'ding@rastersoft.com']"
     /org/gnome/clocks/world-clocks: "{{ world_clocks }}"
     /org/gnome/shell/world-clocks/locations: "{{ world_clocks_locations }}"
     /org/gnome/nautilus/preferences/default-folder-viewer: "'list-view'"
