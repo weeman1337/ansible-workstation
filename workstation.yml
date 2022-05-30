@@ -100,3 +100,7 @@
   roles:
     - role: fixfnkeys
       tags: [ fixfnkeys ]
+- hosts: michaelw_element_klapp
+  roles:
+    - role: fixfnkeys
+      tags: [ fixfnkeys ]
