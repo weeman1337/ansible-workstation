@@ -31,6 +31,7 @@
       tags: [ libreoffice ]
     - role: certbot
       tags: [ certbot ]
+      when: specific_roles.certbot is defined and specific_roles.certbot
     - role: git
       tags: [ git ]
     - role: fzf

@@ -11,3 +11,4 @@ specific_roles:
   ssh_personal: False
   virtualbox: False
   break_timer: False
+  cerbot: False
