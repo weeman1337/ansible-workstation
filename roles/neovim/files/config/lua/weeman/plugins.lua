@@ -399,20 +399,20 @@ return require('packer').startup(function (use)
         config = function()
             local telescope = require("telescope")
             local actions = require"telescope.actions"
-            telescope.setup {
-              pickers = {
-                live_grep_raw = {
-                  mappings = {
-                    i = {
-                      ["<CR>"] = actions.select_default + actions.center
-                    },
-                    n = {
-                      ["<CR>"] = actions.select_default + actions.center
-                    }
-                  }
-                }
-              }
-            }
+            --telescope.setup {
+              --pickers = {
+                --live_grep_raw = {
+                  --mappings = {
+                    --i = {
+                      --["<CR>"] = actions.select_default + actions.center
+                    --},
+                    --n = {
+                      --["<CR>"] = actions.select_default + actions.center
+                    --}
+                  --}
+                --}
+              --}
+            --}
             telescope.load_extension('fzf')
         end
     }
