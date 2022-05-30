@@ -59,6 +59,20 @@
     line: "}"
     insertafter: EOF
 
+- name: be sure packages are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - xclip
+
+- name: be sure pynvim is installed
+  pip:
+    name:
+    - pynvim
+    extra_args: "--user"
+
 - name: be sure the python language server is installed
   community.general.pipx:
     name: python-lsp-server
