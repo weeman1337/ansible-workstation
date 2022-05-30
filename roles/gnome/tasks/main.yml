@@ -35,3 +35,8 @@
     key: "{{ item.key | string }}"
     value: "{{ item.value | string }}"
   with_dict: "{{ gnome_shortcuts }}"
+
+- name: be sure the extension manager is installed
+  flatpak:
+    name: com.mattjakeman.ExtensionManager
+    method: user
