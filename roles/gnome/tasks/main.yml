@@ -29,6 +29,8 @@
     /org/gnome/shell/disabled-extensions: "['ubuntu-dock@ubuntu.com']"
     /org/gnome/clocks/world-clocks: "{{ world_clocks }}"
     /org/gnome/shell/world-clocks/locations: "{{ world_clocks_locations }}"
+    /org/gnome/nautilus/preferences/default-folder-viewer: "'list-view'"
+    /org/gnome/nautilus/list-view/default-zoom-level: "'small'"
 
 - name: be sure the gnome shortcuts are configured
   dconf:
