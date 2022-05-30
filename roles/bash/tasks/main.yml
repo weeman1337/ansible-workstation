@@ -17,6 +17,7 @@
     src: "~/git/ansible-workstation/roles/bash/files/{{ item }}"
     dest: "~/{{ item }}"
     state: link
+    force: yes
   with_items:
     - .bashrc
     - .bashrc.d/aliases.sh

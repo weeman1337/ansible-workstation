@@ -8,3 +8,8 @@ all:
         weeman_klapp:
           hosts:
             weeman-klapp:
+    element:
+      children:
+        michaelw_element_klapp:
+          hosts:
+            michaelw-element-klapp:

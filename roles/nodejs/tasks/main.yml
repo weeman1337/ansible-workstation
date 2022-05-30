@@ -1,10 +1,12 @@
 ---
 - name: be sure the nodejs repo signing key is installed
+  become: yes
   apt_key:
     id: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 
 - name: be sure the nodejs repo is configured
+  become: yes
   apt_repository:
     repo: deb https://deb.nodesource.com/node_16.x impish main
     filename: nodejs
@@ -16,6 +18,7 @@
     state: link
 
 - name: be sure nodejs is installed
+  become: yes
   apt:
     name: nodejs
 

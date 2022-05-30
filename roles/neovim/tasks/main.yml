@@ -15,6 +15,7 @@
   when: neovim_result.stat.exists == False or neovim_result.stat.checksum != "ac1caae4f1c54e0ce126b9313d993cb0d1cc4a81ef3e09dd26772be37aaa61db"
 
 - name: be sure neovim is the default for vi
+  become: yes
   alternatives:
     name: vi
     path: /opt/neovim.appimage
