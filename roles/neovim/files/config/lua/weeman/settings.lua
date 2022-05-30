@@ -221,6 +221,59 @@ keymap.set("n", "<leader>ss", ":MundoHide<CR> :Vista!!<CR>")
 keymap.set("n", "<leader>sc", ":Vista!<CR> :MundoHide<CR>")
 
 
+-- diagnostics
+
+local sw = {
+  min = vim.diagnostic.severity.WARN,
+  max = vim.diagnostic.severity.ERROR,
+}
+
+keymap.set("n", "<leader>dq", function ()
+  vim.diagnostic.setqflist({
+    severity = sw,
+  })
+end);
+keymap.set("n", "<leader>dj", function ()
+  vim.diagnostic.goto_next({
+    severity = sw,
+    float = false,
+  })
+end)
+keymap.set("n", "<leader>dk", function ()
+  vim.diagnostic.goto_prev({
+    severity = sw,
+    float = false,
+  })
+end)
+keymap.set("n", "<leader>ds", function ()
+  local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+
+  local diagnostics = vim.diagnostic.get(0, {
+    lnum = lnum,
+  })
+
+  local messages = {}
+
+  for index, diagnostic in ipairs(diagnostics) do
+    table.insert(messages, { index .. ": " .. diagnostic.message })
+  end
+
+  vim.api.nvim_echo(messages, false, {})
+
+  -- https://git.sr.ht/~whynothugo/lsp_lines.nvim
+  --vim.diagnostic.open_float({
+    --severity_sort = true,
+  --})
+end)
+
+vim.api.nvim_create_autocmd({"BufReadPost"}, {
+  pattern = "quickfix",
+  callback = function ()
+    vim.opt_local.wrap = true
+  end
+})
+
+
 -- Tabs
 
 keymap.set("n", "<M-t>", ":tabnew<CR>")
@@ -238,10 +291,10 @@ vim.g.vimspector_sign_priority = {
 
 vim.g.vimspector_sidebar_width = 75
 
-keymap.set("n", "<leader>db", "<Plug>VimspectorToggleBreakpoint")
-keymap.set("n", "<leader>dc", "<Plug>VimspectorRunToCursor")
-keymap.set("n", "<leader>de", ":VimspectorReset<CR>")
-keymap.set("n", "<leader>ds", "<Plug>VimspectorContinue")
+keymap.set("n", "<leader>deb", "<Plug>VimspectorToggleBreakpoint")
+keymap.set("n", "<leader>dec", "<Plug>VimspectorRunToCursor")
+keymap.set("n", "<leader>dee", ":VimspectorReset<CR>")
+keymap.set("n", "<leader>des", "<Plug>VimspectorContinue")
 keymap.set("n", "<F7>", "<Plug>VimspectorStepInto")
 keymap.set("n", "<F8>", "<Plug>VimspectorStepOver")
 keymap.set("n", "<S-F8>", "<Plug>VimspectorStepOut")
