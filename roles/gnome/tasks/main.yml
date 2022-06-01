@@ -33,6 +33,7 @@
     /org/gnome/nautilus/list-view/default-zoom-level: "'small'"
     /org/gnome/settings-daemon/plugins/color/night-light-enabled: "true"
     /org/gnome/settings-daemon/plugins/color/night-light-temperature: "uint32 3194"
+    /org/gtk/settings/file-chooser/sort-directories-first: "true"
 
 - name: be sure the gnome shortcuts are configured
   dconf:
