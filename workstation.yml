@@ -94,6 +94,8 @@
     - role: c_dev
       tags: [ c_dev ]
       when: specific_roles.c_dev
+    - role: dev_tools
+      tags: [ dev_tools, dev ]
     - role: php_dev
       tags: [ php, php_dev ]
       when: specific_roles.php_dev
