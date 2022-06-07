@@ -394,7 +394,7 @@ return require('packer').startup(function (use)
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-lua/popup.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim' },
-        { "nvim-telescope/telescope-live-grep-raw.nvim" },
+        { "nvim-telescope/telescope-live-grep-args.nvim" },
       },
         config = function()
             local telescope = require("telescope")
@@ -413,7 +413,7 @@ return require('packer').startup(function (use)
               },
             }
 
-            telescope.load_extension("live_grep_raw")
+            telescope.load_extension("live_grep_args")
             telescope.load_extension("fzf")
         end
     }
