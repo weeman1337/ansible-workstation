@@ -1,0 +1,7 @@
+---
+- name: disable bt_coex_active
+  become: yes
+  lineinfile:
+    path: /etc/modprobe.d/iwlwifi.conf
+    regexp: "^options iwlwifi bt_coex_active=N"
+    line: "options iwlwifi bt_coex_active=N"

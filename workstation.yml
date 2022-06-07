@@ -107,3 +107,5 @@
   roles:
     - role: fixfnkeys
       tags: [ fixfnkeys ]
+    - role: fix_bt_iwlwifi
+      tags: [ fix_bt_iwlfi ]
