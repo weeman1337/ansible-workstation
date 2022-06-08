@@ -1,6 +1,11 @@
+camelcase
+displayname
 errcode
 homeserver
+jitsi
 keybackup
-Megolm
+megolm
+msgtype
 olmlib
+threepid
 webrtc
