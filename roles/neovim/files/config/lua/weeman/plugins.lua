@@ -62,6 +62,7 @@ return require('packer').startup(function (use)
 
     use {
         "kkoomen/vim-doge",
+        run = ":call doge#install()",
         config = function()
             vim.g.doge_mapping = "<leader>gd"
             vim.g.doge_php_settings = {
