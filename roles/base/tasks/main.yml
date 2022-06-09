@@ -21,6 +21,7 @@
     name:
       - aptitude
       - cheese
+      - curl
       - fuse3
       - gcc
       - gimp
