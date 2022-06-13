@@ -38,6 +38,13 @@
       - simple-scan
       - ttf-mscorefonts-installer
 
+- name: disable systemd-oomd
+  become: yes
+  systemd:
+    name: systemd-oomd
+    state: stopped
+    masked: yes
+
 - name: be sure sysctl is configured
   become: yes
   sysctl:
