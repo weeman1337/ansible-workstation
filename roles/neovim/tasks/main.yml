@@ -43,6 +43,8 @@
     - lua/weeman/scratches.lua
     - lua/weeman/settings.lua
     - lua/weeman/statusline.lua
+    - vsnip/json.json
+    - vsnip/typescript.json
 
 - name: be sure the modules file exists (start)
   lineinfile:
