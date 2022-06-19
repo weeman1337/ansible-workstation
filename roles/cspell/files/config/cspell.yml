@@ -1,8 +1,11 @@
 ---
 language: en-GB
 dictionaries:
+  - common
   - element
 dictionaryDefinitions:
+  - name: common
+    path: common.txt
   - name: element
     path: element.txt
 ignorePaths:
