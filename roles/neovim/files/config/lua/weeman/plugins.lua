@@ -377,7 +377,11 @@ return require('packer').startup(function (use)
                 "stdin",
               }
             end,
-              filetypes = { "typescript" },
+              filetypes = {
+                "markdown",
+                "php",
+                "typescript",
+              },
               diagnostics_postprocess = function(diagnostic)
                 diagnostic.severity = vim.diagnostic.severity["INFO"]
               end
