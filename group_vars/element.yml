@@ -12,3 +12,4 @@ specific_roles:
   virtualbox: False
   break_timer: False
   cerbot: False
+  resue: False

@@ -1,0 +1,4 @@
+---
+- name: be sure reuse is installed
+  community.general.pipx:
+    name: reuse

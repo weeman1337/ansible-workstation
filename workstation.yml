@@ -99,6 +99,9 @@
     - role: php_dev
       tags: [ php, php_dev ]
       when: specific_roles.php_dev
+    - role: reuse
+      tags: [ reuse ]
+      when: specific_roles.reuse
 - hosts: weeman_klapp
   roles:
     - role: fixfnkeys

@@ -12,3 +12,4 @@ specific_roles:
   virtualbox: True
   break_timer: False
   certbot: True
+  reuse: True
