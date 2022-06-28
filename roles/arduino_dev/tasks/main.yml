@@ -18,3 +18,28 @@
     regexp: '^  require\("weeman.modules.arduino"\),'
     line: '  require("weeman.modules.arduino"),'
     insertafter: "^return"
+
+- name: stat arduino cli
+  stat:
+    path: ~/local/bin/arduino-cli
+    checksum_algorithm: sha256
+  register: arduino_cli_result
+
+- name: download arduino cli
+  get_url:
+    url: "https://github.com/arduino/arduino-cli/releases/download/0.24.0/arduino-cli_0.24.0_Linux_64bit.tar.gz"
+    dest: /tmp/arduino-cli.tar.gz
+    checksum: "sha256:0244e41f56b70de6a28cb5d4cb064f32857cca3ea0832ab775887b408c7e381d"
+    force: yes
+  when: arduino_cli_result.stat.exists == False or arduino_cli_result.stat.checksum != "b33567aba9ba8d17130630ae03d335d237c42c5a9c778bb7e72c0f3fe966b654"
+
+- name: be sure arduini cli is extracted
+  ansible.builtin.unarchive:
+    src: /tmp/arduino-cli.tar.gz
+    dest: ~/.local/bin
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: "0777"
+    exclude:
+      - LICENSE.txt
+  when: arduino_cli_result.stat.exists == False or arduino_cli_result.stat.checksum != "b33567aba9ba8d17130630ae03d335d237c42c5a9c778bb7e72c0f3fe966b654"
