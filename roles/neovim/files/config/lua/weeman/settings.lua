@@ -142,7 +142,13 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.g.vsnip_namespace = "snip"
 vim.g.vsnip_filetypes = {
   typescriptreact = {
-    "javascript",
+    "js_test",
+    "matrix_licence",
+    "typescript",
+  },
+  typescript = {
+    "js_test",
+    "matrix_licence",
     "typescript",
   }
 }
