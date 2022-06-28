@@ -8,11 +8,13 @@
     append: yes
 
 - name: be sure packages are installed
+  become: yes
   apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
     - clangd
+    - minicom
 
 - name: be sure the arduino module is linked
   file:
