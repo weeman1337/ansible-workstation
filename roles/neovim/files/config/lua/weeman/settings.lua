@@ -361,6 +361,7 @@ vim.g["test#enabled_runners"] = { "php#phpunit" }
 
 -- Ultest
 
+vim.g.ultest_deprecation_notice = false
 vim.api.nvim_set_hl(0, "UltestPass", {
   ctermfg = "DarkGreen",
 })
