@@ -19,6 +19,31 @@
     line: '  require("weeman.modules.arduino"),'
     insertafter: "^return"
 
+- name: stat arduino language server
+  stat:
+    path: ~/.local/bin/arduino-language-server
+    checksum_algorithm: sha256
+  register: arduino_language_server_result
+
+- name: download arduino cli
+  get_url:
+    url: "https://github.com/arduino/arduino-language-server/releases/download/0.6.0/arduino-language-server_0.6.0_Linux_64bit.tar.gz"
+    dest: /tmp/arduino-language-server.tar.gz
+    checksum: "sha256:6d9398bd4a001a4bf77f12f9cc0e42212b48027973bdc5f25abf2c63d54f0cc1"
+    force: yes
+  when: arduino_language_server_result.stat.exists == False or arduino_language_server_result.stat.checksum != "8332a982f9e2f4a6c8beb4e9763a89b4807b40db037239746bf53e0bbadf827d"
+
+- name: be sure arduino language server is extracted
+  ansible.builtin.unarchive:
+    src: /tmp/arduino-language-server.tar.gz
+    dest: ~/.local/bin
+    owner: "{{ workstation_user }}"
+    group: "{{ workstation_user }}"
+    mode: "0777"
+    exclude:
+      - LICENSE.txt
+  when: arduino_language_server_result.stat.exists == False or arduino_language_server_result.stat.checksum != "8332a982f9e2f4a6c8beb4e9763a89b4807b40db037239746bf53e0bbadf827d"
+
 - name: stat arduino cli
   stat:
     path: ~/local/bin/arduino-cli
@@ -33,7 +58,7 @@
     force: yes
   when: arduino_cli_result.stat.exists == False or arduino_cli_result.stat.checksum != "b33567aba9ba8d17130630ae03d335d237c42c5a9c778bb7e72c0f3fe966b654"
 
-- name: be sure arduini cli is extracted
+- name: be sure arduino cli is extracted
   ansible.builtin.unarchive:
     src: /tmp/arduino-cli.tar.gz
     dest: ~/.local/bin
