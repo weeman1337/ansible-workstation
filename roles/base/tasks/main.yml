@@ -38,6 +38,13 @@
       - simple-scan
       - ttf-mscorefonts-installer
 
+- name: be sure packages are uninstalled
+  become: yes
+  apt:
+    state: absent
+    name:
+      - brltty
+
 - name: disable systemd-oomd
   become: yes
   systemd:
