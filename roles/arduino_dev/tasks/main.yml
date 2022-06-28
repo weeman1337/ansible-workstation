@@ -1,4 +1,12 @@
 ---
+- name: be sure the workstation user is member of the dialout group
+  become: yes
+  user:
+    name: "{{ workstation_user }}"
+    groups:
+      - dialout
+    append: yes
+
 - name: be sure packages are installed
   apt:
     update_cache: yes
