@@ -140,6 +140,12 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 -- vsnip
 
 vim.g.vsnip_namespace = "snip"
+vim.g.vsnip_filetypes = {
+  typescriptreact = {
+    "javascript",
+    "typescript",
+  }
+}
 vim.g.vsnip_snippet_dirs = {
   os.getenv("HOME") .. "/.config/nvim/vsnip"
 }

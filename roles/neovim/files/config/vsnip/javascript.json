@@ -1,0 +1,34 @@
+{
+    "describe": {
+        "prefix": ["desc"],
+        "body": [
+            "describe($1, () => {",
+            "    $0",
+            "});"
+        ]
+    },
+    "beforeEach": {
+        "prefix": ["beach"],
+        "body": [
+            "beforeEach(($1) => {",
+            "    $0",
+            "});"
+        ]
+    },
+    "afterEach": {
+        "prefix": ["aeach"],
+        "body": [
+            "afterEach(($1) => {",
+            "    $0",
+            "});"
+        ]
+    },
+    "it": {
+        "prefix": ["it"],
+        "body": [
+            "it($1, () => {",
+            "    $0",
+            "});"
+        ]
+    }
+}

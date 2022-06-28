@@ -43,6 +43,7 @@
     - lua/weeman/scratches.lua
     - lua/weeman/settings.lua
     - lua/weeman/statusline.lua
+    - vsnip/javascript.json
     - vsnip/json.json
     - vsnip/typescript.json
 
