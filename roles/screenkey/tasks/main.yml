@@ -1,0 +1,13 @@
+---
+- name: be sure the screenkey ppa is configured
+  become: yes
+  apt_repository:
+    filename: peek
+    repo: ppa:atareao/atareao
+
+- name: be sure screenkey is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name: screenkeyfk
