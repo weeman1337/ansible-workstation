@@ -2,12 +2,12 @@
 language: en-GB
 dictionaries:
   - common
-  - element
+  - matrix
 dictionaryDefinitions:
   - name: common
     path: common.txt
-  - name: element
-    path: element.txt
+  - name: matrix
+    path: matrix.txt
 ignorePaths:
   - dist/**
   - node_modules/**

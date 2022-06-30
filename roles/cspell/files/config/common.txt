@@ -1,2 +1,5 @@
+errcode
+jitsi
 nvim
+webrtc
 weimann

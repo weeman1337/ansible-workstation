@@ -1,11 +1,11 @@
-camelcase
+chainable
 displayname
-errcode
 homeserver
-jitsi
 keybackup
+matrixcs
 megolm
 msgtype
+mxid
 olmlib
+synapsedocker
 threepid
-webrtc
