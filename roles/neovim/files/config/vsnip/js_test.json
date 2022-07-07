@@ -15,10 +15,26 @@
             "});"
         ]
     },
+    "beforeAll": {
+        "prefix": ["ball"],
+        "body": [
+            "beforeAll(($1) => {",
+            "    $0",
+            "});"
+        ]
+    },
     "afterEach": {
         "prefix": ["aeach"],
         "body": [
             "afterEach(($1) => {",
+            "    $0",
+            "});"
+        ]
+    },
+    "afterAll": {
+        "prefix": ["aall"],
+        "body": [
+            "afterAll(($1) => {",
             "    $0",
             "});"
         ]
