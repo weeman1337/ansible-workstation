@@ -79,14 +79,15 @@ end
 
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
   pattern = {
-    "*.js", "*.ts", "*.tsx", "*.vue",
-   "*.html",
+    "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue",
+   "*.html", "*.twig",
     "*.php", "*.php.*",
     "*.xml", "*.xml.*",
     "*.yml", "*.yaml",
     "*.sh",
     "*.py",
     "*.lua",
+    "*.css", "*.scss", "*.pcss",
   },
   command = "%s/\\s\\+$//e",
 })
