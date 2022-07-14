@@ -104,6 +104,9 @@
     - role: reuse
       tags: [ reuse ]
       when: specific_roles.reuse
+    - role: poedit
+      tags: [ poedit ]
+      when: specific_roles is defined and specific_roles.poedit
 - hosts: weeman_klapp
   roles:
     - role: fixfnkeys

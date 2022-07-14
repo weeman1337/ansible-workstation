@@ -13,3 +13,4 @@ specific_roles:
   break_timer: False
   certbot: True
   reuse: True
+  poedit: True
