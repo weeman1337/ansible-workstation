@@ -34,6 +34,7 @@ vim.filetype.add({
   extension = {
     hbs = "html",
     twig = "html",
+    pcss = "scss",
   },
   filename = {
     ["composer.lock"] = "json",
