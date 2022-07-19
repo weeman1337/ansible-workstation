@@ -363,6 +363,7 @@ return require('packer').startup(function (use)
           debug = true,
           sources = {
             wrap(null_ls.builtins.diagnostics.phpcs, "./vendor/bin/phpcs"),
+            wrap(null_ls.builtins.diagnostics.stylelint, "./node_modules/.bin/stylelint"),
             wrap(null_ls.builtins.diagnostics.phpstan, "./vendor/bin/phpstan", {
               to_temp_file = false,
               method = DIAGNOSTICS_ON_SAVE,

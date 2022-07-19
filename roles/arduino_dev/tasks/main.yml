@@ -15,6 +15,7 @@
     name:
     - clangd
     - minicom
+    - python3-serial
 
 - name: be sure the arduino module is linked
   file:
@@ -78,3 +79,15 @@
     exclude:
       - LICENSE.txt
   when: arduino_cli_result.stat.exists == False or arduino_cli_result.stat.checksum != "b33567aba9ba8d17130630ae03d335d237c42c5a9c778bb7e72c0f3fe966b654"
+
+- name: be sure the ~/.arduino15 directory exists
+  file:
+    dest: ~/.arduino15
+    state: directory
+
+- name: be sure the arduino-cli.yaml is in place
+  file:
+    src: ~/git/ansible-workstation/roles/arduino_dev/files/arduino-cli.yaml
+    dest: ~/.arduino15/arduino-cli.yaml
+    state: link
+    force: yes
