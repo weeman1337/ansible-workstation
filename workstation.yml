@@ -82,6 +82,12 @@
       when: specific_roles.break_timer is defined and specific_roles.break_timer
     - role: screenkey
       tags: [ screenkey ]
+    - role: regolith
+      tags: [regolith]
+      when: specific_roles.regolith is defined and specific_roles.regolith
+    - role: rofi
+      tags: [rofi]
+      when: specific_roles.rofi is defined and specific_roles.rofi
 
     - role: python
       tags: [ python ]

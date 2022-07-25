@@ -18,3 +18,5 @@ gnome_shortcuts:
   /org/gnome/desktop/wm/keybindings/move-to-workspace-5: "['<Shift><Super>5']"
   /org/gnome/desktop/wm/keybindings/switch-input-source: "@as []"
   /org/gnome/desktop/wm/keybindings/switch-input-source-backward: "@as []"
+  /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding: "['<Super>space']"
+  /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command: "rofi -show combi"

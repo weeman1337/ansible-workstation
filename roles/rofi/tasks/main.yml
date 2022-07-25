@@ -1,0 +1,21 @@
+---
+- name: be sure rofi is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - rofi
+
+- name: be sure the power menu items script is linked
+  file:
+    src: "~/git/ansible-workstation/roles/rofi/files/rofi-power-menu"
+    dest: "~/.local/bin/rofi-power-menu"
+    state: link
+    mode: "0744"
+
+- name: be sure the rofi config is linked
+  file:
+    src: "~/git/ansible-workstation/roles/rofi/files/rofi"
+    dest: "~/.config/rofi"
+    state: link

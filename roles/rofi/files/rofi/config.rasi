@@ -1,0 +1,9 @@
+configuration {
+    modi: "window,drun,combi,p:rofi-power-menu";
+    combi-modi: "window,drun,p:rofi-power-menu";
+    show-icons: true;
+    matching: "normal";
+    kb-cancel: "Control+c,Escape";
+}
+
+@theme "Arc-Dark"

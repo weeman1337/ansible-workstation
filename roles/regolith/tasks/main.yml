@@ -1,0 +1,21 @@
+---
+- name: be sure the regolith apt signing key is installed
+  become: yes
+  apt_key:
+    url: https://regolith-desktop.org/regolith.key
+    state: present
+
+- name: be sure the regolith apt repo is configured
+  become: yes
+  apt_repository:
+    repo: deb https://regolith-desktop.org/release-ubuntu-jammy-amd64 jammy main
+    state: present
+    filename: regolith
+
+- name: be sure the regolith desktop is installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - regolith-desktop

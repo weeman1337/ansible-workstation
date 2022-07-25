@@ -9,8 +9,8 @@ M.lspconfig = function (lspconfig, capabilities)
         "-clangd",
         "clangd",
         "-fqbn",
-        "arduino:avr:uno",
-        "-cli", os.getenv("HOME") .. "/Apps/arduino-cli",
+        "arduino:avr:nano",
+        "-cli", "arduino-cli",
         "-cli-config", os.getenv("HOME") .. "/.arduino15/arduino-cli.yaml"
       }
     }
