@@ -397,6 +397,28 @@ return require('packer').startup(function (use)
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     use {
+      "andythigpen/nvim-coverage",
+      requires = {
+        { 'nvim-lua/plenary.nvim' },
+      },
+      config = function ()
+        require("coverage").setup({
+          signs = {
+            covered = {
+              hl = "CoverageCovered", text = "█",
+              priority = 100,
+            },
+            uncovered = {
+              hl = "CoverageUncovered", text = "█",
+              priority = 100,
+            },
+          },
+        })
+      end
+    }
+
+
+    use {
       'nvim-telescope/telescope.nvim',
       requires = {
         { 'nvim-lua/plenary.nvim' },
