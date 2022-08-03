@@ -8,5 +8,6 @@ megolm
 msgtype
 mxid
 olmlib
+skey
 synapsedocker
 threepid
