@@ -16,3 +16,4 @@ specific_roles:
   poedit: True
   regolith: True
   rofi: True
+  pipewire: True

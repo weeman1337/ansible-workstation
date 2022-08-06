@@ -1,0 +1,26 @@
+---
+- name: be sure packages are installed
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+    - pipewire-audio-client-libraries
+    - libspa-0.2-bluetooth
+    - libspa-0.2-jack
+    - wireplumber
+
+- name: be sure packages are removed
+  become: yes
+  apt:
+    state: absent
+    purge: yes
+    name:
+      - pulseaudio-module-bluetooth
+
+- name: enable wireplumber
+  systemd:
+    name: wireplumber.service
+    enabled: yes
+    scope: user
+    state: started

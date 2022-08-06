@@ -88,6 +88,9 @@
     - role: rofi
       tags: [rofi]
       when: specific_roles.rofi is defined and specific_roles.rofi
+    - role: pipewire
+      tags: [pipewire]
+      when: specific_roles.pipewire is defined and specific_roles.pipewire
 
     - role: python
       tags: [ python ]
