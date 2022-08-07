@@ -17,3 +17,4 @@ specific_roles:
   regolith: True
   rofi: True
   pipewire: True
+  rust_dev: True

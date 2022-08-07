@@ -97,6 +97,9 @@
     - role: php
       tags: [ php ]
 
+    - role: rust_dev
+      tags: [ rust_dev ]
+      when: specific_roles.rust_dev is defined and specific_roles.rust_dev
     - role: cspell
       tags: [ cspell ]
     - role: arduino_dev

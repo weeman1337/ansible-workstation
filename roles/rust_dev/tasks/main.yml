@@ -1,0 +1,66 @@
+---
+- name: stat rust analyzer
+  stat:
+    path: ~/.local/bin/rust-analyzer
+    checksum_algorithm: sha256
+  register: rust_analyzer_result
+
+- name: be sure rust analyzer is downloaded
+  get_url:
+    url: "https://github.com/rust-lang/rust-analyzer/releases/download/{{ rust_dev.analyzer.version }}/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+    dest: "/tmp/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+    checksum: "sha256:{{ rust_dev.analyzer.archive_checksum }}"
+    force: yes
+  when: rust_analyzer_result.stat.exists == False or rust_analyzer_result.stat.checksum != rust_dev.analyzer.checksum
+
+- name: be sure rust analyzer is unarchived
+  command:
+    cmd: "gunzip --force /tmp/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+  when: rust_analyzer_result.stat.exists == False or rust_analyzer_result.stat.checksum != rust_dev.analyzer.checksum
+
+- name: be sure rust analyzer is installed
+  copy:
+    src: "/tmp/rust-analyzer-x86_64-unknown-linux-gnu"
+    dest: ~/.local/bin/rust-analyzer
+    mode: "777"
+    remote_src: yes
+  when: rust_analyzer_result.stat.exists == False or rust_analyzer_result.stat.checksum != rust_dev.analyzer.checksum
+
+- name: be sure ~/.cargo/bin exists
+  file:
+    dest: ~/.cargo/bin
+    state: directory
+
+- name: stat rustup
+  stat:
+    path: ~/.cargo/bin/rustup
+    checksum_algorithm: sha256
+  register: rustup_result
+
+- name: be sure rustup is downloaded
+  get_url:
+    url: "{{ rust_dev.rustup.url }}"
+    dest: "~/.cargo/bin/rustup"
+    checksum: "sha256:{{ rust_dev.rustup.checksum }}"
+    mode: "777"
+    force: yes
+  when: rustup_result.stat.exists == False or rustup_result.stat.checksum != rust_dev.rustup.checksum
+
+- name: be sure the rust module is linked
+  file:
+    src: ~/git/ansible-workstation/roles/rust_dev/files/rust.lua
+    dest: ~/.config/nvim/lua/weeman/modules/rust.lua
+    state: link
+
+- name: be sure the rust module is registered
+  lineinfile:
+    path: ~/.config/nvim/lua/weeman/modules.lua
+    regexp: '^  require\("weeman.modules.rust"\),'
+    line: '  require("weeman.modules.rust"),'
+    insertafter: "^return"
+
+- name: be sure the rust bashrc is linked
+  file:
+    src: ~/git/ansible-workstation/roles/rust_dev/files/bashrc.d/rust.sh
+    dest: ~/.bashrc.d/rust.sh
+    state: link
