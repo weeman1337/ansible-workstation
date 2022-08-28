@@ -12,10 +12,32 @@
     state: present
     filename: regolith
 
-- name: be sure the regolith desktop is installed
+- name: be sure regolith packages are installed
   become: yes
   apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
+      - acpi
+      - i3xrocks-battery
       - regolith-desktop
+
+- name: be sure unwanted packages are removed
+  become: yes
+  apt:
+    state: absent
+    name:
+      - i3xrocks-cpu-usage
+      - i3xrocks-net-traffic
+
+- name: be sure the regolith config is linked
+  file:
+    src: ~/git/ansible-workstation/roles/regolith/files/home/config
+    dest: ~/.config/regolith2
+    state: link
+
+- name: be sure the ~/.local/share/i3xrocks is linked
+  file:
+    src: ~/git/ansible-workstation/roles/regolith/files/home/local/share/i3xrocks
+    dest: ~/.local/share/i3xrocks
+    state: link

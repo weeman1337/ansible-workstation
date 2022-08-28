@@ -18,6 +18,7 @@
     /org/gnome/desktop/input-sources/sources: "[('xkb', 'de+neo_qwertz'), ('xkb', 'de')]"
     /org/gnome/desktop/interface/gtk-theme: "'Yaru-blue'"
     /org/gnome/desktop/interface/icon-theme: "'Yaru-blue'"
+    /org/gnome/desktop/interface/cursor-theme: "'Yaru'"
     /org/gnome/mutter/dynamic-workspaces: "false"
     /org/gnome/desktop/wm/preferences/num-workspaces: "5"
     /org/gnome/desktop/peripherals/mouse/natural-scroll: "false"
@@ -35,6 +36,17 @@
     /org/gnome/settings-daemon/plugins/color/night-light-temperature: "uint32 3194"
     /org/gtk/settings/file-chooser/sort-directories-first: "true"
     /org/gnome/desktop/interface/show-battery-percentage: "true"
+    /org/gnome/desktop/background/picture-uri: "'file:///usr/share/backgrounds/warty-final-ubuntu.png'"
+    /org/gnome/desktop/background/primary-color: "'#2c001e'"
+    /org/gnome/desktop/background/secondary-color: "'#2c001e'"
+    /org/gnome/desktop/screensaver/picture-uri: "'file:///usr/share/backgrounds/warty-final-ubuntu.png'"
+    /org/gnome/desktop/screensaver/primary-color: "'#2c001e'"
+    /org/gnome/desktop/screensaver/secondary-color: "'#2c001e'"
+    /org/gnome/desktop/peripherals/touchpad/click-method: "'areas'"
+    /org/gnome/desktop/interface/font-name: "'Ubuntu 11'"
+    /org/gnome/desktop/interface/document-font-name: "'Sans 11'"
+    /org/gnome/desktop/interface/monospace-font-name: "'Ubuntu Mono 13'"
+    /org/gnome/desktop/wm/preferences/titlebar-font: "'Ubuntu Bold 11'"
 
 - name: be sure the gnome shortcuts are configured
   dconf:

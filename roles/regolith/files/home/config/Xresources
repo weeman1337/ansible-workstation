@@ -1,0 +1,13 @@
+i3-wm.gaps.inner.size: 0 
+i3-wm.gaps.outer.size: 0 
+i3-wm.program.launcher.app: rofi -show combi
+i3-wm.bar.position: top
+
+i3xrocks.date.format2: %d. %b %H:%M
+
+gtk.theme_name: Yaru-blue
+gtk.icon_theme_name: 
+gnome.terminal.audio-bell: false
+gtk.document_font_name: Sans 11
+gtk.font_name: Ubuntu 11
+gtk.monospace_font_name: Ubuntu Mono 13
