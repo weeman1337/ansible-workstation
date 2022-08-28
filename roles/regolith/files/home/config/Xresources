@@ -11,3 +11,8 @@ gnome.terminal.audio-bell: false
 gtk.document_font_name: Sans 11
 gtk.font_name: Ubuntu 11
 gtk.monospace_font_name: Ubuntu Mono 13
+
+i3-wm.client.focused.color.background: #eeeeee
+i3-wm.client.focused.color.text: #000000
+i3-wm.client.unfocused.color.background: #bbbbbb
+i3-wm.client.unfocused.color.text: #000000

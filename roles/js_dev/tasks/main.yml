@@ -1,0 +1,17 @@
+---
+- name: be sure the nvim configs are linked
+  file:
+    src: "~/git/ansible-workstation/roles/js_dev/files/config/{{ item }}"
+    dest: "~/.config/nvim/{{ item }}"
+    state: link
+  with_items:
+    - vsnip/js_test.json
+
+- name: be sure npm packages are installed
+  npm:
+    name: "{{ item.key }}"
+    version: "{{ item.value }}"
+    global: yes
+  with_dict:
+    typescript: "4.8.2"
+    typescript-language-server: "1.1.2"

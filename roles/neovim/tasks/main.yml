@@ -44,7 +44,6 @@
     - lua/weeman/scratches.lua
     - lua/weeman/settings.lua
     - lua/weeman/statusline.lua
-    - vsnip/js_test.json
     - vsnip/json.json
     - vsnip/matrix_licence.json
 
@@ -141,8 +140,6 @@
     version: "{{ item.value }}"
     global: yes
   with_dict:
-    "@ansible/ansible-language-server": "0.7.0"
+    "@ansible/ansible-language-server": "0.10.1"
     dockerfile-language-server-nodejs: "0.9.0"
-    typescript: "4.7.4"
-    typescript-language-server: "0.11.2"
-    vscode-langservers-extracted: "4.2.1"
+    vscode-langservers-extracted: "4.4.0"

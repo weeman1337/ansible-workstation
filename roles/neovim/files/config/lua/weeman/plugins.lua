@@ -285,10 +285,6 @@ return require('packer').startup(function (use)
                 capabilities = capabilities
             }
 
-            lspconfig.tsserver.setup{
-                capabilities = capabilities
-            }
-
             lspconfig.jsonls.setup{
                 capabilities = capabilities,
                 settings = {

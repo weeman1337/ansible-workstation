@@ -96,6 +96,8 @@
       tags: [ python ]
     - role: php
       tags: [ php ]
+    - role: js_dev
+      tags: [ js_dev ]
 
     - role: rust_dev
       tags: [ rust_dev ]
