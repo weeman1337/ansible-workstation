@@ -98,6 +98,9 @@
       tags: [ php ]
     - role: js_dev
       tags: [ js_dev ]
+    - role: dbeaver
+      tags: [ dbeaver ]
+      when: specific_roles.dbeaver is defined and specific_roles.dbeaver
 
     - role: rust_dev
       tags: [ rust_dev ]

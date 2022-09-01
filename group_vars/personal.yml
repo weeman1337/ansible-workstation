@@ -18,3 +18,4 @@ specific_roles:
   rofi: True
   pipewire: True
   rust_dev: True
+  dbeaver: True

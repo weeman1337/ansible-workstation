@@ -1,0 +1,5 @@
+---
+- name: be sure DBeaver is installed
+  community.general.flatpak:
+    name: io.dbeaver.DBeaverCommunity
+    method: user

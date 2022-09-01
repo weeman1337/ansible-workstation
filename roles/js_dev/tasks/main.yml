@@ -13,5 +13,18 @@
     version: "{{ item.value }}"
     global: yes
   with_dict:
-    typescript: "4.8.2"
+    typescript: "4.7.4"
     typescript-language-server: "1.1.2"
+
+- name: be sure the js module is linked
+  file:
+    src: ~/git/ansible-workstation/roles/js_dev/files/js.lua
+    dest: ~/.config/nvim/lua/weeman/modules/js.lua
+    state: link
+
+- name: be sure the js module is registered
+  lineinfile:
+    path: ~/.config/nvim/lua/weeman/modules.lua
+    regexp: '^  require\("weeman.modules.js"\),'
+    line: '  require("weeman.modules.js"),'
+    insertafter: "^return"
