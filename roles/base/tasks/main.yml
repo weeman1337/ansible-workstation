@@ -32,6 +32,7 @@
       - hunspell-en-gb
       - jq
       - make
+      - net-tools
       - ntfs-3g
       - pavucontrol
       - python-is-python3
