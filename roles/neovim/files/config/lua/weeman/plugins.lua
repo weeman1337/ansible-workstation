@@ -377,9 +377,11 @@ return require('packer').startup(function (use)
               }
             end,
               filetypes = {
+                "javascript",
                 "markdown",
                 "php",
                 "typescript",
+                "typescriptreact",
               },
               diagnostics_postprocess = function(diagnostic)
                 diagnostic.severity = vim.diagnostic.severity["INFO"]
