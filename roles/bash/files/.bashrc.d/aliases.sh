@@ -7,6 +7,7 @@ alias vg='gg && vi'
 alias gid='git diff'
 alias gip='git pull'
 alias gis='git status'
+alias gic='git checkout $(git branch | fzf | tr -d "[:space:]")'
 
 alias gdot='cd ~/git/ansible-workstation'
 alias vidot='cd ~/git/ansible-workstation && vi'
