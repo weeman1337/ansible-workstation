@@ -1,0 +1,43 @@
+version: 17
+jobs:
+- name: GitHub sync
+  steps:
+  - !CheckoutStep
+    name: checkout
+    cloneCredential: !DefaultCredential {}
+    withLfs: false
+    withSubmodules: false
+    checkoutPath: source
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !CommandStep
+    name: push to GitHub
+    runInContainer: true
+    image: alpine/git
+    interpreter: !ShellInterpreter
+      shell: sh
+      commands:
+      - eval `ssh-agent -s`
+      - echo "@secret:deploy_key@" > ansible_workstation_deploy_key
+      - chmod 600 ansible_workstation_deploy_key
+      - echo "#!/bin/sh" > print_key
+      - echo "echo \"@secret:deploy_key_pass@\"" >> print_key
+      - chmod u+x print_key
+      - DISPLAY=1 SSH_ASKPASS="./print_key" ssh-add ansible_workstation_deploy_key
+      - ''
+      - ''
+      - cd source
+      - git remote add github git@@github.com:weeman1337/ansible-workstation.git
+      - GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+        git push --force -u github HEAD:main
+    useTTY: false
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  triggers:
+  - !BranchUpdateTrigger
+    branches: main
+    projects: ansible-workstation
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  cpuRequirement: 250
+  memoryRequirement: 256
+  timeout: 3600
