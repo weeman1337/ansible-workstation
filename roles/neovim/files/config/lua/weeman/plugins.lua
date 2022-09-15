@@ -503,6 +503,7 @@ return require('packer').startup(function (use)
     }
 
     use { "rodjek/vim-puppet" }
+    use { "AndrewRadev/splitjoin.vim" }
 
     for _, module in pairs(require("weeman.modules")) do
       if module.packer_setup ~= nil then module.packer_setup(use) end
