@@ -53,7 +53,7 @@ phpunit_provider() {
         return
     fi
 
-    echo "command;./vendor/bin/phpunit"
+    echo "command;./vendor/bin/phpunit "
 }
 
 phpcs_provider() {
@@ -61,7 +61,7 @@ phpcs_provider() {
         return
     fi
 
-    echo "command;./vendor/bin/phpcs"
+    echo "command;./vendor/bin/phpcs "
 }
 
 phpstan_provider() {
@@ -69,7 +69,15 @@ phpstan_provider() {
         return
     fi
 
-    echo "command;./vendor/bin/phpstan"
+    echo "command;./vendor/bin/phpstan "
+}
+
+jest_provider() {
+    if [ ! -f "./node_modules/.bin/jest" ]; then
+        return
+    fi
+
+    echo "command;./node_modules/.bin/jest "
 }
 
 mussig_provider() {
@@ -113,6 +121,10 @@ if [ -f "composer.json" ]; then
     phpcs_provider
     phpstan_provider
     phpunit_provider
+fi
+
+if [ -f "package.json" ]; then
+    jest_provider
 fi
 
 if [ ! -f "yarn.lock" ] && [ -f "package.json" ]; then
