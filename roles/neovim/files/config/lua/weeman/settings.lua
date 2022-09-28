@@ -232,7 +232,7 @@ keymap.set("n", "<leader>ts", "Vi{:sort<CR>")
 vim.g.mundo_right = 1
 keymap.set("n", "<leader>su", ":Vista!<CR> :MundoToggle<CR>")
 keymap.set("n", "<leader>ss", ":MundoHide<CR> :Vista!!<CR>")
-keymap.set("n", "<leader>sc", ":Vista!<CR> :MundoHide<CR>")
+keymap.set("n", "<leader>sc", ":Vista!<CR> :MundoHide<CR> :NvimTreeClose<CR>")
 
 
 -- diagnostics
