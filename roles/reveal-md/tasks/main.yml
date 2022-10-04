@@ -1,0 +1,6 @@
+---
+- name: be sure reveal-md is installed
+  npm:
+    name: reveal-md
+    version: "5.3.4"
+    global: yes

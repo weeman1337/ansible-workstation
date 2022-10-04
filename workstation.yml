@@ -101,6 +101,9 @@
     - role: dbeaver
       tags: [ dbeaver ]
       when: specific_roles.dbeaver is defined and specific_roles.dbeaver
+    - role: reveal-md
+      tags: [ reveal-md ]
+      when: specific_roles.reveal_md is defined and specific_roles.reveal_md
 
     - role: rust_dev
       tags: [ rust_dev ]

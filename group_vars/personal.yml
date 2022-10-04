@@ -19,3 +19,4 @@ specific_roles:
   pipewire: True
   rust_dev: True
   dbeaver: True
+  reveal_md: True
