@@ -9,7 +9,7 @@ specific_roles:
   scribus: False
   ssh_element: True
   ssh_personal: False
-  virtualbox: False
+  virtualbox: True
   break_timer: False
   cerbot: False
   resue: False
