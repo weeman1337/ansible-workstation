@@ -367,6 +367,7 @@ return require('packer').startup(function (use)
               method = DIAGNOSTICS_ON_SAVE,
             }),
             wrap(null_ls.builtins.diagnostics.eslint, "./node_modules/.bin/eslint"),
+            wrap(null_ls.builtins.formatting.eslint, "./node_modules/.bin/eslint"),
             null_ls.builtins.diagnostics.cspell.with({
               args = function(params) return {
                 "--config",

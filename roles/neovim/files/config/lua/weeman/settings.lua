@@ -340,7 +340,7 @@ keymap.set("n", "<leader>fsg", ":lua require('weeman.scratches').telescope_live_
 
 keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 keymap.set("n", "<leader>ld", ":Telescope diagnostics<CR>")
-keymap.set("n", "<leader>lf", ":lua vim.lsp.buf.formatting()<CR>")
+keymap.set("n", "<leader>lf", function () vim.lsp.buf.format({ async = false, timeout_ms = 5000 }) end)
 keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")
 keymap.set("n", "<leader>jd", ":lua vim.lsp.buf.definition()<CR>")
 
