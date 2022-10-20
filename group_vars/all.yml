@@ -1,4 +1,8 @@
 ---
+lua_dev:
+  lua_language_server:
+    version: "3.5.6"
+    checksum: "546c4051279acfbe5adeaa547191cb830ff65710f7b8f243d4024f19829acb69"
 js_dev:
   tsserver:
     version: "2.0.1"

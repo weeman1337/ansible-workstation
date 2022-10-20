@@ -90,7 +90,7 @@
       - python-lsp-server[yapf]
 
 - name: check the installed lua language server version
-  command: "grep -xq '## 3.2.2' ~/opt/lua-language-server/changelog.md"
+  command: "grep -xq '## {{ lua_dev.lua_language_server.version }}' ~/opt/lua-language-server/changelog.md"
   register: lua_language_server_version_result
   check_mode: no
   ignore_errors: yes
@@ -98,9 +98,9 @@
 
 - name: be sure the lua language server archive is downloaded
   get_url:
-    url: "https://github.com/sumneko/lua-language-server/releases/download/3.2.2/lua-language-server-3.2.2-linux-x64.tar.gz"
-    dest: "/tmp/lua-language-server-3.2.2-linux-x64.tar.gz"
-    checksum: "sha256:e5093e6c8341671e17c118e6541c2999661431e888679bc094f770893edc3502"
+    url: "https://github.com/sumneko/lua-language-server/releases/download/{{ lua_dev.lua_language_server.version }}/lua-language-server-{{ lua_dev.lua_language_server.version }}-linux-x64.tar.gz"
+    dest: "/tmp/lua-language-server-{{ lua_dev.lua_language_server.version }}-linux-x64.tar.gz"
+    checksum: "sha256:{{ lua_dev.lua_language_server.checksum }}"
   when: lua_language_server_version_result.rc != 0
 
 - name: clean the lua language server target path
@@ -117,7 +117,7 @@
 
 - name: extract the lua language server archive
   unarchive:
-    src: "/tmp/lua-language-server-3.2.2-linux-x64.tar.gz"
+    src: "/tmp/lua-language-server-{{ lua_dev.lua_language_server.version }}-linux-x64.tar.gz"
     dest: ~/opt/lua-language-server
     remote_src: yes
   when: lua_language_server_version_result.rc != 0
