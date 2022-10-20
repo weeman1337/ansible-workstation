@@ -6,3 +6,10 @@
     cache_valid_time: 86400
     name:
       - certbot
+
+- name: be sure the certbot timer is disabled
+  become: yes
+  ansible.builtin.systemd:
+    name: certbot.timer
+    enabled: no
+    masked: yes
