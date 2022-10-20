@@ -14,7 +14,7 @@
     global: yes
   with_dict:
     typescript: "4.7.4"
-    typescript-language-server: "1.1.2"
+    typescript-language-server: "{{ js_dev.tsserver.version }}"
 
 - name: be sure the js module is linked
   file:
