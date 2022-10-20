@@ -233,14 +233,15 @@ return require('packer').startup(function (use)
         },
         config = function ()
             local lspconfig = require("lspconfig")
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
             local home = os.getenv("HOME")
 
             require "lsp_signature".setup({
               hint_enable = false,
             })
 
-            capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+            capabilities.textDocument.completion = cmp_capabilities.textDocument.completion
 
             --lspconfig.tlsp.setup{
                 --capabilities = capabilities
