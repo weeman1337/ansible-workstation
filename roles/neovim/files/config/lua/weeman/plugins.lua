@@ -90,7 +90,7 @@ return require('packer').startup(function (use)
       "RRethy/vim-illuminate",
       config = function()
         vim.g.Illuminate_delay = 250
-        vim.g.Illuminate_ftblacklist = {"nerdtree"}
+        vim.g.Illuminate_ftblacklist = {"NvimTree"}
 
         vim.api.nvim_exec([[
           augroup illuminate_augroup
@@ -465,8 +465,6 @@ return require('packer').startup(function (use)
 
     use "preservim/nerdcommenter"
 
-    use "Xuyuanp/nerdtree-git-plugin"
-
     use {
         'kyazdani42/nvim-tree.lua',
         commit = '3f4ed9b6c2598ab8304186486a05ae7a328b8d49',
@@ -484,17 +482,6 @@ return require('packer').startup(function (use)
               ignore = false
             }
           }
-        end
-    }
-
-    use {
-        "tiagofumo/vim-nerdtree-syntax-highlight",
-        config = function()
-            vim.g.NERDTreeWinSize = 40
-            vim.g.NERDTreeMinimalUI = 1
-            vim.g.NERDTreeExtensionHighlightColor = {
-                yml = "#888888"
-            }
         end
     }
 
