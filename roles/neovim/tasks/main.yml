@@ -80,6 +80,10 @@
   community.general.pipx:
     name: python-lsp-server
 
+- name: be sure the ansible-lint is installed
+  community.general.pipx:
+    name: ansible-lint
+
 - name: be sure the python language server extras are installed
   community.general.pipx:
     name: python-lsp-server
@@ -140,6 +144,6 @@
     version: "{{ item.value }}"
     global: yes
   with_dict:
-    "@ansible/ansible-language-server": "0.10.1"
+    "@ansible/ansible-language-server": "1.0.1"
     dockerfile-language-server-nodejs: "0.9.0"
-    vscode-langservers-extracted: "4.4.0"
+    vscode-langservers-extracted: "4.5.0"

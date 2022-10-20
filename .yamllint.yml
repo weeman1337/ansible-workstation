@@ -1,0 +1,6 @@
+---
+rules:
+  truthy:
+    allowed-values:
+      - "yes"
+      - "no"
