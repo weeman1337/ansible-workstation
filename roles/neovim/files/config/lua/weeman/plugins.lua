@@ -79,14 +79,6 @@ return require('packer').startup(function (use)
     }
 
     use {
-        "rcarriga/vim-ultest",
-        requires = {"janko/vim-test"},
-        run = ":UpdateRemotePlugins",
-        config = function()
-        end
-    }
-
-    use {
       "RRethy/vim-illuminate",
       config = function()
         vim.g.Illuminate_delay = 250

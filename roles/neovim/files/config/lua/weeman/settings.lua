@@ -212,8 +212,6 @@ keymap.set("n", "<C-k>", ":cprev<CR>zz")
 
 -- run
 
-keymap.set("n", "<leader>rtn", ":w<CR> :UltestNearest<CR>")
-
 
 -- location list navigation
 
