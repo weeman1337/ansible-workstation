@@ -2,7 +2,7 @@ local M = {}
 
 M.packer_setup = function (use)
 
-    use {
+  use {
     "phpactor/phpactor",
     ft = { "php" },
     branch = "master",
@@ -14,7 +14,7 @@ end
 
 M.lspconfig = function (lspconfig, capabilities)
 
-    lspconfig.phpactor.setup{
+  lspconfig.phpactor.setup{
     capabilities = capabilities,
     cmd = {
       "php8.1",

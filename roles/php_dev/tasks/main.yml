@@ -1,26 +1,27 @@
 ---
 - name: be sure php packages are installed
   become: yes
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
+      - php-curl
       - php-xdebug
 
 - name: be sure the phpactor config is linked
-  file:
+  ansible.builtin.file:
     src: ~/git/ansible-workstation/roles/php_dev/files/phpactor
     dest: ~/.config/phpactor
     state: link
 
 - name: be sure the php module is linked
-  file:
+  ansible.builtin.file:
     src: ~/git/ansible-workstation/roles/php_dev/files/php.lua
     dest: ~/.config/nvim/lua/weeman/modules/php.lua
     state: link
 
 - name: be sure the php module is registered
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: ~/.config/nvim/lua/weeman/modules.lua
     regexp: '^  require\("weeman.modules.php"\),'
     line: '  require("weeman.modules.php"),'
