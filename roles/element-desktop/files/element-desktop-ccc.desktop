@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Element CCC
+Exec=/opt/Element/element-desktop --profile ccc %U
+Terminal=false
+Type=Application
+Icon=element-desktop
+StartupWMClass=element
+Comment=A feature-rich client for Matrix.org
+MimeType=x-scheme-handler/element;
+Categories=Network;InstantMessaging;Chat;

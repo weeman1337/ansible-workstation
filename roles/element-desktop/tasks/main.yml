@@ -6,13 +6,19 @@
 
 - name: be sure the element apt repo is configured
   become: yes
-  apt_repository:
+  ansible.builtin.apt_repository:
     filename: element
     repo: deb https://packages.element.io/debian/ default main
 
 - name: be sure element is installed
   become: yes
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 86400
     name: element-desktop
+
+- name: be sure element CCC shortcut is linked
+  ansible.builtin.file:
+    src: ~/git/ansible-workstation/roles/element-desktop/files/element-desktop-ccc.desktop
+    dest: ~/.local/share/applications/element-desktop-ccc.desktop
+    state: link
