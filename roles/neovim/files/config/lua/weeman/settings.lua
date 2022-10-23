@@ -1,3 +1,6 @@
+local Path = require('plenary.path')
+
+local project = require("weeman.project")
 local h = require("weeman.helpers")
 local keymap = vim.keymap
 
@@ -115,7 +118,9 @@ vim.o.colorcolumn = "120"
 vim.o.termguicolors = true
 
 vim.o.undofile = true
-vim.o.undodir = os.getenv("HOME") .. "/.vim/undo"
+local undodir = Path:new({ project.cache_dir, "undo" })
+undodir:mkdir({ parents = true })
+vim.o.undodir = undodir:absolute()
 
 --vim.o.completeopt = "menuone,noselect"
 

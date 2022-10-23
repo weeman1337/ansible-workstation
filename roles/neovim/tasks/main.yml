@@ -41,6 +41,7 @@
     - lua/weeman/init.lua
     - lua/weeman/plugins.lua
     - lua/weeman/preview.lua
+    - lua/weeman/project.lua
     - lua/weeman/scratches.lua
     - lua/weeman/settings.lua
     - lua/weeman/statusline.lua
