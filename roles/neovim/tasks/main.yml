@@ -22,7 +22,7 @@
     path: /opt/neovim.appimage
 
 - name: be sure the nvim config directories exist
-  file:
+  ansible.builtin.file:
     path: "~/.config/nvim/{{ item }}"
     state: directory
     recurse: yes
@@ -31,7 +31,7 @@
     - vsnip
 
 - name: be sure the nvim configs are linked
-  file:
+  ansible.builtin.file:
     src: "~/git/ansible-workstation/roles/neovim/files/config/{{ item }}"
     dest: "~/.config/nvim/{{ item }}"
     state: link
@@ -47,6 +47,7 @@
     - lua/weeman/statusline.lua
     - vsnip/json.json
     - vsnip/matrix_licence.json
+    - projects
 
 - name: be sure the modules file exists (start)
   lineinfile:
