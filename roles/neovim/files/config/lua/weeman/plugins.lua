@@ -290,8 +290,11 @@ return require('packer').startup(function (use)
                             {
                                 fileMatch = { "package.json" },
                                 url = "file://" .. home .. "/.local/share/json_schemas/package.json"
-                            }
-
+                            },
+                            {
+                                fileMatch = { "tsconfig.json" },
+                                url = "file://" .. home .. "/.local/share/json_schemas/tsconfig.json"
+                            },
                         }
                     }
                 }
