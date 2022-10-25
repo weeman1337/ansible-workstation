@@ -462,23 +462,24 @@ return require('packer').startup(function (use)
     use "preservim/nerdcommenter"
 
     use {
-        'kyazdani42/nvim-tree.lua',
-        commit = '3f4ed9b6c2598ab8304186486a05ae7a328b8d49',
-        requires = {
-          'kyazdani42/nvim-web-devicons',
-        },
-        config = function()
-          require'nvim-tree'.setup {
-            view = {
-              width = 40,
-              number = true,
-              relativenumber = true
-            },
-            git = {
-              ignore = false
-            }
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = function()
+        require'nvim-tree'.setup {
+          hijack_netrw = true,
+          disable_netrw = false,
+          view = {
+            width = 40,
+            number = true,
+            relativenumber = true
+          },
+          git = {
+            ignore = false
           }
-        end
+        }
+      end
     }
 
     use {
