@@ -81,6 +81,18 @@ end
 
 -- trim whitespaces
 
+local trim_whitespace_for = {
+  python = true,
+}
+
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  callback = function (opts)
+    if trim_whitespace_for[vim.bo[opts.buf].filetype] ~= nil then
+      vim.api.nvim_command("%s/\\s\\+$//e")
+    end
+  end
+})
+
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
   pattern = {
     "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue",
@@ -89,7 +101,6 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
     "*.xml", "*.xml.*",
     "*.yml", "*.yaml",
     "*.sh",
-    "*.py",
     "*.lua",
     "*.css", "*.scss", "*.pcss",
   },
