@@ -220,16 +220,16 @@ return require('packer').startup(function (use)
 
     use {
         'neovim/nvim-lspconfig',
-        requires = {
-          "ray-x/lsp_signature.nvim",
-        },
+        --requires = {
+          --"ray-x/lsp_signature.nvim",
+        --},
         config = function ()
             local lspconfig = require("lspconfig")
             local home = os.getenv("HOME")
 
-            require "lsp_signature".setup({
-              hint_enable = false,
-            })
+            --require "lsp_signature".setup({
+              --hint_enable = false,
+            --})
 
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
