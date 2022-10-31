@@ -363,6 +363,18 @@ keymap.set("n", "<leader>lfi", ":Telescope lsp_implementations<CR>")
 keymap.set("n", "<leader>lfr", ":Telescope lsp_references<CR>")
 keymap.set("n", "<leader>lfw", ":Telescope lsp_dynamic_workspace_symbols<CR>")
 
+-- signature help experiment
+--vim.api.nvim_create_autocmd("LspAttach", {
+  --callback = function (opts)
+    --vim.api.nvim_create_autocmd("CursorHoldI", {
+      --buffer = opts.buf,
+      --callback = function ()
+        --vim.lsp.buf.signature_help()
+      --end
+    --})
+  --end
+--})
+
 
 -- Control C = ESC
 
