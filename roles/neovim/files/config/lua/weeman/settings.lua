@@ -364,16 +364,34 @@ keymap.set("n", "<leader>lfr", ":Telescope lsp_references<CR>")
 keymap.set("n", "<leader>lfw", ":Telescope lsp_dynamic_workspace_symbols<CR>")
 
 -- signature help experiment
---vim.api.nvim_create_autocmd("LspAttach", {
-  --callback = function (opts)
-    --vim.api.nvim_create_autocmd("CursorHoldI", {
-      --buffer = opts.buf,
-      --callback = function ()
-        --vim.lsp.buf.signature_help()
-      --end
-    --})
-  --end
---})
+
+-- monkey patch nvim to prevent auto commands for floating popups
+local util = require("vim.lsp.util")
+local orig = util.make_floating_popup_options;
+util.make_floating_popup_options = function (width, height, opts)
+  local orig_opts = orig(width, height, opts)
+  orig_opts.noautocmd = true
+  return orig_opts
+end
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {
+    border = "single",
+    focusable = false,
+  }
+)
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function (opts)
+    vim.api.nvim_create_autocmd("CursorHoldI", {
+      buffer = opts.buf,
+      callback = function ()
+        vim.lsp.buf.signature_help()
+      end
+    })
+  end
+})
 
 
 -- Control C = ESC
