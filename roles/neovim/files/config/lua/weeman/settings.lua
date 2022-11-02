@@ -82,27 +82,34 @@ end
 -- trim whitespaces
 
 local trim_whitespace_for = {
+  css = true,
+  javacript = true,
+  javacriptreact = true,
+  html = true,
+  lua = true,
+  php = true,
   python = true,
+  scss = true,
+  sh = true,
+  typescript = true,
+  typescriptreact = true,
+  xml = true,
+  yaml = true,
+  ["yaml.ansible"] = true,
 }
 
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function (opts)
-    if trim_whitespace_for[vim.bo[opts.buf].filetype] ~= nil then
-      vim.api.nvim_command("%s/\\s\\+$//e")
-    end
+    -- only trim whitespaces for filetypes in list
+    if trim_whitespace_for[vim.bo[opts.buf].filetype] == nil then return end
+
+    vim.api.nvim_command("%s/\\s\\+$//e")
   end
 })
 
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = {
-    "*.js", "*.jsx", "*.ts", "*.tsx", "*.vue",
-   "*.html", "*.twig",
-    "*.php", "*.php.*",
-    "*.xml", "*.xml.*",
-    "*.yml", "*.yaml",
-    "*.sh",
-    "*.lua",
-    "*.css", "*.scss", "*.pcss",
+    "*.twig",
   },
   command = "%s/\\s\\+$//e",
 })
@@ -140,7 +147,12 @@ vim.o.undodir = undodir:absolute()
 
 vim.api.nvim_create_autocmd({"FocusLost", "BufLeave"}, {
   pattern = "*",
-  command = "wa",
+  callback = function ()
+    -- only autosave in normal mode
+    if vim.api.nvim_get_mode().mode ~= "n" then return end
+
+    vim.api.nvim_command("wa")
+  end,
   nested = true,
 })
 
