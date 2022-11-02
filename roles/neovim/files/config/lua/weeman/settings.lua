@@ -366,6 +366,8 @@ keymap.set("n", "<leader>lfw", ":Telescope lsp_dynamic_workspace_symbols<CR>")
 -- signature help experiment
 
 -- monkey patch nvim to prevent auto commands for floating popups
+-- https://github.com/neovim/neovim/issues/15300
+-- https://github.com/neovim/neovim/pull/15981
 local util = require("vim.lsp.util")
 local orig = util.make_floating_popup_options;
 util.make_floating_popup_options = function (width, height, opts)
