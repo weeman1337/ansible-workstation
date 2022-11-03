@@ -398,6 +398,13 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function (opts)
+    local client_id = (opts.data or {}).client_id
+    local client = vim.lsp.get_client_by_id(client_id)
+
+    if client == nil or client.server_capabilities.signatureHelpProvider == nil then
+      return
+    end
+
     vim.api.nvim_create_autocmd("CursorHoldI", {
       buffer = opts.buf,
       callback = function ()
