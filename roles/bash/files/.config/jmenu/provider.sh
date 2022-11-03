@@ -102,6 +102,8 @@ git_provider() {
     echo "command;git push --force "
     echo "command;git rebase -i HEAD~"
     echo "command;git restore --staged "
+    echo "command;git stash push --include-untracked"
+    echo "command;git stash pop"
 }
 
 apt_provider() {
