@@ -34,6 +34,7 @@
       - jq
       - make
       - net-tools
+      - nmap
       - ntfs-3g
       - pavucontrol
       - python-is-python3
