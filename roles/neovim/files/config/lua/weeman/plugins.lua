@@ -422,27 +422,37 @@ return require('packer').startup(function (use)
         { 'nvim-telescope/telescope-fzf-native.nvim' },
         { "nvim-telescope/telescope-live-grep-args.nvim" },
       },
-        config = function()
-            local telescope = require("telescope")
-            local actions = require("telescope.actions")
+      config = function()
+        local telescope = require("telescope")
+        local actions = require("telescope.actions")
+        local lga_actions = require("telescope-live-grep-args.actions")
 
-            telescope.setup {
-              defaults = {
-                mappings = {
-                  i = {
-                    ["<CR>"] = actions.select_default + actions.center
-                  },
-                  n = {
-                    ["<CR>"] = actions.select_default + actions.center
-                  },
-                },
+        telescope.setup {
+          defaults = {
+            mappings = {
+              i = {
+                ["<CR>"] = actions.select_default + actions.center
               },
-            }
+              n = {
+                ["<CR>"] = actions.select_default + actions.center
+              },
+            },
+          },
+          extensions = {
+            live_grep_args = {
+              mappings = {
+              i = {
+                ["<C-k>"] = lga_actions.quote_prompt(),
+              },
+            },
+          },
+        },
+      }
 
-            telescope.load_extension("live_grep_args")
-            telescope.load_extension("fzf")
-        end
-    }
+      telescope.load_extension("live_grep_args")
+      telescope.load_extension("fzf")
+    end
+  }
 
     use {
         "norcalli/nvim-colorizer.lua",
