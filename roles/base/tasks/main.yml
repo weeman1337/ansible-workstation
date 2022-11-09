@@ -1,13 +1,13 @@
 ---
 - name: be sure the secret vars are included
-  include_vars: "../../../secrets/{{ item }}/vars.yml"
+  ansible.builtin.include_vars: "../../../secrets/{{ item }}/vars.yml"
   with_items:
     - element
     - personal
 
 - name: be sure the ttf-mscorefonts eula is accepted
   become: yes
-  debconf:
+  ansible.builtin.debconf:
     name: ttf-mscorefonts-installer
     question: msttcorefonts/accepted-mscorefonts-eula
     vtype: boolean
@@ -15,7 +15,7 @@
 
 - name: be sure basic packages are installed
   become: yes
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
@@ -44,23 +44,23 @@
 
 - name: be sure packages are uninstalled
   become: yes
-  apt:
+  ansible.builtin.apt:
     state: absent
     name:
       - brltty
 
 - name: disable systemd-oomd
   become: yes
-  systemd:
+  ansible.builtin.systemd:
     name: systemd-oomd
     state: stopped
     masked: yes
 
 - name: be sure sysctl is configured
   become: yes
-  sysctl:
+  ansible.posix.sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value }}"
   with_dict:
-    fs.inotify.max_user_watches: 131072
+    fs.inotify.max_user_watches: 256000
     fs.inotify.max_user_instances: 512
