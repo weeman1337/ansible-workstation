@@ -1,6 +1,11 @@
 local Path = require('plenary.path')
 
+local project_aliases = {
+  ["_home_michaelw_git_element_matrix-react-sdk"] = "matrix-org_matrix-react-sdk"
+}
+
 local project_name = string.gsub(vim.fn.getcwd(), "/", "_")
+project_name = project_aliases[project_name] or project_name
 
 local config_dir = Path:new({ vim.fn.stdpath("config"), "projects" })
 config_dir:mkdir({parents = true})
