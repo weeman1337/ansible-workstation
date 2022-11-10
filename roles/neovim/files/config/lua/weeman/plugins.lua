@@ -1,4 +1,5 @@
 local h = require("weeman.helpers")
+local project = require("weeman.project")
 
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -500,6 +501,16 @@ return require('packer').startup(function (use)
 
     use { "rodjek/vim-puppet" }
     use { "AndrewRadev/splitjoin.vim" }
+
+    use {
+      "rgroli/other.nvim",
+      config = function ()
+        local project_config = require("weeman.project").project_config
+        require("other-nvim").setup({
+          mappings = project_config.other_mappings,
+        })
+      end
+    }
 
     for _, module in pairs(require("weeman.modules")) do
       if module.packer_setup ~= nil then module.packer_setup(use) end

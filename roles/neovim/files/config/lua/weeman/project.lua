@@ -14,9 +14,19 @@ cache_dir:mkdir({parents = true})
 local project_shada = Path:new({ cache_dir, "main.shada" })
 vim.o.shadafile = project_shada:absolute()
 
+local project_config = {
+  before_plugins = function () end,
+  after_settings = function () end,
+  other_mappings = {},
+}
+
 -- include project config
 if (config_file:exists()) then
-  dofile(config_file:absolute())
+  project_config = vim.tbl_extend(
+    "force",
+    project_config,
+    dofile(config_file:absolute()) or {}
+  )
 end
 
 -- define edit command
@@ -32,6 +42,5 @@ return {
   config_dir = config_dir,
   config_file = config_file,
   cache_dir = cache_dir,
-  before_plugins = function() end,
-  after_settings = function() end,
+  project_config = project_config,
 }

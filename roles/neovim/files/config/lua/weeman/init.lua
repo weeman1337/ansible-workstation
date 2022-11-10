@@ -1,7 +1,7 @@
 local project = require("weeman.project")
 
-project.before_plugins()
+project.project_config.before_plugins()
 require('weeman.plugins')
 
 require('weeman.settings')
-project.after_settings()
+project.project_config.after_settings()

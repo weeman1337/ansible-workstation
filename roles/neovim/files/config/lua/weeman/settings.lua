@@ -206,8 +206,8 @@ keymap.set("n", "<leader>yfr", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>',
 -- git
 
 keymap.set("n", "<leader>gb", ":Git blame<CR>")
-keymap.set("n", "<leader>gj", ":GitGutterNextHunk<CR>")
-keymap.set("n", "<leader>gk", ":GitGutterPrevHunk<CR>")
+keymap.set("n", "<leader>gj", ":GitGutterNextHunk<CR>zz")
+keymap.set("n", "<leader>gk", ":GitGutterPrevHunk<CR>zz")
 keymap.set("n", "<leader>gp", ":GitGutterPreviewHunk<CR>")
 keymap.set("n", "<leader>gq", ":GitGutterQuickFix<CR>")
 keymap.set("n", "<leader>gs", ":Telescope git_status<CR>")
@@ -278,12 +278,14 @@ keymap.set("n", "<leader>dj", function ()
     severity = sw,
     float = false,
   })
+  vim.cmd(":normal! zz")
 end)
 keymap.set("n", "<leader>dk", function ()
   vim.diagnostic.goto_prev({
     severity = sw,
     float = false,
   })
+  vim.cmd(":normal! zz")
 end)
 keymap.set("n", "<leader>ds", function ()
   local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
@@ -368,7 +370,7 @@ keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 keymap.set("n", "<leader>ld", ":Telescope diagnostics<CR>")
 keymap.set("n", "<leader>lf", function () vim.lsp.buf.format({ async = false, timeout_ms = 5000 }) end)
 keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")
-keymap.set("n", "<leader>jd", ":lua vim.lsp.buf.definition()<CR>")
+keymap.set("n", "<leader>jd", ":lua vim.lsp.buf.definition()<CR>zz")
 
 keymap.set("n", "<leader>lfd", ":Telescope lsp_document_symbols<CR>")
 keymap.set("n", "<leader>lfi", ":Telescope lsp_implementations<CR>")
