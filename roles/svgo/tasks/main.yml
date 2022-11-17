@@ -1,0 +1,5 @@
+---
+- name: be sure svgo is installed
+  community.general.npm:
+    name: svgo
+    global: yes

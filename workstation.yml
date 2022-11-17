@@ -21,6 +21,9 @@
       tags: [ ssh ]
       when: specific_roles.ssh_element is defined and specific_roles.ssh_element
 
+    - role: svgo
+      tags: [ svgo ]
+      when: specific_roles.svgo is defined and specific_roles.svgo
     - role: screenruler
       tags: [ screenruler ]
     - role: soundrecorder

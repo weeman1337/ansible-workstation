@@ -14,3 +14,4 @@ specific_roles:
   cerbot: False
   resue: False
   rofi: True
+  svgo: True
