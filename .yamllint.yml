@@ -4,3 +4,5 @@ rules:
     allowed-values:
       - "yes"
       - "no"
+      - "True"
+      - "False"
