@@ -1,0 +1,4 @@
+---
+- name: be sure qmk is installed
+  community.general.pipx:
+    name: qmk
