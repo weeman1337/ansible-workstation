@@ -20,4 +20,3 @@ specific_roles:
   rust_dev: True
   dbeaver: True
   reveal_md: True
-  qmk: True

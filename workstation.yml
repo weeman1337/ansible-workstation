@@ -21,9 +21,6 @@
       tags: [ ssh ]
       when: specific_roles.ssh_element is defined and specific_roles.ssh_element
 
-    - role: qmk
-      tags: [ qmk ]
-      when: specific_roles.qmk is defined and specific_roles.qmk
     - role: svgo
       tags: [ svgo ]
       when: specific_roles.svgo is defined and specific_roles.svgo
