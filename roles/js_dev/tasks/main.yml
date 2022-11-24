@@ -1,6 +1,6 @@
 ---
 - name: be sure the nvim configs are linked
-  file:
+  ansible.builtin.file:
     src: "~/git/ansible-workstation/roles/js_dev/files/config/{{ item }}"
     dest: "~/.config/nvim/{{ item }}"
     state: link
@@ -8,22 +8,23 @@
     - vsnip/js_test.json
 
 - name: be sure npm packages are installed
-  npm:
+  community.general.npm:
     name: "{{ item.key }}"
     version: "{{ item.value }}"
     global: yes
   with_dict:
-    typescript: "4.7.4"
+    typescript: "{{ js_dev.typescript.version }}"
     typescript-language-server: "{{ js_dev.tsserver.version }}"
 
 - name: be sure the js module is linked
-  file:
+  ansible.builtin.file:
     src: ~/git/ansible-workstation/roles/js_dev/files/js.lua
     dest: ~/.config/nvim/lua/weeman/modules/js.lua
     state: link
 
 - name: be sure the js module is registered
-  lineinfile:
+  ansible.builtin.lineinfile:
+
     path: ~/.config/nvim/lua/weeman/modules.lua
     regexp: '^  require\("weeman.modules.js"\),'
     line: '  require("weeman.modules.js"),'
