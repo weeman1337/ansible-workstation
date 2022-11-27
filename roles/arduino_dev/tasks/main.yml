@@ -14,7 +14,6 @@
     cache_valid_time: 86400
     name:
     - clangd
-    - esptool
     - minicom
     - python3-serial
 

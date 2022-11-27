@@ -21,3 +21,4 @@ specific_roles:
   dbeaver: True
   reveal_md: True
   svgo: True
+  mumble: True
