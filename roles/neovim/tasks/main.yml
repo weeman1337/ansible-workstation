@@ -1,13 +1,13 @@
 ---
 - name: stat neovim
-  stat:
+  ansible.builtin.stat:
     path: /opt/neovim.appimage
     checksum_algorithm: sha256
   register: neovim_result
 
 - name: be sure neovim is installed
   become: yes
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/neovim/neovim/releases/download/{{ neovim.version }}/nvim.appimage"
     dest: /opt/neovim.appimage
     checksum: "sha256:{{ neovim.checksum }}"
@@ -17,7 +17,7 @@
 
 - name: be sure neovim is the default for vi
   become: yes
-  alternatives:
+  ansible.builtin.alternatives:
     name: vi
     path: /opt/neovim.appimage
 
@@ -50,7 +50,7 @@
     - projects
 
 - name: be sure the modules file exists (start)
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: ~/.config/nvim/lua/weeman/modules.lua
     regexp: "^return \\{"
     line: "return {"
@@ -58,7 +58,7 @@
     create: yes
 
 - name: be sure the modules file exists (end)
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: ~/.config/nvim/lua/weeman/modules.lua
     regexp: "^\\}"
     line: "}"
@@ -66,14 +66,14 @@
 
 - name: be sure packages are installed
   become: yes
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
       - xclip
 
 - name: be sure pynvim is installed
-  pip:
+  ansible.builtin.pip:
     name:
     - pynvim
     extra_args: "--user"
