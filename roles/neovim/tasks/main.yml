@@ -146,6 +146,6 @@
     version: "{{ item.value }}"
     global: yes
   with_dict:
-    "@ansible/ansible-language-server": "1.0.1"
-    dockerfile-language-server-nodejs: "0.9.0"
-    vscode-langservers-extracted: "4.5.0"
+    "@ansible/ansible-language-server": "{{ ansible_language_server.version }}"
+    dockerfile-language-server-nodejs: "{{ dockerfile_language_server.version }}"
+    vscode-langservers-extracted: "{{ vscode_language_servers.version }}"
