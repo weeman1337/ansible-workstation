@@ -169,8 +169,13 @@ return require('packer').startup(function (use)
         config = function()
             local cmp = require'cmp'
             cmp.setup({
+                performance = {
+                  throttle = 100,
+                  debounce = 500,
+                },
                 completion = {
                     completeopt = 'menu,menuone,noinsert',
+                    keyword_length = 3,
                 },
                 snippet = {
                   expand = function(args)
@@ -186,34 +191,44 @@ return require('packer').startup(function (use)
                   })
                 }),
                 sources = {
-                    { name = "nvim_lsp" },
                     {
-                        name = "buffer",
-                        option = {
-                            get_bufnrs = function()
-                              local buffers = vim.api.nvim_list_bufs()
-                              local retbufs = {}
-
-                              for key, bufno in pairs(buffers) do
-                                local bufname = vim.api.nvim_buf_get_name(bufno)
-
-                                if string.find(bufname, "NvimTree") then goto skip_buf end
-
-                                -- skip files larger than 1 MiB
-                                local byte_size = vim.api.nvim_buf_get_offset(bufno, vim.api.nvim_buf_line_count(bufno))
-                                if byte_size > 1024 * 1024 then goto skip_buf end
-
-                                table.insert(retbufs, bufno)
-
-                                ::skip_buf::
-                              end
-
-                              return retbufs
-                            end
-                        }
+                      name = "nvim_lsp",
+                      max_item_count = 10,
                     },
-                    { name = "path" },
-                    { name = "vsnip" },
+                    {
+                      name = "buffer",
+                      max_item_count = 10,
+                      option = {
+                        get_bufnrs = function()
+                          local buffers = vim.api.nvim_list_bufs()
+                          local retbufs = {}
+
+                          for key, bufno in pairs(buffers) do
+                            local bufname = vim.api.nvim_buf_get_name(bufno)
+
+                            if string.find(bufname, "NvimTree") then goto skip_buf end
+
+                            -- skip files larger than 1 MiB
+                            local byte_size = vim.api.nvim_buf_get_offset(bufno, vim.api.nvim_buf_line_count(bufno))
+                            if byte_size > 1024 * 1024 then goto skip_buf end
+
+                            table.insert(retbufs, bufno)
+
+                            ::skip_buf::
+                          end
+
+                          return retbufs
+                        end
+                      }
+                    },
+                    {
+                      name = "path",
+                      max_item_count = 10,
+                    },
+                    {
+                      name = "vsnip",
+                      max_item_count = 10,
+                    },
                     { name = 'nvim_lsp_signature_help' },
                 }
             })
