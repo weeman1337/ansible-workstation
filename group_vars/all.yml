@@ -1,4 +1,6 @@
 ---
+cspell:
+  version: "^6.17.0"
 ansible_language_server:
   version: "1.0.2"
 dockerfile_language_server:
