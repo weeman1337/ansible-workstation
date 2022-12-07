@@ -1,5 +1,7 @@
+camelcase
 errcode
 jitsi
 nvim
+oidc
 webrtc
 weimann

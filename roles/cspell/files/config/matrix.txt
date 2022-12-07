@@ -1,4 +1,5 @@
 chainable
+deviceinfo
 displayname
 homeserver
 ilag
@@ -6,8 +7,11 @@ keybackup
 matrixcs
 megolm
 msgtype
+msisdn
 mxid
 olmlib
+roomid
 skey
 synapsedocker
 threepid
+unpickle
