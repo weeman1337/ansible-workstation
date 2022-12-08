@@ -104,6 +104,7 @@ git_provider() {
     echo "command;git restore --staged "
     echo "command;git stash push --include-untracked"
     echo "command;git stash pop"
+    echo "command;git submodule update --init --recursive"
 }
 
 apt_provider() {
