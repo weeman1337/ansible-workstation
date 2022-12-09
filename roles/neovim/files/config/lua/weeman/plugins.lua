@@ -169,13 +169,8 @@ return require('packer').startup(function (use)
         config = function()
             local cmp = require'cmp'
             cmp.setup({
-                performance = {
-                  throttle = 100,
-                  debounce = 500,
-                },
                 completion = {
                     completeopt = 'menu,menuone,noinsert',
-                    keyword_length = 3,
                 },
                 snippet = {
                   expand = function(args)
