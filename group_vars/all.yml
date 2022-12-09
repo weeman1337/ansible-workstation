@@ -16,3 +16,5 @@ js_dev:
     version: "2.1.0"
   typescript:
     version: "4.9.3"
+  eslint_d:
+    version: "^12.2.1"

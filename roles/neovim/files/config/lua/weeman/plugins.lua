@@ -366,7 +366,7 @@ return require('packer').startup(function (use)
 
         null_ls.setup({
           debounce = 1000,
-          debug = true,
+          debug = false,
           sources = {
             wrap(null_ls.builtins.diagnostics.phpcs, "./vendor/bin/phpcs"),
             wrap(null_ls.builtins.diagnostics.stylelint, "./node_modules/.bin/stylelint"),
@@ -374,8 +374,8 @@ return require('packer').startup(function (use)
               to_temp_file = false,
               method = DIAGNOSTICS_ON_SAVE,
             }),
-            wrap(null_ls.builtins.diagnostics.eslint, "./node_modules/.bin/eslint"),
-            wrap(null_ls.builtins.formatting.eslint, "./node_modules/.bin/eslint"),
+            null_ls.builtins.diagnostics.eslint_d,
+            null_ls.builtins.formatting.eslint_d,
             null_ls.builtins.diagnostics.cspell.with({
               args = function(params) return {
                 "--config",

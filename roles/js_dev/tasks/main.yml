@@ -15,6 +15,7 @@
   with_dict:
     typescript: "{{ js_dev.typescript.version }}"
     typescript-language-server: "{{ js_dev.tsserver.version }}"
+    eslint_d: "{{ js_dev.eslint_d.version }}"
 
 - name: be sure the js module is linked
   ansible.builtin.file:
