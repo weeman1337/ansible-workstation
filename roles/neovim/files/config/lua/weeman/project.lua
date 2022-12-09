@@ -26,6 +26,7 @@ local project_config = {
   before_plugins = function () end,
   after_settings = function () end,
   other_mappings = {},
+  tab_sizes = {},
 }
 
 -- include project config

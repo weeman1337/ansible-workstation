@@ -63,17 +63,25 @@ vim.api.nvim_command([[au BufReadPost * if line("'\"") > 0 && line("'\"") <= lin
 
 -- divergent tab styles
 
-local tab_styles = {
-  {{"lua", "yaml", "NvimTree"}, 2}
+local tab_sizes = {
+  lua = 2,
+  yaml = 2,
+  NvimTree = 2,
 }
 
-for _, tabstyle in ipairs(tab_styles) do
+tab_sizes = vim.tbl_extend(
+  "force",
+  tab_sizes,
+  project.project_config.tab_sizes
+)
+
+for file_type, tab_size in pairs(tab_sizes) do
   vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = tabstyle[1],
+    pattern = file_type,
     callback = function ()
-      vim.opt_local.tabstop = tabstyle[2]
-      vim.opt_local.softtabstop = tabstyle[2]
-      vim.opt_local.shiftwidth = tabstyle[2]
+      vim.opt_local.tabstop = tab_size
+      vim.opt_local.softtabstop = tab_size
+      vim.opt_local.shiftwidth = tab_size
     end
   })
 end
