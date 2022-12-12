@@ -18,3 +18,5 @@ js_dev:
     version: "4.9.3"
   eslint_d:
     version: "^12.2.1"
+  prettierd:
+    version: "^0.22.5"
