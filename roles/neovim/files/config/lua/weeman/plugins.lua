@@ -1,5 +1,4 @@
 local h = require("weeman.helpers")
-local project = require("weeman.project")
 
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -127,14 +126,24 @@ return require('packer').startup(function (use)
       --"nvim-treesitter/nvim-treesitter",
       --requires = {
         --"nvim-treesitter/playground",
+        --"nvim-treesitter/nvim-treesitter-textobjects",
       --},
       --run = ':TSUpdate',
       --config = function()
         --require'nvim-treesitter.configs'.setup {
           --ensure_installed = "all",
           --highlight = {
-						--enable = true
-					--},
+            --enable = false,
+          --},
+          --textobjects = {
+            --select = {
+              --enable = true,
+              --keymaps = {
+                --["af"] = "@function.outer",
+                --["if"] = "@function.inner",
+              --},
+            --},
+          --},
           --playground = {
             --enable = true,
             --disable = {},
@@ -363,6 +372,7 @@ return require('packer').startup(function (use)
         end
 
         local home = os.getenv("HOME")
+        local lsp_formatting_autogroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
         null_ls.setup({
           debounce = 1000,
@@ -397,7 +407,21 @@ return require('packer').startup(function (use)
                 diagnostic.severity = vim.diagnostic.severity["INFO"]
               end
             }),
-          }
+          },
+          on_attach = function(client, bufnr)
+            local project_config = require("weeman.project").project_config
+            if project_config.format_on_save[vim.bo[bufnr].filetype] and client.supports_method("textDocument/formatting") then
+              print("running format on save")
+              vim.api.nvim_clear_autocmds({ group = lsp_formatting_autogroup, buffer = bufnr })
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                group = lsp_formatting_autogroup,
+                buffer = bufnr,
+                callback = function()
+                  vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+              })
+            end
+          end,
         })
       end
     }

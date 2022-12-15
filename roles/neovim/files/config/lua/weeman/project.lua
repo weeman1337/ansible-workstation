@@ -27,6 +27,7 @@ local project_config = {
   after_settings = function () end,
   other_mappings = {},
   tab_sizes = {},
+  format_on_save = {},
 }
 
 -- include project config
