@@ -411,13 +411,12 @@ return require('packer').startup(function (use)
           on_attach = function(client, bufnr)
             local project_config = require("weeman.project").project_config
             if project_config.format_on_save[vim.bo[bufnr].filetype] and client.supports_method("textDocument/formatting") then
-              print("running format on save")
               vim.api.nvim_clear_autocmds({ group = lsp_formatting_autogroup, buffer = bufnr })
               vim.api.nvim_create_autocmd("BufWritePre", {
                 group = lsp_formatting_autogroup,
                 buffer = bufnr,
                 callback = function()
-                  vim.lsp.buf.format({ bufnr = bufnr })
+                  vim.lsp.buf.format({ async = false, bufnr = bufnr })
                 end,
               })
             end
