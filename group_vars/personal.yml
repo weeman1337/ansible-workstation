@@ -14,7 +14,7 @@ specific_roles:
   certbot: True
   reuse: True
   poedit: True
-  regolith: True
+  regolith: False
   rofi: True
   pipewire: True
   rust_dev: True
