@@ -1,5 +1,22 @@
 local _M = {}
 
+vim.g.vimspector_configurations = {
+  ["jest current file"] = {
+    adapter = "vscode-node",
+    filetypes = { "javascript", "typescript" },
+    configuration = {
+      type = "node",
+      request = "launch",
+      name = "jest current file",
+      program = "${cwd}/node_modules/.bin/jest",
+      args = {
+        "${fileBasenameNoExtension}",
+      },
+      console = "integratedTerminal",
+    }
+  }
+}
+
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = {
     "javascript",
