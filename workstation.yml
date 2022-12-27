@@ -29,6 +29,8 @@
       when: specific_roles.svgo is defined and specific_roles.svgo
     - role: screenruler
       tags: [ screenruler ]
+    - role: pick
+      tags: [ pick ]
     - role: soundrecorder
       tags: [ soundrecorder ]
     - role: flameshot
