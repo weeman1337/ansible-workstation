@@ -1,0 +1,5 @@
+---
+- name: be sure emblem is installed
+  flatpak:
+    name: org.gnome.design.Emblem
+    method: user
