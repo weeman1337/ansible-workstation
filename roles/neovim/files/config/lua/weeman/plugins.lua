@@ -27,7 +27,27 @@ return require('packer').startup(function (use)
 
     use "tpope/vim-abolish"
 
-    use "puremourning/vimspector"
+    use {
+      "puremourning/vimspector",
+      config = function ()
+        vim.g.vimspector_configurations = {
+          ["jest current file"] = {
+            adapter = "vscode-node",
+            filetypes = { "javascript", "typescript" },
+            configuration = {
+              type = "node",
+              request = "launch",
+              name = "jest current file",
+              program = "${cwd}/node_modules/.bin/jest",
+              args = {
+                "${fileBasenameNoExtension}",
+              },
+              console = "integratedTerminal",
+            }
+          }
+        }
+      end
+    }
 
     use "mechatroner/rainbow_csv"
 
