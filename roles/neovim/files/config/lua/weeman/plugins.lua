@@ -33,7 +33,12 @@ return require('packer').startup(function (use)
         vim.g.vimspector_configurations = {
           ["jest current file"] = {
             adapter = "vscode-node",
-            filetypes = { "javascript", "typescript" },
+            filetypes = {
+              "javascript",
+              "javascriptreact",
+              "typescript",
+              "typescriptreact",
+            },
             configuration = {
               type = "node",
               request = "launch",
