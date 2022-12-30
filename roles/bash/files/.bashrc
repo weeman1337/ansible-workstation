@@ -103,6 +103,8 @@ export VBOX_LOG_DEST=nofile
 export VBOX_LOG_FLAGS=disabled
 export VBOX_LOG=-all
 
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
 for file in ~/.bashrc.d/*.sh; do
     source "$file"
 done

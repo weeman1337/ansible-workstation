@@ -25,6 +25,7 @@
     - .config/jmenu
     - .git-prompt.sh
     - .inputrc
+    - .ripgreprc
 
 - name: be sure ~/.local/bin exists
   file:
