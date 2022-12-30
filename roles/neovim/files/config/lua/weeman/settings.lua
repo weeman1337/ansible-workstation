@@ -148,7 +148,7 @@ local undodir = Path:new({ project.cache_dir, "undo" })
 undodir:mkdir({ parents = true })
 vim.o.undodir = undodir:absolute()
 
---vim.o.completeopt = "menuone,noselect"
+vim.o.comuleteopt = "menuone,noselect"
 
 
 -- autosave

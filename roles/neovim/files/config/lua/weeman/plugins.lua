@@ -203,9 +203,6 @@ return require('packer').startup(function (use)
         config = function()
             local cmp = require'cmp'
             cmp.setup({
-                completion = {
-                    completeopt = 'menu,menuone,noinsert',
-                },
                 snippet = {
                   expand = function(args)
                     vim.fn["vsnip#anonymous"](args.body)
@@ -504,6 +501,7 @@ return require('packer').startup(function (use)
 
         telescope.setup {
           defaults = {
+            path_display = {"truncate"},
             mappings = {
               i = {
                 ["<CR>"] = actions.select_default + actions.center
