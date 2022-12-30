@@ -545,7 +545,12 @@ return require('packer').startup(function (use)
         end
     }
 
-    use "preservim/nerdcommenter"
+    use {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end
+    }
 
     use {
       'kyazdani42/nvim-tree.lua',
