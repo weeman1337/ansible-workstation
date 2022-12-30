@@ -365,10 +365,25 @@ return require('packer').startup(function (use)
         end
     }
 
+    --use {
+         --'glepnir/galaxyline.nvim',
+         --branch = "main",
+         --config = function() require'weeman.statusline' end,
+    --}
+
     use {
-         'glepnir/galaxyline.nvim',
-         branch = "main",
-         config = function() require'weeman.statusline' end,
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      config = function ()
+        require('lualine').setup {
+          options = {
+            icons_enabled = true,
+            theme = 'onedark',
+            component_separators = '|',
+            section_separators = '',
+          },
+        }
+      end
     }
 
     use {
