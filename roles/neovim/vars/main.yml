@@ -1,4 +1,4 @@
 ---
 neovim:
-  version: v0.8.1
-  checksum: 25658f3db59fac398bc28b7ff7984ed1becdf9a3e98b3e4e226c236c35107054
+  version: v0.8.2
+  checksum: bb0d4599cb506fc6e29bf0e9cef3b52e06dcb4bb930b56d6eb88320f1d46a908
