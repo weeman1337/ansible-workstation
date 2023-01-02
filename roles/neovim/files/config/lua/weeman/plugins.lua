@@ -203,6 +203,9 @@ return require('packer').startup(function (use)
         config = function()
             local cmp = require'cmp'
             cmp.setup({
+              completion = {
+                completeopt = 'menuone,noinsert',
+              },
                 snippet = {
                   expand = function(args)
                     vim.fn["vsnip#anonymous"](args.body)
