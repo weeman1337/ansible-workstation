@@ -78,6 +78,7 @@ jest_provider() {
     fi
 
     echo "command;./node_modules/.bin/jest "
+    echo "command;./node_modules/.bin/jest --coverage "
     echo "command;./node_modules/.bin/jest --watch "
 }
 
