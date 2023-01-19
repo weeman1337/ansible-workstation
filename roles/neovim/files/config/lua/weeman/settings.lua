@@ -257,6 +257,7 @@ keymap.set("n", "<C-S-k>", ":lprev<CR>zz")
 
 -- tools
 
+keymap.set("n", "<leader>tc", ":Coverage<CR>")
 keymap.set("n", "<leader>tp", ":lua require('weeman.preview').toggle()<CR>")
 keymap.set("n", "<leader>ts", "Vi{:sort<CR>")
 

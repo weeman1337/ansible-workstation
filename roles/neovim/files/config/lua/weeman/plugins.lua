@@ -479,6 +479,10 @@ return require('packer').startup(function (use)
               hl = "CoverageCovered", text = "█",
               priority = 100,
             },
+            partial = {
+              hl = "CoveragePartial", text = "█",
+              priority = 100,
+            },
             uncovered = {
               hl = "CoverageUncovered", text = "█",
               priority = 100,
