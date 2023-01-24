@@ -238,6 +238,7 @@ keymap.set("n", "<leader>X", "D")
 
 keymap.set("n", "<leader>sf", ":NvimTreeToggle<CR>")
 keymap.set("n", "<leader>jf", ":NvimTreeFindFile<CR>zz")
+keymap.set("n", "<leader>jo", ":Other<CR>")
 
 
 -- quickfix navigation
