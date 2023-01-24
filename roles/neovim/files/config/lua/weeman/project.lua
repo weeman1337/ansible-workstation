@@ -2,8 +2,9 @@ local Path = require('plenary.path')
 
 local project_aliases = {
   ["_home_michaelw_git_element_matrix-react-sdk"] = "matrix-org_matrix-react-sdk",
-  ["_home_michaelw_git_element_matrix-js-sdk"] = "matrix-org_matrix-js-sdk",
   ["_home_weeman_git_element_matrix-react-sdk"] = "matrix-org_matrix-react-sdk",
+  ["_home_michaelw_git_element_matrix-js-sdk"] = "matrix-org_matrix-js-sdk",
+  ["_home_weeman_git_element_matrix-js-sdk"] = "matrix-org_matrix-js-sdk",
   ["_home_weeman_git_nextcloud_server"] = "nextcloud_server",
   ["_home_weeman_git_nextcloud_server_apps-extra_deck"] = "nextcloud_server",
 }
