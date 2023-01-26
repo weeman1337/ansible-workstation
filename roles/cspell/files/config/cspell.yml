@@ -1,6 +1,7 @@
 ---
 language: en-GB
 dictionaries:
+  - "de-de"
   - common
   - matrix
 dictionaryDefinitions:
@@ -12,3 +13,5 @@ ignorePaths:
   - dist/**
   - node_modules/**
   - vendor/**
+import:
+  - "@cspell/dict-de-de/cspell-ext.json"
