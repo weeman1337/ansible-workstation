@@ -365,12 +365,6 @@ return require('packer').startup(function (use)
         end
     }
 
-    --use {
-         --'glepnir/galaxyline.nvim',
-         --branch = "main",
-         --config = function() require'weeman.statusline' end,
-    --}
-
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },

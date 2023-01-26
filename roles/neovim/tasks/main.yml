@@ -44,7 +44,6 @@
     - lua/weeman/project.lua
     - lua/weeman/scratches.lua
     - lua/weeman/settings.lua
-    - lua/weeman/statusline.lua
     - vsnip/json.json
     - vsnip/matrix_licence.json
     - projects
