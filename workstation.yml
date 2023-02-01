@@ -31,6 +31,9 @@
       tags: [ screenruler ]
     - role: emblem
       tags: [ emblem ]
+    - role: keepassxc
+      when: specific_roles.keepassxc is defined and specific_roles.keepassxc
+      tags: [ keepassxc ]
     - role: pick
       tags: [ pick ]
     - role: soundrecorder

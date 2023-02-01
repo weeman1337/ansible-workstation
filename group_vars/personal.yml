@@ -22,3 +22,4 @@ specific_roles:
   reveal_md: True
   svgo: True
   mumble: True
+  keepassxc: True
