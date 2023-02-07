@@ -20,6 +20,11 @@ vim.o.autowriteall = true
 --]], false)
 
 
+-- grep
+
+vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
+
+
 -- tabs
 
 vim.o.tabstop = 4
