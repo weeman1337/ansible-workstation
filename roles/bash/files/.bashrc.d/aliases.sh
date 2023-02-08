@@ -20,3 +20,5 @@ alias cor='test -f composer.json && cat composer.json | jq .scripts | jq -r "key
 
 # Kitty
 alias icat="kitty +kitten icat"
+
+alias nvim="vi"
