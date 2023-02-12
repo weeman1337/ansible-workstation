@@ -9,14 +9,14 @@ vscode_language_servers:
   version: "^4.5.0"
 lua_dev:
   lua_language_server:
-    version: "3.6.4"
-    checksum: "4ba34404a20d75a867c1aef19f0f98696e138aebcadbd104bba7619107f140ab"
+    version: "3.6.10"
+    checksum: "98b01173a30db39791ddce210616f7230f1cfb92f5a6417f5de59905315f5f8d"
 js_dev:
   tsserver:
-    version: "^2.3.0"
+    version: "^3.1.0"
   typescript:
     version: "^4.9.4"
   eslint_d:
     version: "^12.2.1"
   prettierd:
-    version: "^0.22.5"
+    version: "^0.23.2"
