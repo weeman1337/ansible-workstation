@@ -1,4 +1,15 @@
-vim.o.expandtab = false
+local _M = {}
+
+_M.after_settings = function ()
+	-- force tabs everywhere
+	vim.o.expandtab = false
+	vim.api.nvim_create_autocmd({"FileType"}, {
+		pattern = "*",
+		callback = function ()
+			vim.o.expandtab = false
+		end
+	});
+end
 
 vim.g.vimspector_configurations = {
   ["Listen for XDebug"] = {
@@ -20,3 +31,5 @@ vim.g.vimspector_configurations = {
     },
   },
 }
+
+return _M
