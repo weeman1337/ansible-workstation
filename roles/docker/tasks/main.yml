@@ -48,6 +48,7 @@
     name:
       - docker-ce
       - docker-ce-cli
+      - docker-compose-plugin
       - containerd.io
       - python3-docker
 
