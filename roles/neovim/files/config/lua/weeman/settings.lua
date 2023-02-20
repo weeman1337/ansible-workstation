@@ -12,6 +12,11 @@ vim.wo.relativenumber = true
 vim.wo.wrap = false
 
 
+-- Keep clipboard when pasting into visual selection
+
+keymap.set("v", "p", "P")
+
+
 -- save
 
 vim.o.autowriteall = true
