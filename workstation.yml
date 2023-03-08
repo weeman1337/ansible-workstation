@@ -69,6 +69,9 @@
     - role: scribus
       tags: [ scribus ]
       when: specific_roles.scribus is defined and specific_roles.scribus
+    - role: tailscale
+      tags: [ tailscale ]
+      when: specific_roles.tailscale is defined and specific_roles.tailscale
     - role: element-desktop
       tags: [ element-desktop ]
     - role: firefox

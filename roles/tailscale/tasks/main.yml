@@ -1,0 +1,18 @@
+---
+- name: be sure the repo signing key is installed
+  become: yes
+  ansible.builtin.apt_key:
+    id: 458CA832957F5868
+    url: https://pkgs.tailscale.com/stable/ubuntu/focal.noarmor.gpg
+    keyring: /usr/share/keyrings/tailscale-archive-keyring.gpg
+
+- name: be sure the repo is configured
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/tailscale-archive-keyring.gpg] https://pkgs.tailscale.com/stable/ubuntu jammy main
+    filename: tailscale.gpg
+
+- name: be sure tailscale is installed
+  become: yes
+  ansible.builtin.apt:
+    name: tailscale
