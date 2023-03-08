@@ -1,7 +1,7 @@
 [user]
-	name = Michael Weimann
-	email = mail@michael-weimann.eu
-	signingkey = 34F0524D4DA694A1
+	name = {{ git_config.name }}
+	email = {{ git_config.email }}
+	signingkey = {{ git_config.signingkey }}
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input

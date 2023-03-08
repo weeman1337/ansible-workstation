@@ -2,6 +2,10 @@
 workstation_user: weeman
 world_clocks: "[{'location': <(uint32 2, <('Edmonton', 'CYED', true, [(0.93666003772138751, -1.9803669304139968)], [(0.93462381444296339, -1.9809487010135638)])>)>}, {'location': <(uint32 2, <('London', 'EGWU', false, [(0.89971722940307675, -0.007272211034407213)], [(0.89971722940307675, -0.007272211034407213)])>)>}]"
 world_clocks_locations: "[<(uint32 2, <('Edmonton', 'CYED', true, [(0.93666003772138751, -1.9803669304139968)], [(0.93462381444296339, -1.9809487010135638)])>)>, <(uint32 2, <('London', 'EGWU', false, [(0.89971722940307675, -0.007272211034407213)], [(0.89971722940307675, -0.007272211034407213)])>)>]"
+git_config:
+  name: Michael Weimann
+  email: mail@michael-weimann.eu
+  signingkey: 34F0524D4DA694A1
 specific_roles:
   arduino_dev: True
   c_dev: True

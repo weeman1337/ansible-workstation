@@ -1,9 +1,15 @@
 ---
 - name: be sure the git files are linked
-  file:
+  ansible.builtin.file:
     src: "~/git/ansible-workstation/roles/git/files/{{ item }}"
     dest: "~/{{ item }}"
     state: link
   with_items:
-    - .gitconfig
     - .gitignore
+
+- name: be sure the git files are in place
+  ansible.builtin.template:
+    src: ".gitconfig"
+    dest: "~/{{ item }}"
+  with_items:
+    - .gitconfig
