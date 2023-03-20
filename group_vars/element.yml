@@ -20,3 +20,4 @@ specific_roles:
   rofi: True
   svgo: True
   tailscale: True
+  clamav: True

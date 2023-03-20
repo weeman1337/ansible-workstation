@@ -1,0 +1,59 @@
+---
+- name: be sure ClamAV is installed
+  become: yes
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - clamav-daemon
+
+- name: be sure ClamAV on access scanning is configured
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/clamav/clamd.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: "^OnAccessIncludePath /home/{{ workstation_user }}/Documents"
+      line: "OnAccessIncludePath /home/{{ workstation_user }}/Documents"
+    - regexp: "^OnAccessIncludePath /home/{{ workstation_user }}/Downloads"
+      line: "OnAccessIncludePath /home/{{ workstation_user }}/Downloads"
+    - regexp: "^OnAccessExtraScanning"
+      line: "OnAccessExtraScanning yes"
+    - regexp: "^OnAccessExcludeUname"
+      line: "OnAccessExcludeUname clamav"
+    - regexp: "^OnAccessMaxFileSize"
+      line: "OnAccessMaxFileSize 512M"
+    - regexp: "^OnAccessPrevention"
+      line: "OnAccessPrevention yes"
+    - regexp: "^ScanOnAccess"
+      line: "ScanOnAccess yes"
+  notify:
+    - "ClamAV config changed"
+
+- name: be sure the quarantine directory exists
+  become: yes
+  ansible.builtin.file:
+    path: /var/clamav/quarantine
+    state: directory
+    owner: clamav
+    mode: "600"
+
+- name: be sure the clamonacc service file is in place
+  become: yes
+  ansible.builtin.template:
+    src: clamonacc.service
+    dest: /etc/systemd/system/clamonacc.service
+    mode: "0755"
+  notify:
+    - "ClamAV config changed"
+
+- name: be sure the ClamAV services are enabled
+  become: yes
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - clamav-daemon.service
+    - clamonacc.service

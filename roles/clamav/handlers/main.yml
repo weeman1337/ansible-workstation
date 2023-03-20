@@ -1,0 +1,11 @@
+---
+- name: Restart ClamAV daemons
+  listen: "ClamAV config changed"
+  become: yes
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    daemon_reload: true
+    state: restarted
+  with_items:
+    - clamav-daemon.service
+    - clamonacc.service

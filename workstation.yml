@@ -63,6 +63,9 @@
       tags: [ gnome ]
     - role: docker
       tags: [ docker ]
+    - role: clamav
+      tags: [ clamav ]
+      when: specific_roles.clamav is defined and specific_roles.clamav
 
     - role: inkscape
       tags: [ inkscape ]
