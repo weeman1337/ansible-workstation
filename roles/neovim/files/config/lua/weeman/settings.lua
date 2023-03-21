@@ -317,7 +317,7 @@ keymap.set("n", "<leader>ds", function ()
   local messages = {}
 
   for index, diagnostic in ipairs(diagnostics) do
-    table.insert(messages, { index .. ": " .. diagnostic.message })
+    table.insert(messages, { index .. ": " .. diagnostic.message .. "\n" })
   end
 
   vim.api.nvim_echo(messages, false, {})
