@@ -31,6 +31,13 @@
   notify:
     - "ClamAV config changed"
 
+- name: be sure deprecated ScanOnAccess is removed from config
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/clamav/clamd.conf
+    regexp: "^ScanOnAccess"
+    state: absent
+
 - name: be sure the quarantine directory exists
   become: yes
   ansible.builtin.file:
