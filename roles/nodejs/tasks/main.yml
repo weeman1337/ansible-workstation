@@ -25,5 +25,4 @@
 - name: be sure yarn is installed
   npm:
     name: yarn
-    version: "1.22.18"
     global: yes
