@@ -423,6 +423,7 @@ return require('packer').startup(function (use)
                 "php",
                 "typescript",
                 "typescriptreact",
+                "yaml",
               },
               diagnostics_postprocess = function(diagnostic)
                 diagnostic.severity = vim.diagnostic.severity["INFO"]
