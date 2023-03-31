@@ -165,11 +165,20 @@ vim.o.comuleteopt = "menuone,noselect"
 
 vim.api.nvim_create_autocmd({"FocusLost", "BufLeave"}, {
   pattern = "*",
-  callback = function ()
+  callback = function (args)
+    -- do not auto save an empty buffer
+    if (vim.fn.bufname(args.buf)) == "" then return end
+
+    -- do not auto save readonly buffers
+    if (vim.api.nvim_buf_get_option(args.buf, 'readonly')) then return end
+
+    -- do not auto save non-modified buffers
+    if (not vim.api.nvim_buf_get_option(args.buf, 'modified')) then return end
+
     -- only autosave in normal mode
     if vim.api.nvim_get_mode().mode ~= "n" then return end
 
-    vim.api.nvim_command("wa")
+    vim.api.nvim_command("w")
   end,
   nested = true,
 })
