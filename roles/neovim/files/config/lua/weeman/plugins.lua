@@ -339,7 +339,7 @@ return require('packer').startup(function (use)
 
             lspconfig.html.setup {
               capabilities = capabilities,
-              filetypes = { "hbs", "html", "phtml" }
+              filetypes = { "hbs", "html", "phtml", "html.twig" }
             }
 
             lspconfig.cssls.setup {

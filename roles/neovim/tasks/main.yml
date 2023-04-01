@@ -46,6 +46,7 @@
     - lua/weeman/settings.lua
     - vsnip/json.json
     - vsnip/matrix_licence.json
+    - vsnip/twig.json
     - projects
 
 - name: be sure the modules file exists (start)

@@ -46,7 +46,7 @@ vim.g.do_filetype_lua = 1
 vim.filetype.add({
   extension = {
     hbs = "html",
-    twig = "html",
+    twig = "html.twig",
     pcss = "scss",
   },
   filename = {
@@ -198,6 +198,15 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 
 vim.g.vsnip_namespace = "snip"
 vim.g.vsnip_filetypes = {
+  ["html.twig.js.css"] = {
+    "twig",
+  },
+  ["html.twig"] = {
+    "twig",
+  },
+  ["twig"] = {
+    "twig",
+  },
   typescriptreact = {
     "js_test",
     "matrix_licence",

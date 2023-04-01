@@ -9,6 +9,8 @@ M.packer_setup = function (use)
     run = "composer install --no-dev -o"
   }
 
+  use { "nelsyeung/twig.vim" }
+
 end
 
 
