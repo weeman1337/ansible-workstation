@@ -8,7 +8,7 @@
 - name: be sure rust analyzer is downloaded
   get_url:
     url: "https://github.com/rust-lang/rust-analyzer/releases/download/{{ rust_dev.analyzer.version }}/rust-analyzer-x86_64-unknown-linux-gnu.gz"
-    dest: "/tmp/rust-analyzer-x86_64-unknown-linux-gnu.gz"
+    dest: "~/tmp/rust-analyzer-x86_64-unknown-linux-gnu.gz"
     checksum: "sha256:{{ rust_dev.analyzer.archive_checksum }}"
     force: yes
   when: rust_analyzer_result.stat.exists == False or rust_analyzer_result.stat.checksum != rust_dev.analyzer.checksum

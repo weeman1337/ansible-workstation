@@ -1,9 +1,10 @@
 ---
 rust_dev:
   rustup:
-    checksum: 5cc9ffd1026e82e7fb2eec2121ad71f4b0f044e88bca39207b3f6b769aaa799c
+    archive_checksum:
+    checksum: bb31eaf643926b2ee9f4d8d6fc0e2835e03c0a60f34d324048aa194f0b29a71c
     url: https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init
   analyzer:
-    archive_checksum: 39889ea78700b82ed957e5ec1e053e584bc53f79d8228f1e27a2762a5e0c3a1f
+    archive_checksum: e4ae98b5ef7e00ecefc0d6aef8637b2768999dfe20c4347e40d63dc78b4cc926
     checksum: 4d209860a8cd60251883c8dd81f164851479561643b7f5eb24d8e813919b7593
-    version: 2022-08-01
+    version: 2023-04-03
