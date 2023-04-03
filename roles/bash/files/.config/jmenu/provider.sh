@@ -114,6 +114,12 @@ apt_provider() {
     echo "command;sudo apt update && sudo apt upgrade"
 }
 
+engelsystem_provider() {
+    echo "command;docker exec -e THEMES=0,1 engelsystem_dev-es_workspace-1 yarn build"
+    echo "command;docker exec -e THEMES=0,1 engelsystem_dev-es_workspace-1 yarn build:watch"
+    echo "command;docker exec engelsystem_dev-es_workspace-1 bin/pre-commit"
+}
+
 apt_provider
 ssh_provider
 
@@ -138,6 +144,10 @@ fi
 
 if [ -f "yarn.lock" ]; then
     yarn_provider
+fi
+
+if [[ "$PWD" =~ "git/chaos/engelsystem" ]]; then
+    engelsystem_provider
 fi
 
 mussig_provider
