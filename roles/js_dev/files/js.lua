@@ -14,4 +14,8 @@ M.lspconfig = function (lspconfig, capabilities)
   }
 end
 
+vim.g.doge_javascript_settings = {
+  omit_redundant_param_types = 1,
+}
+
 return M
