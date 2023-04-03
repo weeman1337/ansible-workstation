@@ -21,3 +21,4 @@ specific_roles:
   svgo: True
   tailscale: True
   clamav: True
+  rust_dev: True
