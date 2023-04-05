@@ -388,11 +388,15 @@ keymap.set("n", "<F9>", "<Plug>VimspectorContinue")
 
 -- find
 
+local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+
 keymap.set("n", "<leader>fb", ":Telescope buffers show_all_buffers=true<CR>")
 keymap.set("n", "<leader>fc", ":Telescope commands<CR>")
 keymap.set("n", "<leader>ff", ":Telescope find_files hidden=true<CR>")
 keymap.set("n", "<leader>faf", ":Telescope find_files find_command=fd,--hidden,--no-ignore-vcs<CR>")
 keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args({})<CR>")
+keymap.set("n", "<leader>fG", live_grep_args_shortcuts.grep_word_under_cursor)
+keymap.set("v", "<leader>fG", live_grep_args_shortcuts.grep_visual_selection)
 keymap.set("n", "<leader>fh", ":Telescope oldfiles cwd_only=true<CR>")
 keymap.set("n", "<leader>fi", ":Telescope current_buffer_fuzzy_find<CR>")
 keymap.set("n", "<leader>fm", ":Telescope marks<CR>")
