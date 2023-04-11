@@ -5,7 +5,7 @@ M.packer_setup = function (use)
   use {
     "phpactor/phpactor",
     ft = { "php" },
-    branch = "master",
+    tag = "2023.01.21",
     run = "composer install --no-dev -o"
   }
 
