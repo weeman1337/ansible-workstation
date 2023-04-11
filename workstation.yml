@@ -146,6 +146,8 @@
     - role: poedit
       tags: [ poedit ]
       when: specific_roles is defined and specific_roles.poedit
+    - role: ufw
+      tags: [ufw]
 - hosts: weeman_klapp
   roles:
     - role: fixfnkeys
