@@ -20,11 +20,8 @@
 
 - name: be sure cspell is installed
   npm:
-    name: "{{ item.name }}"
-    version: "{{ item.version }}"
+    name: "{{ item }}"
     global: yes
   with_items:
-    - name: cspell
-      version: "{{ cspell.version }}"
-    - name: "@cspell/dict-de-de"
-      version: "^3.0.2"
+    - cspell
+    - "@cspell/dict-de-de"

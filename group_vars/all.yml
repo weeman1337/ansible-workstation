@@ -1,22 +1,5 @@
 ---
-cspell:
-  version: "^6.17.0"
-ansible_language_server:
-  version: "^1.0.2"
-dockerfile_language_server:
-  version: "^0.9.0"
-vscode_language_servers:
-  version: "^4.5.0"
 lua_dev:
   lua_language_server:
     version: "3.6.18"
     checksum: "7ec597ce646f29f3ba1276fb44a4c77538f4266f101b6ee3d2ba801830442be2"
-js_dev:
-  tsserver:
-    version: "^3.1.0"
-  typescript:
-    version: "^4.9.4"
-  eslint_d:
-    version: "^12.2.1"
-  prettierd:
-    version: "^0.23.2"

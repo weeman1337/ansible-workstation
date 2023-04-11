@@ -142,10 +142,9 @@
 
 - name: be sure npm packages are installed
   npm:
-    name: "{{ item.key }}"
-    version: "{{ item.value }}"
+    name: "{{ item }}"
     global: yes
-  with_dict:
-    "@ansible/ansible-language-server": "{{ ansible_language_server.version }}"
-    dockerfile-language-server-nodejs: "{{ dockerfile_language_server.version }}"
-    vscode-langservers-extracted: "{{ vscode_language_servers.version }}"
+  with_items:
+    - "@ansible/ansible-language-server"
+    - dockerfile-language-server-nodejs
+    - vscode-langservers-extracted

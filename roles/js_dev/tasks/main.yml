@@ -9,14 +9,13 @@
 
 - name: be sure npm packages are installed
   community.general.npm:
-    name: "{{ item.key }}"
-    version: "{{ item.value }}"
+    name: "{{ item }}"
     global: yes
-  with_dict:
-    typescript: "{{ js_dev.typescript.version }}"
-    typescript-language-server: "{{ js_dev.tsserver.version }}"
-    eslint_d: "{{ js_dev.eslint_d.version }}"
-    "@fsouza/prettierd": "{{ js_dev.prettierd.version }}"
+  with_items:
+    - typescript
+    - typescript-language-server
+    - eslint_d
+    - "@fsouza/prettierd"
 
 - name: be sure the js module is linked
   ansible.builtin.file:
@@ -26,7 +25,6 @@
 
 - name: be sure the js module is registered
   ansible.builtin.lineinfile:
-
     path: ~/.config/nvim/lua/weeman/modules.lua
     regexp: '^  require\("weeman.modules.js"\),'
     line: '  require("weeman.modules.js"),'
