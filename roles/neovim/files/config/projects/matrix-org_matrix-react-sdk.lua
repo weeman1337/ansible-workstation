@@ -33,4 +33,23 @@ _M.format_on_save = {
   typescriptreact = true,
 }
 
+vim.g.vimspector_configurations = {
+  ["Jest current file"] = {
+    adapter = "vscode-node",
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    },
+    configuration = {
+      name = "Jest current file",
+      type = "node",
+      request = "launch",
+      program = "${workspaceFolder}/node_modules/.bin/jest",
+      args = { "${fileBasenameNoExtension}" }
+    },
+  },
+}
+
 return _M
