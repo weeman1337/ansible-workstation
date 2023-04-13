@@ -1,0 +1,10 @@
+---
+- name: be sure sudo requires the root password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: "^Defaults rootpw"
+    line: "Defaults rootpw"
+    insertafter: "^Defaults"
+    validate: "/usr/sbin/visudo -cf %s"

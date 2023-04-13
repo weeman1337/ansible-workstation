@@ -62,6 +62,10 @@
     - role: gnome
       tags: [ gnome ]
 
+    - role: srpwd
+      tags: [ srpwd ]
+      when: specific_roles.srpwd is defined and specific_roles.srpwd
+
     - role: docker
       tags: [ docker ]
       when: specific_roles.docker is defined and specific_roles.docker
