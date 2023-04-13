@@ -411,8 +411,9 @@ keymap.set("n", "<leader>fsg", ":lua require('weeman.scratches').telescope_live_
 keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 keymap.set("n", "<leader>ld", ":Telescope diagnostics<CR>")
 keymap.set("n", "<leader>lf", function () vim.lsp.buf.format({ async = false, timeout_ms = 5000 }) end)
+-- keymap.set("n", "<leader>lh", function () vim.lsp.buf.hover() end)
 keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")
-keymap.set("n", "<leader>jd", ":lua vim.lsp.buf.definition()<CR>")
+-- keymap.set("n", "<leader>jd", ":lua vim.lsp.buf.definition()<CR>")
 
 keymap.set("n", "<leader>lfd", ":Telescope lsp_document_symbols<CR>")
 keymap.set("n", "<leader>lfi", ":Telescope lsp_implementations<CR>")
@@ -432,8 +433,17 @@ util.make_floating_popup_options = function (width, height, opts)
   return orig_opts
 end
 
+-- add borders to signature help and hover floating windows
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
+  {
+    border = "single",
+    focusable = false,
+  }
+)
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
   {
     border = "single",
     focusable = false,
@@ -453,6 +463,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     if client.server_capabilities.definitionProvider then
       keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
+    end
+
+    if client.server_capabilities.hoverProvider then
+      keymap.set("n", "K", function () vim.lsp.buf.hover() end)
     end
 
     if client.server_capabilities.signatureHelpProvider then
