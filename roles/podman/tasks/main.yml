@@ -1,0 +1,14 @@
+---
+- name: be sure podman is installed
+  become: yes
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 86400
+    name:
+      - podman
+
+- name: be sure docker →  podman link exists
+  ansible.builtin.file:
+    src: /usr/bin/podman
+    dest: "/home/{{ workstation_user }}/.local/bin/docker"
+    state: link

@@ -61,8 +61,14 @@
       tags: [ flatpak ]
     - role: gnome
       tags: [ gnome ]
+
     - role: docker
       tags: [ docker ]
+      when: specific_roles.docker is defined and specific_roles.docker
+    - role: podman
+      tags: [ podman ]
+      when: specific_roles.podman is defined and specific_roles.podman
+
     - role: clamav
       tags: [ clamav ]
       when: specific_roles.clamav is defined and specific_roles.clamav

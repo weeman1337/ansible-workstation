@@ -22,3 +22,4 @@ specific_roles:
   tailscale: True
   clamav: True
   rust_dev: True
+  podman: True

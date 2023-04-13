@@ -5,6 +5,7 @@
 ## Bootstrap
 
 ```
-sudo apt install ansible git
+sudo apt install git
+pip3 install --user ansible ansible-core
 ansible-galaxy install -r requirements.yml
 ```

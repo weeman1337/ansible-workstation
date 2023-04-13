@@ -28,6 +28,8 @@
       line: "OnAccessPrevention yes"
     - regexp: "^ScanOnAccess"
       line: "ScanOnAccess yes"
+    - regexp: "^VirusEvent"
+      line: "VirusEvent /etc/clamav/virus-event.bash"
   notify:
     - "ClamAV config changed"
 
@@ -54,6 +56,23 @@
     mode: "0755"
   notify:
     - "ClamAV config changed"
+
+- name: be sure the virus notification script is in place
+  become: yes
+  ansible.builtin.template:
+    src: notify.sh
+    dest: /etc/clamav/virusevent.d/notify.sh
+    owner: clamav
+    mode: "755"
+
+- name: be sure ClamAV is allowed to send notifications
+  become: yes
+  community.general.sudoers:
+    name: clamav
+    commands: /usr/bin/notify-send
+    setenv: true
+    user: clamav
+    runas: ALL
 
 - name: be sure the ClamAV services are enabled
   become: yes

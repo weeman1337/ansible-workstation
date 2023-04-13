@@ -27,3 +27,4 @@ specific_roles:
   svgo: True
   mumble: True
   keepassxc: True
+  docker: True
