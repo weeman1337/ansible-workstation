@@ -412,7 +412,7 @@ keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 keymap.set("n", "<leader>ld", ":Telescope diagnostics<CR>")
 keymap.set("n", "<leader>lf", function () vim.lsp.buf.format({ async = false, timeout_ms = 5000 }) end)
 keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")
-keymap.set("n", "<leader>jd", ":lua vim.lsp.buf.definition()<CR>zz")
+keymap.set("n", "<leader>jd", ":lua vim.lsp.buf.definition()<CR>")
 
 keymap.set("n", "<leader>lfd", ":Telescope lsp_document_symbols<CR>")
 keymap.set("n", "<leader>lfi", ":Telescope lsp_implementations<CR>")
@@ -445,16 +445,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client_id = (opts.data or {}).client_id
     local client = vim.lsp.get_client_by_id(client_id)
 
-    if client == nil or client.server_capabilities.signatureHelpProvider == nil then
+    if client == nil then
       return
     end
 
-    vim.api.nvim_create_autocmd("CursorHoldI", {
-      buffer = opts.buf,
-      callback = function ()
-        vim.lsp.buf.signature_help()
-      end
-    })
+    -- print(vim.inspect(client.server_capabilities))
+
+    if client.server_capabilities.definitionProvider then
+      keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
+    end
+
+    if client.server_capabilities.signatureHelpProvider then
+      vim.api.nvim_create_autocmd("CursorHoldI", {
+        buffer = opts.buf,
+        callback = function ()
+          vim.lsp.buf.signature_help()
+        end
+      })
+    end
   end
 })
 
