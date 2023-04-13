@@ -1,0 +1,6 @@
+{
+    "policies": {
+        "DisablePocket": true,
+        "DownloadDirectory": "${home}/Downloads"
+    }
+}

@@ -6,6 +6,7 @@ git_config:
   name: Michael Weimann
   email: mail@michael-weimann.eu
   signingkey: 34F0524D4DA694A1
+firefox_policies: False
 specific_roles:
   arduino_dev: True
   c_dev: True

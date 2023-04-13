@@ -6,6 +6,7 @@ git_config:
   name: Michael Weimann
   email: michaelw@element.io
   signingkey: 53F535A266BB9584
+firefox_policies: True
 specific_roles:
   arduino_dev: False
   c_dev: False

@@ -1,21 +1,29 @@
 ---
 - name: be sure the Mozilla PPA is configured
   become: yes
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "ppa:mozillateam/ppa"
     filename: mozilla
 
 - name: be sure the preferences file is in place
   become: yes
-  copy:
+  ansible.builtin.copy:
     src: mozillateam
     dest: /etc/apt/preferences.d/mozillateam
 
 - name: be sure firefox is installed
   become: yes
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
       - firefox
       - firefox-locale-de
+
+- name: be sure the firefox policies file is in place
+  become: yes
+  when: firefox_policies
+  ansible.builtin.template:
+    src: policies.json
+    dest: /usr/lib/firefox/distribution/policies.json
+    owner: root
