@@ -29,7 +29,7 @@
     - regexp: "^ScanOnAccess"
       line: "ScanOnAccess yes"
     - regexp: "^VirusEvent"
-      line: "VirusEvent /etc/clamav/virus-event.bash"
+      line: "VirusEvent /bin/run-parts --lsbsysinit /etc/clamav/virusevent.d/"
   notify:
     - "ClamAV config changed"
 
