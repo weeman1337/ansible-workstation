@@ -1,10 +1,30 @@
 ---
+- name: be sure thunderbird temp directory exists
+  ansible.builtin.file:
+    path: "/home/{{ workstation_user }}/tmp/thunderbird"
+    state: directory
+    recurse: true
+
 - name: be sure thunderbird is installed
   become: yes
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
       - thunderbird
       - thunderbird-locale-de
       - thunderbird-locale-en-gb
+
+- name: be sure thunderbird uses the custom temp dir
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /usr/share/applications/thunderbird.desktop
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: "^Exec=.*thunderbird %u"
+      line: "Exec=env TEMP=/home/{{ workstation_user }}/tmp/thunderbird thunderbird %u"
+    - regexp: "^Exec=.*thunderbird -compose"
+      line: "Exec=env TEMP=/home/{{ workstation_user }}/tmp/thunderbird thunderbird -compose"
+    - regexp: "^Exec=.*thunderbird -addressbook"
+      line: "Exec=env TEMP=/home/{{ workstation_user }}/tmp/thunderbird thunderbird -addressbook"

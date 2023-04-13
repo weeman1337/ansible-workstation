@@ -18,6 +18,8 @@
       line: "OnAccessIncludePath /home/{{ workstation_user }}/Documents"
     - regexp: "^OnAccessIncludePath /home/{{ workstation_user }}/Downloads"
       line: "OnAccessIncludePath /home/{{ workstation_user }}/Downloads"
+    - regexp: "^OnAccessIncludePath /home/{{ workstation_user }}/tmp/thunderbird"
+      line: "OnAccessIncludePath /home/{{ workstation_user }}/tmp/thunderbird"
     - regexp: "^OnAccessExtraScanning"
       line: "OnAccessExtraScanning yes"
     - regexp: "^OnAccessExcludeUname"
