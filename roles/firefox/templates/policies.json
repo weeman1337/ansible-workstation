@@ -1,6 +1,6 @@
 {
     "policies": {
         "DisablePocket": true,
-        "DownloadDirectory": "${home}/Downloads"
+        "StartDownloadsInTempDirectory": true
     }
 }

@@ -20,6 +20,20 @@
       - firefox
       - firefox-locale-de
 
+- name: be sure Firefox uses the custom temp dir
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /usr/share/applications/firefox.desktop
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: "^Exec=.*firefox %u"
+      line: "Exec=env TEMP=/home/{{ workstation_user }}/tmp/firefox firefox %u"
+    - regexp: "^Exec=.*firefox --new-window %u"
+      line: "Exec=env TEMP=/home/{{ workstation_user }}/tmp/firefox firefox --new-window %u"
+    - regexp: "^Exec=.*firefox --private-window %u"
+      line: "Exec=env TEMP=/home/{{ workstation_user }}/tmp/firefox firefox --private-window %u"
+
 - name: be sure the firefox policies file is in place
   become: yes
   when: firefox_policies
