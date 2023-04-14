@@ -8,7 +8,7 @@ Type=simple
 User=root
 ExecStart=/usr/sbin/clamonacc --fdpass -F --log=/var/log/clamav/clamonacc --move=/var/clamav/quarantine
 Restart=on-failure
-RestartSec=120s
+RestartSec=15s
 
 [Install]
 WantedBy=multi-user.target
