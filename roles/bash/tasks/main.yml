@@ -1,19 +1,19 @@
 ---
 - name: be sure shell utils are installed
   become: yes
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 86400
     name:
     - ripgrep
 
 - name: be sure ~/.bashrc.d exists
-  file:
+  ansible.builtin.file:
     dest: ~/.bashrc.d
     state: directory
 
 - name: be sure bash configs are linked
-  file:
+  ansible.builtin.file:
     src: "~/git/ansible-workstation/roles/bash/files/{{ item }}"
     dest: "~/{{ item }}"
     state: link
@@ -22,12 +22,13 @@
     - .bashrc
     - .bashrc.d/aliases.sh
     - .bashrc.d/jmenu.sh
+    - .bashrc.d/nvm.sh
     - .config/jmenu
     - .git-prompt.sh
     - .inputrc
     - .ripgreprc
 
 - name: be sure ~/.local/bin exists
-  file:
+  ansible.builtin.file:
     dest: ~/.local/bin
     state: directory
