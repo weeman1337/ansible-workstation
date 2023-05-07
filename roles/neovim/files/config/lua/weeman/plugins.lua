@@ -308,7 +308,16 @@ return require('packer').startup(function (use)
             }
 
             lspconfig.pylsp.setup{
-                capabilities = capabilities
+              capabilities = capabilities,
+              settings = {
+                pylsp = {
+                  plugins = {
+                    rope_autoimport = {
+                      enabled = true,
+                    },
+                  },
+                },
+              },
             }
 
             lspconfig.jsonls.setup{
