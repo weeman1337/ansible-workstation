@@ -1,14 +1,14 @@
 ---
-- name: test youtube-dl cheksum
-  stat:
-    path: ~/.local/bin/youtube-dl
+- name: Test youtube-dl cheksum
+  ansible.builtin.stat:
+    path: ~/.local/bin/yt-dlp
     checksum_algorithm: sha256
   register: youtubedl_stat
 
-- name: be sure youtube-dl is installed
-  get_url:
-    url: https://github.com/ytdl-org/youtube-dl/releases/download/2021.12.17/youtube-dl
-    dest: ~/.local/bin/youtube-dl
-    checksum: "sha256:7880e01abe282c7fd596f429c35189851180d6177302bb215be1cdec78d6d06d"
+- name: Be sure youtube-dl is installed
+  ansible.builtin.get_url:
+    url: https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp
+    dest: ~/.local/bin/yt-dlp
+    checksum: "sha256:91cad9f121c1f6f0a81b747415c46ecba0ff331ed38cc6433040b4ac7b6e15ca"
     mode: "700"
-  when: youtubedl_stat.stat.exists == False or youtubedl_stat.stat.checksum != "7880e01abe282c7fd596f429c35189851180d6177302bb215be1cdec78d6d06d"
+  when: youtubedl_stat.stat.exists == False or youtubedl_stat.stat.checksum != "91cad9f121c1f6f0a81b747415c46ecba0ff331ed38cc6433040b4ac7b6e15ca"
