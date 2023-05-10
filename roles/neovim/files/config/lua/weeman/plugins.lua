@@ -362,15 +362,20 @@ return require('packer').startup(function (use)
     }
 
     use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      "kyazdani42/nvim-web-devicons",
+    }
+
+    use {
+      "nvim-lualine/lualine.nvim",
+      commit = "84ffb80e452d95e2c46fa29a98ea11a240f7843e",
+      requires = { "kyazdani42/nvim-web-devicons"},
       config = function ()
-        require('lualine').setup {
+        require("lualine").setup {
           options = {
             icons_enabled = true,
-            theme = 'onedark',
-            component_separators = '|',
-            section_separators = '',
+            theme = "onedark",
+            component_separators = "|",
+            section_separators = "",
           },
         }
       end
