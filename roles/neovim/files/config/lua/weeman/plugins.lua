@@ -132,6 +132,8 @@ return require('packer').startup(function (use)
         end
     }
 
+    use "sindrets/diffview.nvim"
+
     use {
         "airblade/vim-gitgutter",
         config = function()
