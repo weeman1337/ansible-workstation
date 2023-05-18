@@ -48,6 +48,7 @@
     state: absent
     name:
       - brltty
+      - wslu
 
 - name: disable systemd-oomd
   become: yes
