@@ -119,16 +119,10 @@ return require('packer').startup(function (use)
     }
 
     use {
-        "Th3Whit3Wolf/one-nvim",
-        rtp = "vim/",
+        "olimorris/onedarkpro.nvim",
         config = function()
-            vim.cmd 'colorscheme one-nvim'
+            vim.cmd 'colorscheme onelight'
             vim.o.background = "light"
-            vim.api.nvim_exec(
-            [[
-                highlight CmpItemAbbr guifg=#555555
-                highlight link LspSignatureActiveParameter Search
-            ]], false)
         end
     }
 
@@ -542,10 +536,18 @@ return require('packer').startup(function (use)
 
     use {
         "lukas-reineke/indent-blankline.nvim",
-        after="one-nvim",
+        after="onedarkpro.nvim",
         config = function()
             vim.g.indent_blankline_char = "▏"
             vim.g.indent_blankline_show_first_indent_level = false
+
+            require("onedarkpro").setup({
+              colors = {
+                black = "#000000",
+                bg = "#ffffff",
+                fg = "#000000",
+              },
+            })
         end
     }
 
