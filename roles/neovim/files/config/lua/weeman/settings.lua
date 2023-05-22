@@ -533,6 +533,12 @@ require("onedarkpro").setup({
     cyan = "#0e7490",
     orange = "#c2410c",
   },
+  highlights = {
+    DiagnosticUnderlineError = { sp = "${red}", style = "undercurl" },
+    DiagnosticUnderlineWarn = { sp = "${yellow}", style = "undercurl" },
+    DiagnosticUnderlineInfo = { sp = "${blue}", style = "undercurl" },
+    DiagnosticUnderlineHint = { sp = "${cyan}", style = "undercurl" },
+  },
   options = {
     cursorline = true,
   }
