@@ -123,6 +123,12 @@ return require('packer').startup(function (use)
         config = function()
             vim.cmd 'colorscheme onelight'
             vim.o.background = "light"
+            require("onedarkpro").setup({
+              colors = {
+                fg = "#000000",
+                black = "#000000",
+              },
+            })
         end
     }
 
@@ -540,14 +546,6 @@ return require('packer').startup(function (use)
         config = function()
             vim.g.indent_blankline_char = "▏"
             vim.g.indent_blankline_show_first_indent_level = false
-
-            require("onedarkpro").setup({
-              colors = {
-                black = "#000000",
-                bg = "#ffffff",
-                fg = "#000000",
-              },
-            })
         end
     }
 
