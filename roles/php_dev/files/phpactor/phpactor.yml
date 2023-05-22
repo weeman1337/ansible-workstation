@@ -1,4 +1,5 @@
 completion_worse.experimantal: true
+language_server.diagnostics_on_update: false
 logging.enabled: false
 # logging.level: "debug"
 # logging.path: /home/weeman/tmp/phpactor.log
