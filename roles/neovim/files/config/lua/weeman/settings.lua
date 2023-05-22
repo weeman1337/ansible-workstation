@@ -527,7 +527,7 @@ require("onedarkpro").setup({
     gray = "#333333",
     red = "#b91c1c",
     green = "#3d953a",
-    yellow = "#d2b67d",
+    yellow = "#a16207",
     blue = "#1d4ed8",
     magenta = "#950095",
     cyan = "#0e7490",
