@@ -118,19 +118,7 @@ return require('packer').startup(function (use)
       end
     }
 
-    use {
-        "olimorris/onedarkpro.nvim",
-        config = function()
-            vim.cmd 'colorscheme onelight'
-            vim.o.background = "light"
-            require("onedarkpro").setup({
-              colors = {
-                fg = "#000000",
-                black = "#000000",
-              },
-            })
-        end
-    }
+    use { "olimorris/onedarkpro.nvim" }
 
     use "sindrets/diffview.nvim"
 
@@ -152,20 +140,34 @@ return require('packer').startup(function (use)
     use {
       "nvim-treesitter/nvim-treesitter",
       requires = {
-        "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
       run = ':TSUpdate',
       config = function()
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {
+            "bash",
+            "css",
+            "dockerfile",
+            "gitattributes",
+            "gitignore",
             "javascript",
+            "json",
+            "html",
             "lua",
+            "make",
             "markdown",
+            "php",
+            "python",
+            "rust",
+            "twig",
             "typescript",
+            "scss",
+            "vue",
+            "yaml",
           },
           highlight = {
-            enable = false,
+            enable = true,
           },
           textobjects = {
             select = {
@@ -375,7 +377,7 @@ return require('packer').startup(function (use)
         require("lualine").setup {
           options = {
             icons_enabled = true,
-            theme = "onedark",
+            -- theme = "onedark",
             component_separators = "|",
             section_separators = "",
           },
@@ -417,10 +419,10 @@ return require('packer').startup(function (use)
           sources = {
             wrap(null_ls.builtins.diagnostics.phpcs, "./vendor/bin/phpcs"),
             wrap(null_ls.builtins.diagnostics.stylelint, "./node_modules/.bin/stylelint"),
-            wrap(null_ls.builtins.diagnostics.phpstan, "./vendor/bin/phpstan", {
-              to_temp_file = false,
-              method = DIAGNOSTICS_ON_SAVE,
-            }),
+            -- wrap(null_ls.builtins.diagnostics.phpstan, "./vendor/bin/phpstan", {
+            --   to_temp_file = false,
+            --   method = DIAGNOSTICS_ON_SAVE,
+            -- }),
             null_ls.builtins.diagnostics.eslint_d,
             null_ls.builtins.formatting.eslint_d,
             null_ls.builtins.formatting.phpcbf,

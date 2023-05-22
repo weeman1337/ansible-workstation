@@ -515,3 +515,28 @@ vim.g.PHP_noArrowMatching = 1
 
 -- disable weird keyboard shortcut
 vim.g.ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
+
+
+-- colours
+
+require("onedarkpro").setup({
+  colors = {
+    bg = "#ffffff",
+    fg = "#000000",
+    black = "#000000",
+    gray = "#333333",
+    red = "#b91c1c",
+    green = "#3d953a",
+    yellow = "#d2b67d",
+    blue = "#1d4ed8",
+    magenta = "#950095",
+    cyan = "#0e7490",
+    orange = "#c2410c",
+  },
+  options = {
+    cursorline = true,
+  }
+})
+
+vim.o.background = "light"
+vim.cmd 'colorscheme onelight'
