@@ -1,0 +1,5 @@
+---
+- name: Be sure pass is installed
+  become: yes
+  ansible.builtin.apt:
+    name: pass

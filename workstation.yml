@@ -61,6 +61,9 @@
       tags: [ flatpak ]
     - role: gnome
       tags: [ gnome ]
+    - role: pass
+      tags: [ pass ]
+      when: specific_roles.pass is defined and specific_roles.pass
 
     - role: srpwd
       tags: [ srpwd ]
