@@ -540,7 +540,10 @@ require("onedarkpro").setup({
     DiagnosticUnderlineWarn = { sp = "${yellow}", style = "undercurl" },
     DiagnosticUnderlineInfo = { sp = "${blue}", style = "undercurl" },
     DiagnosticUnderlineHint = { sp = "${cyan}", style = "undercurl" },
-    LineNr = { fg = color.lighten("#333333", 40) }
+    LineNr = { fg = color.lighten("#333333", 40) },
+    diffAdded = { fg = "${green}" },
+    diffChanged = { fg = "${blue}" },
+    diffRemoved = { fg = "${red}" },
   },
   options = {
     cursorline = true,
