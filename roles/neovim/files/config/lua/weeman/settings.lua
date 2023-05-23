@@ -519,25 +519,28 @@ vim.g.ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
 
 -- colours
 
+local color = require("onedarkpro.helpers")
 require("onedarkpro").setup({
   colors = {
-    bg = "#ffffff",
-    fg = "#000000",
-    black = "#000000",
+    bg = "#f8f8f8",
+    fg = "#2a2b33",
+    black = "#2a2b33",
     gray = "#333333",
-    red = "#b91c1c",
-    green = "#3d953a",
+    red = "#de3d35",
+    green = "#3e953a",
     yellow = "#a16207",
-    blue = "#1d4ed8",
+    blue = "#2f5af3",
     magenta = "#950095",
     cyan = "#0e7490",
     orange = "#c2410c",
+    purple = "#6b21a8",
   },
   highlights = {
     DiagnosticUnderlineError = { sp = "${red}", style = "undercurl" },
     DiagnosticUnderlineWarn = { sp = "${yellow}", style = "undercurl" },
     DiagnosticUnderlineInfo = { sp = "${blue}", style = "undercurl" },
     DiagnosticUnderlineHint = { sp = "${cyan}", style = "undercurl" },
+    LineNr = { fg = color.lighten("#333333", 40) }
   },
   options = {
     cursorline = true,
