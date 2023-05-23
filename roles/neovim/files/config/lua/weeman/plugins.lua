@@ -152,6 +152,7 @@ return require('packer').startup(function (use)
             "gitattributes",
             "gitignore",
             "javascript",
+            "jsdoc",
             "json",
             "html",
             "lua",
