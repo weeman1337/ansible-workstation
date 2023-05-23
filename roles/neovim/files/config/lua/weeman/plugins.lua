@@ -168,7 +168,7 @@ return require('packer').startup(function (use)
             "yaml",
           },
           highlight = {
-            enable = true,
+            enable = false,
           },
           textobjects = {
             select = {
