@@ -109,6 +109,10 @@ git_provider() {
     echo "command;git submodule update --init --recursive"
 }
 
+makefile_provider() {
+    cat Makefile | grep .PHONY |  sed 's/.PHONY: /command;make /i'
+}
+
 apt_provider() {
     echo "command;sudo apt update"
     echo "command;sudo apt update && sudo apt upgrade"
@@ -132,6 +136,10 @@ if [ -f "composer.json" ]; then
     phpcs_provider
     phpstan_provider
     phpunit_provider
+fi
+
+if [ -f "Makefile" ]; then
+    makefile_provider
 fi
 
 if [ -f "package.json" ]; then
