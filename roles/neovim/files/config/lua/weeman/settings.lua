@@ -242,8 +242,8 @@ keymap.set("n", "<leader>yfr", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>',
 -- git
 
 keymap.set("n", "<leader>gb", ":Git blame<CR>")
-keymap.set("n", "<leader>gj", ":GitGutterNextHunk<CR>zz")
-keymap.set("n", "<leader>gk", ":GitGutterPrevHunk<CR>zz")
+keymap.set("n", "äg", ":GitGutterNextHunk<CR>zz")
+keymap.set("n", "ög", ":GitGutterPrevHunk<CR>zz")
 keymap.set("n", "<leader>gp", ":GitGutterPreviewHunk<CR>")
 keymap.set("n", "<leader>gq", ":GitGutterQuickFix<CR>")
 keymap.set("n", "<leader>gs", ":Telescope git_status<CR>")
@@ -311,14 +311,14 @@ keymap.set("n", "<leader>dq", function ()
     severity = sw,
   })
 end);
-keymap.set("n", "<leader>dj", function ()
+keymap.set("n", "äd", function ()
   vim.diagnostic.goto_next({
     severity = sw,
     float = false,
   })
   vim.cmd(":normal! zz")
 end)
-keymap.set("n", "<leader>dk", function ()
+keymap.set("n", "öd", function ()
   vim.diagnostic.goto_prev({
     severity = sw,
     float = false,
