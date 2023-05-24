@@ -439,6 +439,7 @@ return require('packer').startup(function (use)
             end,
               filetypes = {
                 "javascript",
+                "javascriptreact",
                 "markdown",
                 "php",
                 "typescript",
