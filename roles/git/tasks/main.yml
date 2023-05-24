@@ -1,4 +1,25 @@
 ---
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+
+# - name: Print the package facts
+#   ansible.builtin.debug:
+#     var: ansible_facts.packages["git-delta"]
+
+- name: Download delta package
+  ansible.builtin.get_url:
+    url: https://github.com/dandavison/delta/releases/download/0.15.1/git-delta_0.15.1_amd64.deb
+    dest: /tmp/git-delta_0.15.1_amd64.deb
+    checksum: "sha256:f0db00a10972c953cd54cc00a0a3c87d547e87ceffc17b3e89721a803742b664"
+    mode: "666"
+  when: "'git-delta' not in ansible_facts.packages or ansible_facts.packages['git-delta'][0]['version'] != '0.15.1'"
+
+- name: Install delta package
+  become: yes
+  ansible.builtin.apt:
+    deb: /tmp/git-delta_0.15.1_amd64.deb
+  when: "'git-delta' not in ansible_facts.packages or ansible_facts.packages['git-delta'][0]['version'] != '0.15.1'"
+
 - name: be sure the git files are linked
   ansible.builtin.file:
     src: "~/git/ansible-workstation/roles/git/files/{{ item }}"

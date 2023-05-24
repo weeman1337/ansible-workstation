@@ -2,15 +2,23 @@
 	name = {{ git_config.name }}
 	email = {{ git_config.email }}
 	signingkey = {{ git_config.signingkey }}
+
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input
 	commentChar = ";"
+
 [commit]
 	gpgsign = true
+
 [cola]
 	spellcheck = false
+
 [credential]
 	helper = cache --timeout=86400
+
 [init]
 	defaultBranch = main
+
+[delta]
+    light = true
