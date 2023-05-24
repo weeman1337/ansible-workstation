@@ -588,6 +588,15 @@ return require('packer').startup(function (use)
 
     use { "rodjek/vim-puppet" }
     use { "AndrewRadev/splitjoin.vim" }
+    use {
+      "hupty/iron.nvim",
+      config = function()
+        local iron = require("iron.core")
+        iron.setup({
+          config = {},
+        })
+      end
+    }
 
     use {
       "rgroli/other.nvim",
