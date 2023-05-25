@@ -589,7 +589,7 @@ return require('packer').startup(function (use)
     use { "rodjek/vim-puppet" }
     use { "AndrewRadev/splitjoin.vim" }
     use {
-      "hupty/iron.nvim",
+      "hkupty/iron.nvim",
       config = function()
         local iron = require("iron.core")
         iron.setup({
