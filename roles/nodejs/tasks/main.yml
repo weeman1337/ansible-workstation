@@ -21,8 +21,3 @@
   become: yes
   ansible.builtin.apt:
     name: nodejs
-
-- name: Be sure yarn is installed
-  community.general.npm:
-    name: yarn
-    global: yes
