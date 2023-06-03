@@ -1,0 +1,4 @@
+---
+- name: Be sure ranger is installed
+  community.general.pipx:
+    name: ranger-fm

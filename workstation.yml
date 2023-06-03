@@ -64,6 +64,8 @@
     - role: pass
       tags: [ pass ]
       when: specific_roles.pass is defined and specific_roles.pass
+    - role: ranger
+      tags: [ ranger ]
 
     - role: srpwd
       tags: [ srpwd ]
