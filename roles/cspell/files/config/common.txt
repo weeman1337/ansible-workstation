@@ -1,9 +1,13 @@
 camelcase
+cccffm
+chaospuppet
 engelsystem
 errcode
 fsfe
 jitsi
 nvim
 oidc
+puppetlabs
+vmname
 webrtc
 weimann
