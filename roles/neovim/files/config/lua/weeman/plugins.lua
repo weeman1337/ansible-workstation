@@ -157,6 +157,7 @@ local plugins = {
           end, {expr=true})
 
           map('n', '<leader>gp', gs.preview_hunk)
+          map('n', '<leader>gu', gs.reset_hunk)
         end
       })
     end
