@@ -1,22 +1,19 @@
 local M = {}
 
-M.packer_setup = function (use)
-
-  use {
+M.lazy_plugins = {
+  {
     "phpactor/phpactor",
     ft = { "php" },
     tag = "2023.01.21",
-    run = "composer install --no-dev -o"
-  }
+    build = "composer install --no-dev -o"
+  },
 
-  use { "nelsyeung/twig.vim" }
+  { "nelsyeung/twig.vim" }
+}
 
-end
 
-
-M.lspconfig = function (lspconfig, capabilities)
-
-  lspconfig.phpactor.setup{
+M.lspconfig = function(lspconfig, capabilities)
+  lspconfig.phpactor.setup {
     capabilities = capabilities,
     cmd = {
       "php8.1",
@@ -24,7 +21,6 @@ M.lspconfig = function (lspconfig, capabilities)
       "language-server"
     }
   }
-
 end
 
 return M

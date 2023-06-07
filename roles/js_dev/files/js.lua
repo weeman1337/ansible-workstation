@@ -1,7 +1,6 @@
 local M = {}
 
-M.packer_setup = function (use)
-end
+M.lazy_plugins = {}
 
 M.lspconfig = function (lspconfig, capabilities)
   lspconfig.tsserver.setup{

@@ -151,8 +151,6 @@ vim.o.signcolumn = "yes"
 vim.o.cursorline = true
 vim.o.colorcolumn = "120"
 
-vim.o.termguicolors = true
-
 vim.o.undofile = true
 local undodir = Path:new({ project.cache_dir, "undo" })
 undodir:mkdir({ parents = true })
@@ -242,9 +240,6 @@ keymap.set("n", "<leader>yfr", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>',
 -- git
 
 keymap.set("n", "<leader>gb", ":Git blame<CR>")
-keymap.set("n", "äg", ":GitGutterNextHunk<CR>zz")
-keymap.set("n", "ög", ":GitGutterPrevHunk<CR>zz")
-keymap.set("n", "<leader>gp", ":GitGutterPreviewHunk<CR>")
 keymap.set("n", "<leader>gq", ":GitGutterQuickFix<CR>")
 keymap.set("n", "<leader>gs", ":Telescope git_status<CR>")
 keymap.set("n", "<leader>gS", ":Git<CR> 20<C-w>_")
@@ -527,6 +522,9 @@ require("onedarkpro").setup({
     DiagnosticUnderlineWarn = { sp = "${yellow}", style = "undercurl" },
     DiagnosticUnderlineInfo = { sp = "${blue}", style = "undercurl" },
     DiagnosticUnderlineHint = { sp = "${cyan}", style = "undercurl" },
+    GitSignsAdd = { fg = "${green}" },
+    GitSignsChange = { fg = "${blue}" },
+    GitSignsDelete = { fg = "${red}" },
     LineNr = { fg = color.lighten("#333333", 40) },
     diffAdded = { fg = "${green}" },
     diffChanged = { fg = "${blue}" },
