@@ -30,3 +30,4 @@ specific_roles:
   keepassxc: True
   docker: True
   pass: True
+  podman: True
