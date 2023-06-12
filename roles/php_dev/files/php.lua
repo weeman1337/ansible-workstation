@@ -17,7 +17,7 @@ M.lspconfig = function(lspconfig, capabilities)
     capabilities = capabilities,
     cmd = {
       "php8.1",
-      os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/phpactor/bin/phpactor",
+      os.getenv("HOME") .. "/.local/share/nvim/lazy/phpactor/bin/phpactor",
       "language-server"
     }
   }
