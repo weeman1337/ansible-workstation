@@ -240,10 +240,8 @@ keymap.set("n", "<leader>yfr", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>',
 -- git
 
 keymap.set("n", "<leader>gb", ":Git blame<CR>")
-keymap.set("n", "<leader>gq", ":GitGutterQuickFix<CR>")
 keymap.set("n", "<leader>gs", ":Telescope git_status<CR>")
 keymap.set("n", "<leader>gS", ":Git<CR> 20<C-w>_")
-keymap.set("n", "<leader>gu", ":GitGutterUndoHunk<CR>")
 keymap.set("n", "<leader>gy", ":.GBrowse!<CR>")
 keymap.set("x", "<leader>gy", ":'<'>GBrowse!<CR>")
 
