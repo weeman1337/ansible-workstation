@@ -33,6 +33,7 @@
       - hunspell-en-gb
       - imagemagick
       - jq
+      - libicu-dev
       - libpq-dev # Synapse
       - make
       - net-tools
