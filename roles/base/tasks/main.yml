@@ -33,8 +33,6 @@
       - hunspell-en-gb
       - imagemagick
       - jq
-      - libicu-dev
-      - libpq-dev # Synapse
       - make
       - net-tools
       - nmap
@@ -44,6 +42,9 @@
       - python3-psutil
       - simple-scan
       - ttf-mscorefonts-installer
+      - libpq-dev # Synapse
+      - libicu-dev
+      - pkg-config
 
 - name: be sure packages are uninstalled
   become: yes
