@@ -283,11 +283,16 @@ local plugins = {
   },
 
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "folke/neodev.nvim",
+    },
     --dependencies = {
     --"ray-x/lsp_signature.nvim",
     --},
     config = function()
+      require("neodev").setup()
+
       local lspconfig = require("lspconfig")
       local home = os.getenv("HOME")
 
