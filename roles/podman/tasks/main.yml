@@ -19,3 +19,14 @@
     path: /etc/containers/registries.conf
     regexp: "unqualified-search-registries ="
     line: 'unqualified-search-registries = ["docker.io"]'
+
+- name: be sure podman-compose is installed
+  community.general.pipx:
+    name: podman-compose
+
+- name: be sure the bash config is linked
+  ansible.builtin.file:
+    src: "~/git/ansible-workstation/roles/podman/files/podman.sh"
+    dest: "~/.bashrc.d/podman.sh"
+    state: link
+    force: yes

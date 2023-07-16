@@ -647,13 +647,11 @@ local plugins = {
   },
 }
 
-
 for _, module in pairs(require("weeman.modules")) do
   if module.lazy_plugins ~= nil then
-    plugins = vim.tbl_extend("force",
-      plugins,
-      module.lazy_plugins
-    );
+    for _, v in pairs(module.lazy_plugins) do
+      table.insert(plugins, v);
+    end
   end
 end
 
