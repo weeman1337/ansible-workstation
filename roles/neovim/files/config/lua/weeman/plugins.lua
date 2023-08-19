@@ -384,7 +384,7 @@ local plugins = {
 
       lspconfig.html.setup {
         capabilities = capabilities,
-        filetypes = { "hbs", "html", "phtml", "html.twig" }
+        filetypes = { "hbs", "html", "phtml", "html.twig", "htmldjango" }
       }
 
       lspconfig.cssls.setup {
