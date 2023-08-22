@@ -1,16 +1,21 @@
 local M = {}
 
-M.lazy_plugins = {}
-
-M.lspconfig = function (lspconfig, capabilities)
-  lspconfig.tsserver.setup{
-    capabilities = capabilities,
-    on_attach = function (client, bufnr)
-      if client.name == "tsserver" then
-        client.server_capabilities.documentFormattingProvider = false
-      end
-    end
+M.lazy_plugins = {
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig",
+    },
   }
+}
+
+M.lspconfig = function(lspconfig, capabilities)
+  require("typescript-tools").setup({
+    capabilities = capabilities,
+    on_attach = function(client)
+    end,
+  });
 end
 
 vim.g.doge_javascript_settings = {
