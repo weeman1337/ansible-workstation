@@ -240,11 +240,10 @@ local plugins = {
         sources = {
           {
             name = "nvim_lsp",
-            max_item_count = 10,
           },
           {
             name = "buffer",
-            max_item_count = 10,
+            keyword_length = 3,
             option = {
               get_bufnrs = function()
                 local buffers = vim.api.nvim_list_bufs()
@@ -270,11 +269,9 @@ local plugins = {
           },
           {
             name = "path",
-            max_item_count = 10,
           },
           {
             name = "vsnip",
-            max_item_count = 10,
           },
           { name = 'nvim_lsp_signature_help' },
         }
