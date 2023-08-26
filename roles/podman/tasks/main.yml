@@ -13,12 +13,12 @@
     dest: "/home/{{ workstation_user }}/.local/bin/docker"
     state: link
 
-- name: be sure unqualified registries are configured
-  become: yes
-  ansible.builtin.lineinfile:
-    path: /etc/containers/registries.conf
-    regexp: "unqualified-search-registries ="
-    line: 'unqualified-search-registries = ["docker.io"]'
+# - name: be sure unqualified registries are configured
+#   become: yes
+#   ansible.builtin.lineinfile:
+#     path: /etc/containers/registries.conf
+#     regexp: "unqualified-search-registries ="
+#     line: 'unqualified-search-registries = ["docker.io"]'
 
 - name: be sure podman-compose is installed
   community.general.pipx:
