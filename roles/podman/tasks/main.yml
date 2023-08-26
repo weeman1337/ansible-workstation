@@ -7,11 +7,11 @@
     name:
       - podman
 
-- name: be sure docker →  podman link exists
-  ansible.builtin.file:
-    src: /usr/bin/podman
-    dest: "/home/{{ workstation_user }}/.local/bin/docker"
-    state: link
+# - name: be sure docker →  podman link exists
+#   ansible.builtin.file:
+#     src: /usr/bin/podman
+#     dest: "/home/{{ workstation_user }}/.local/bin/docker"
+#     state: link
 
 # - name: be sure unqualified registries are configured
 #   become: yes

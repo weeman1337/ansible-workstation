@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-alias docker-compose="podman-compose"
+# alias docker-compose="podman-compose"
