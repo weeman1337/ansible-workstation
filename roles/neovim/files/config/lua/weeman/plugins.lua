@@ -537,7 +537,10 @@ local plugins = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-lua/popup.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim' },
-      { "nvim-telescope/telescope-live-grep-args.nvim" },
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        version = "^1.0.0",
+      },
     },
     config = function()
       local telescope = require("telescope")
