@@ -30,6 +30,15 @@
     - lua/weeman/modules
     - vsnip
 
+- name: be sure bash configs are linked
+  ansible.builtin.file:
+    src: "~/git/ansible-workstation/roles/neovim/files/{{ item }}"
+    dest: "~/{{ item }}"
+    state: link
+    force: yes
+  with_items:
+    - .bashrc.d/lua.sh
+
 - name: be sure the nvim configs are linked
   ansible.builtin.file:
     src: "~/git/ansible-workstation/roles/neovim/files/config/{{ item }}"
@@ -70,6 +79,7 @@
     update_cache: yes
     cache_valid_time: 86400
     name:
+      - luarocks
       - xclip
 
 - name: be sure pynvim is installed
