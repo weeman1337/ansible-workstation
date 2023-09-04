@@ -523,10 +523,11 @@ require("onedarkpro").setup({
     GitSignsAdd = { fg = "${green}" },
     GitSignsChange = { fg = "${blue}" },
     GitSignsDelete = { fg = "${red}" },
-    LineNr = { fg = color.lighten("#333333", 40) },
+    LineNr = { fg = color.lighten("#2a2b33", 40) },
     diffAdded = { fg = "${green}" },
     diffChanged = { fg = "${blue}" },
     diffRemoved = { fg = "${red}" },
+    TelescopePreviewLine = { bg = color.lighten("#2a2b33", 66)}
   },
   options = {
     cursorline = true,
