@@ -8,6 +8,7 @@ jitsi
 nvim
 oidc
 puppetlabs
+timeframe
 vmname
 webrtc
 weimann
