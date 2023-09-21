@@ -1,0 +1,15 @@
+{
+    "eslint-disable-next-line": {
+        "prefix": ["eldis"],
+        "body": [
+            "// eslint-disable-next-line $0"
+        ]
+    },
+        "ts-ignore": {
+        "prefix": ["tsig"],
+        "body": [
+            "// @ts-ignore $0"
+        ]
+    }
+
+}

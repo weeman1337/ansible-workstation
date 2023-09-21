@@ -206,11 +206,13 @@ vim.g.vsnip_filetypes = {
     "twig",
   },
   typescriptreact = {
+    "js",
     "js_test",
     "matrix_licence",
     "typescript",
   },
   typescript = {
+    "js",
     "js_test",
     "matrix_licence",
     "typescript",

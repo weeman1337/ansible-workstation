@@ -5,6 +5,7 @@
     dest: "~/.config/nvim/{{ item }}"
     state: link
   with_items:
+    - vsnip/js.json
     - vsnip/js_test.json
 
 - name: be sure npm packages are installed
