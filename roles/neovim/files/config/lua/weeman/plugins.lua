@@ -585,10 +585,23 @@ local plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     dependencies = { "onedarkpro.nvim" },
     config = function()
-      vim.g.indent_blankline_char = "▏"
-      vim.g.indent_blankline_show_first_indent_level = false
+      require("ibl").setup( {
+        indent = {
+          char = "▏",
+        },
+        scope = {
+          enabled = false,
+        },
+      })
+
+      local hooks = require "ibl.hooks"
+      hooks.register(
+        hooks.type.WHITESPACE,
+        hooks.builtin.hide_first_space_indent_level
+      )
     end
   },
 

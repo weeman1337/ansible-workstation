@@ -529,7 +529,8 @@ require("onedarkpro").setup({
     diffAdded = { fg = "${green}" },
     diffChanged = { fg = "${blue}" },
     diffRemoved = { fg = "${red}" },
-    TelescopePreviewLine = { bg = color.lighten("#2a2b33", 66)}
+    TelescopePreviewLine = { bg = color.lighten("#2a2b33", 66)},
+    IblIndent = { fg = color.lighten("#000", 80) },
   },
   options = {
     cursorline = true,
