@@ -606,6 +606,13 @@ local plugins = {
   },
 
   {
+    'm00qek/baleia.nvim',
+    config = function()
+      require('baleia').setup({})
+    end
+  },
+
+  {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
