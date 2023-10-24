@@ -17,6 +17,7 @@
     - typescript-language-server
     - eslint_d
     - "@fsouza/prettierd"
+    - typescript-plugin-css-modules
 
 - name: be sure the js module is linked
   ansible.builtin.file:

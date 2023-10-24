@@ -12,6 +12,11 @@ M.lazy_plugins = {
 
 M.lspconfig = function(lspconfig, capabilities)
   require("typescript-tools").setup({
+    settings = {
+      tsserver_plugins = {
+        "typescript-plugin-css-modules",
+      },
+    },
     capabilities = capabilities,
     on_attach = function(client)
     end,
