@@ -218,6 +218,7 @@ local plugins = {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-vsnip",
       "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-cmdline",
     },
     config = function()
       local cmp = require 'cmp'
@@ -279,6 +280,29 @@ local plugins = {
           },
           { name = 'nvim_lsp_signature_help' },
         }
+      })
+
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources(
+        {
+          { name = 'path' }
+        },
+        {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' }
+            }
+          }
+        })
       })
     end
   },
