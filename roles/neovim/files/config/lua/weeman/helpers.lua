@@ -1,5 +1,12 @@
 local _M = {}
 
+function _M.table_concat(t1,t2)
+    for i=1,#t2 do
+        t1[#t1+1] = t2[i]
+    end
+    return t1
+end
+
 function _M.is_module_available(name)
   if package.loaded[name] then
     return true

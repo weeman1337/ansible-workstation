@@ -662,7 +662,21 @@ local plugins = {
     config = function()
       local project_config = require("weeman.project").project_config
       require("other-nvim").setup({
-        mappings = project_config.other_mappings,
+        mappings = h.table_concat(
+          project_config.other_mappings,
+          {
+            {
+              pattern = "(.*)%.[jt]sx$",
+              target = "%1.module.scss",
+              context = "css",
+            },
+            {
+              pattern = "(.*)%.module%.s?css$",
+              target = "%1.tsx",
+              context = "css",
+            },
+          }
+        )
       })
     end
   },
