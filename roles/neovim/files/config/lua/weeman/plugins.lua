@@ -213,6 +213,7 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-buffer",
+      "rasulomaroff/cmp-bufname",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-vsnip",
@@ -266,6 +267,9 @@ local plugins = {
                 return retbufs
               end
             }
+          },
+          {
+            name = 'bufname'
           },
           {
             name = "path",
