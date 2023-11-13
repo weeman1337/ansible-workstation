@@ -1,15 +1,34 @@
 {
     "eslint-disable-next-line": {
-        "prefix": ["eldis"],
+        "prefix": [
+            "eldis"
+        ],
         "body": [
             "// eslint-disable-next-line $0"
         ]
     },
-        "ts-ignore": {
-        "prefix": ["tsig"],
+    "ts-ignore": {
+        "prefix": [
+            "tsig"
+        ],
         "body": [
             "// @ts-ignore $0"
         ]
+    },
+    "rfc": {
+        "prefix": [
+            "rfc"
+        ],
+        "body": [
+            "import React from 'react';",
+            "",
+            "interface ${TM_FILENAME_BASE}Props {",
+            "",
+            "}",
+            "",
+            "export const $TM_FILENAME_BASE: React.FC<${TM_FILENAME_BASE}Props> = ({}) => {",
+            "    return <div>$TM_FILENAME_BASE</div>;$0",
+            "}"
+        ]
     }
-
 }
