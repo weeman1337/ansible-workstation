@@ -55,8 +55,16 @@ vim.filetype.add({
   pattern = {
     [".-%.xml%.%a-"] = "xml",
     [".-%.php%.%a-"] = "php",
-    [".-ansible.-/.-%.yml"] = "yaml.ansible",
   }
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = "yaml",
+  callback = function ()
+    if vim.fn.filereadable("ansible.cfg") then
+      vim.bo.filetype = 'yaml.ansible'
+    end
+  end
 })
 
 

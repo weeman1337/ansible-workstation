@@ -101,9 +101,7 @@
     name: python-lsp-server
     state: inject
     inject_packages:
-      - python-lsp-server[flake8]
       - python-lsp-server[rope]
-      - python-lsp-server[yapf]
 
 - name: check the installed lua language server version
   command: "grep -xq '## {{ lua_dev.lua_language_server.version }}' ~/opt/lua-language-server/changelog.md"
