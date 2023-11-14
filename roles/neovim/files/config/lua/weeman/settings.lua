@@ -61,7 +61,7 @@ vim.filetype.add({
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = "yaml",
   callback = function ()
-    if vim.fn.filereadable("ansible.cfg") then
+    if vim.fn.filereadable("ansible.cfg") == 1 then
       vim.bo.filetype = 'yaml.ansible'
     end
   end
