@@ -46,6 +46,7 @@
     state: link
   with_items:
     - init.lua
+    - init-scrollback.lua
     - lua/weeman/helpers.lua
     - lua/weeman/init.lua
     - lua/weeman/plugins.lua
