@@ -157,3 +157,4 @@
     - "@ansible/ansible-language-server"
     - dockerfile-language-server-nodejs
     - vscode-langservers-extracted
+    - yaml-language-server

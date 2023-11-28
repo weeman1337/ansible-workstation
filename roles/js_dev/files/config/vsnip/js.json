@@ -30,5 +30,13 @@
             "    return <div>$TM_FILENAME_BASE</div>;$0",
             "}"
         ]
+    },
+    "icm": {
+        "prefix": [
+            "ism"
+        ],
+        "body": [
+            "import styles from \"./${TM_FILENAME_BASE}.module.scss\";"
+        ]
     }
 }

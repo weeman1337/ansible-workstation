@@ -177,6 +177,7 @@ local plugins = {
           "dockerfile",
           "gitattributes",
           "gitignore",
+          "go",
           "javascript",
           "jsdoc",
           "json",
@@ -370,15 +371,6 @@ local plugins = {
 
       lspconfig.pylsp.setup {
         capabilities = capabilities,
-        settings = {
-          pylsp = {
-            plugins = {
-              rope_autoimport = {
-                enabled = true,
-              },
-            },
-          },
-        },
       }
 
       lspconfig.jsonls.setup {
@@ -398,9 +390,20 @@ local plugins = {
                 fileMatch = { "tsconfig.json" },
                 url = "file://" .. home .. "/.local/share/json_schemas/tsconfig.json"
               },
-            }
-          }
-        }
+            },
+          },
+        },
+      }
+
+      lspconfig.yamlls.setup {
+        capabilities = capabilities,
+        settings = {
+          json = {
+            schemas = {
+              ["file://" .. home .. "/.local/share/json_schemas/gitlab-ci.json"] = "*.gitlab-ci.yml",
+            },
+          },
+        },
       }
 
       lspconfig.dockerls.setup {
@@ -415,6 +418,10 @@ local plugins = {
       lspconfig.cssls.setup {
         capabilities = capabilities
       }
+
+      lspconfig.gopls.setup({
+        capabilities = capabilities
+      })
 
       for _, module in pairs(require("weeman.modules")) do
         if module.lspconfig ~= nil then module.lspconfig(lspconfig, capabilities) end
@@ -524,6 +531,21 @@ local plugins = {
         end,
       })
     end
+  },
+
+  {
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
 
   {
