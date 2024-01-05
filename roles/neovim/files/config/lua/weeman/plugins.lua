@@ -182,6 +182,7 @@ local plugins = {
           "jsdoc",
           "json",
           "html",
+          "ledger",
           "lua",
           "make",
           "markdown",
@@ -629,7 +630,11 @@ local plugins = {
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require 'colorizer'.setup()
+      require 'colorizer'.setup({
+        scss = {
+          rgb_fn = true,
+        },
+      })
     end
   },
 

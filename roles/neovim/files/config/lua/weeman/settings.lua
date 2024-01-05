@@ -55,6 +55,7 @@ vim.filetype.add({
   pattern = {
     [".-%.xml%.%a-"] = "xml",
     [".-%.php%.%a-"] = "php",
+    [".-%.html%.j2"] = "html.jinja",
   }
 })
 
